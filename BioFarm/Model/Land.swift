@@ -9,6 +9,13 @@
 import Foundation
 //let ARC4RANDOM_MAX 0x100000000
 
+/***************************************************************************
+How to use: Land is to be used in an array in Farm.
+What it does: Handles each plot and manages planting cost and yeild.
+
+Need to change some enums to be updated. Also need to add the Biomass.
+Clean some old values out and rename some functions to be more descriptive.
+***************************************************************************/
 
 //enum LandType {
 //    case Wet
