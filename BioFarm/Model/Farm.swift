@@ -9,6 +9,13 @@
 import Foundation
 import AVFoundation
 
+/***************************************************************************
+How to use: Farm manages plots of lands and is what is used by the GUI to know what graphics to display
+What it does: contains array for each plot of land and controls events and end of year processes.
+
+Could use a bit of renaming and redoing of certain variables. Land Array needs to be created.
+Make sure to keep decoupled from GUI and store all info needed here. GUI should not call anything but this.
+***************************************************************************/
 public class Farm {
     
     let farmLand : [Int:Land]
