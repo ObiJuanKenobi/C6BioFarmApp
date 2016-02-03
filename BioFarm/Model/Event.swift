@@ -9,12 +9,12 @@
 import Foundation
 
 /***************************************************************************
-How to use: Create a new Event each year and get variables created by the event
-What it does: contains the info for event text, sound file name and modifiers
-
-currently very coupled, need to seperate certain methods into seperate calls.
-Also would be good to redo some naming here and use enums for various things.
-***************************************************************************/
+ How to use: Create a new Event each year and get variables created by the event
+ What it does: contains the info for event text, sound file name and modifiers
+ 
+ currently very coupled, need to seperate certain methods into seperate calls.
+ Also would be good to redo some naming here and use enums for various things.
+ ***************************************************************************/
 class Event{
     
     var rand: Int = 0

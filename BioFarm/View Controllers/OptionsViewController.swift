@@ -20,8 +20,8 @@ class OptionsViewController : UIViewController{
     
     
     /*
-        A defualt function to set up the view when its first loaded. Sets the volume switch and slider based on the
-        volume of the sound and whether the music is playing. 
+    A defualt function to set up the view when its first loaded. Sets the volume switch and slider based on the
+    volume of the sound and whether the music is playing.
     */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class OptionsViewController : UIViewController{
     }
     
     /*
-        A defualt function for dealing with memeory warnings.
+    A defualt function for dealing with memeory warnings.
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,7 +46,7 @@ class OptionsViewController : UIViewController{
     }
     
     /*
-        Changes the volume of the music player based on the state of the slider.
+    Changes the volume of the music player based on the state of the slider.
     */
     @IBAction func changeVolume(sender: UISlider) {
         if let temp : AVAudioPlayer = musicPlayer {
@@ -56,7 +56,7 @@ class OptionsViewController : UIViewController{
     }
     
     /*
-        Turns the volume on or off depending on the state of the switch.
+    Turns the volume on or off depending on the state of the switch.
     */
     @IBAction func volumeOnOff(sender: UISwitch) {
         if let temp : AVAudioPlayer = musicPlayer  {
@@ -72,7 +72,7 @@ class OptionsViewController : UIViewController{
     }
     
     /*
-        Turns the volume on or off depending on the state of the switch.
+    Turns the volume on or off depending on the state of the switch.
     */
     @IBAction func effectsOnOff(sender: UISwitch) {
         if(sender.on){

@@ -54,8 +54,8 @@ class GameViewController : UIViewController{
     //System Methods
     
     /*
-        A defualt function to set up the view when it is first loaded. It sets up the buttons with defualt imagesa
-        and aspect ratios. 
+    A defualt function to set up the view when it is first loaded. It sets up the buttons with defualt imagesa
+    and aspect ratios.
     */
     
     override func viewDidLoad(){
@@ -66,10 +66,10 @@ class GameViewController : UIViewController{
         self.refresh()
         setButtonAspect()
         lbl_harvestMod.text = "Year: \(juansFarm.yearCount)"
-        }
+    }
     
     /*
-    This method checks if it is game over for the player by checking if the player can still buy land, but only 
+    This method checks if it is game over for the player by checking if the player can still buy land, but only
     if the field is empty.
     */
     override func viewDidAppear(animated: Bool) {
@@ -80,7 +80,7 @@ class GameViewController : UIViewController{
     
     
     /*
-        A defualt function that deals with memory warnings.
+    A defualt function that deals with memory warnings.
     */
     override func didReceiveMemoryWarning() {
         // Dispose of any resources that can be recreated.
@@ -88,7 +88,7 @@ class GameViewController : UIViewController{
     }
     
     /*
-        Sets the aspect ratio for all the picturs in the farm buttons.
+    Sets the aspect ratio for all the picturs in the farm buttons.
     */
     
     func setButtonAspect() {
@@ -105,12 +105,12 @@ class GameViewController : UIViewController{
     //Refresh Methods
     
     /*
-        Refreshes the information on all labels on the game screen. These labels are temporary and used for debugging.
-        "People like the labels so keep them on or modify them." - Juan
+    Refreshes the information on all labels on the game screen. These labels are temporary and used for debugging.
+    "People like the labels so keep them on or modify them." - Juan
     */
     
     func refresh(){
-
+        
         
         //Updates the amount of money shown
         lbl_Money.text = String(format: "$%.2f", juansFarm.currentMoney)
@@ -130,22 +130,22 @@ class GameViewController : UIViewController{
     
     
     /*
-        Refreshs all button images after a new crop has been planted.
+    Refreshs all button images after a new crop has been planted.
     */
     
     func refreshImages(){
         
         var tempImage : UIImage = UIImage(named: juansFarm.fields[selectedFarm].getLandSprite(selectedFarm))!
         switch selectedFarm{
-            case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
-            case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
-            case 2:btn_Farm3.setBackgroundImage(tempImage, forState: btn_Farm3.state)
-            case 3:btn_Farm4.setBackgroundImage(tempImage, forState: btn_Farm4.state)
-            case 4:btn_Farm5.setBackgroundImage(tempImage, forState: btn_Farm5.state)
-            case 5:btn_Farm6.setBackgroundImage(tempImage, forState: btn_Farm6.state)
-            case 6:btn_Farm7.setBackgroundImage(tempImage, forState: btn_Farm7.state)
-            case 7:btn_Farm8.setBackgroundImage(tempImage, forState: btn_Farm8.state)
-            default: return//btn_Farm1.setImage(tempImage, forState: btn_Farm1.state)
+        case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
+        case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
+        case 2:btn_Farm3.setBackgroundImage(tempImage, forState: btn_Farm3.state)
+        case 3:btn_Farm4.setBackgroundImage(tempImage, forState: btn_Farm4.state)
+        case 4:btn_Farm5.setBackgroundImage(tempImage, forState: btn_Farm5.state)
+        case 5:btn_Farm6.setBackgroundImage(tempImage, forState: btn_Farm6.state)
+        case 6:btn_Farm7.setBackgroundImage(tempImage, forState: btn_Farm7.state)
+        case 7:btn_Farm8.setBackgroundImage(tempImage, forState: btn_Farm8.state)
+        default: return//btn_Farm1.setImage(tempImage, forState: btn_Farm1.state)
         }
     }
     
@@ -170,14 +170,14 @@ class GameViewController : UIViewController{
             default: return//btn_Farm1.setImage(tempImage, forState: btn_Farm1.state)
             }
         }
-
+        
     }
-
+    
     //Methods for Buttons
     
     /*
-        Used when the harvest button is pressed. It gets the event for that year and cacluates the profit.
-        It also plays a sound effect based on that event and resets all farms.
+    Used when the harvest button is pressed. It gets the event for that year and cacluates the profit.
+    It also plays a sound effect based on that event and resets all farms.
     */
     
     @IBAction func harvestYear(sender: AnyObject) {
@@ -185,68 +185,68 @@ class GameViewController : UIViewController{
         if(juansFarm.isFarmEmpty()){
             return
         }
-        //performs the procedures for harvesting a year
+            //performs the procedures for harvesting a year
         else{
-        //creates an event, mod number and then calculates the yield of each field based on the mod number
-        //it then calculates the revenue made and finally adds the revenue to the current money of the farm
+            //creates an event, mod number and then calculates the yield of each field based on the mod number
+            //it then calculates the revenue made and finally adds the revenue to the current money of the farm
             
-        juansFarm.eventGenerator()
-        juansFarm.calculateYield()
-        juansFarm.calculateRevenue()
-        juansFarm.Harvest()
+            juansFarm.eventGenerator()
+            juansFarm.calculateYield()
+            juansFarm.calculateRevenue()
+            juansFarm.Harvest()
             
             //checks if the player can go another year and buy land and if not game over
             
             if(juansFarm.currentMoney < 12000){
-             self.performSegueWithIdentifier("toGameOverView", sender: self)
+                self.performSegueWithIdentifier("toGameOverView", sender: self)
             }
             else{
-              var eventSound : String = ""
-        
-        
-        eventSound = juansFarm.event!.getEventSound()!
-        //Play sound
-        prepareHarvestSound(eventSound)
-        effectsPlayer!.play()
-        
-        //Temp Variable for profit and tempFarm for results view
-        profit = juansFarm.getProfit()
-        modifier = juansFarm.modifierNumber
-        eventText = juansFarm.event!.getEventText()
-        totalMoney = juansFarm.currentMoney
-      
-        
-       
-        
-        //Print Year Results
-        lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", juansFarm.yearCount, juansFarm.modifierNumber, profit)
-        
-        //print flavor Text
-            if(modifier == 1.0){
-                lbl_modiferText.textColor = greenColor
-                lbl_modiferText.text = juansFarm.event!.getEventText()
+                var eventSound : String = ""
+                
+                
+                eventSound = juansFarm.event!.getEventSound()!
+                //Play sound
+                prepareHarvestSound(eventSound)
+                effectsPlayer!.play()
+                
+                //Temp Variable for profit and tempFarm for results view
+                profit = juansFarm.getProfit()
+                modifier = juansFarm.modifierNumber
+                eventText = juansFarm.event!.getEventText()
+                totalMoney = juansFarm.currentMoney
+                
+                
+                
+                
+                //Print Year Results
+                lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", juansFarm.yearCount, juansFarm.modifierNumber, profit)
+                
+                //print flavor Text
+                if(modifier == 1.0){
+                    lbl_modiferText.textColor = greenColor
+                    lbl_modiferText.text = juansFarm.event!.getEventText()
+                }
+                else{
+                    lbl_modiferText.textColor = redColor
+                    lbl_modiferText.text = juansFarm.event!.getEventText()
+                }
+                
+                
+                //Refresh Screen (for crops)
+                reset()
+                refresh()
+                
+                
+                //toResultsView
+                self.performSegueWithIdentifier("toResultsView", sender: self)
+                
             }
-            else{
-                lbl_modiferText.textColor = redColor
-                lbl_modiferText.text = juansFarm.event!.getEventText()
-            }
-       
-        
-        //Refresh Screen (for crops)
-            reset()
-            refresh()
-        
-        
-       //toResultsView
-        self.performSegueWithIdentifier("toResultsView", sender: self)
-  
+            
         }
-  
-            }
-                    }
+    }
     
     /*
-        Prepares the the sound effect from the yearly event to be played.
+    Prepares the the sound effect from the yearly event to be played.
     */
     func prepareHarvestSound(eventSound : String) {
         //var snd_applause = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(eventSound, ofType: "mp3")!)
@@ -258,10 +258,10 @@ class GameViewController : UIViewController{
         effectsPlayer!.prepareToPlay()
         effectsPlayer!.volume = tempVol
     }
-
+    
     /*
-        When a farm button is pressed this button finds which button it was so that the correct farm is modified.
-        It then sends the app to the buy screen.
+    When a farm button is pressed this button finds which button it was so that the correct farm is modified.
+    It then sends the app to the buy screen.
     */
     
     @IBAction func goToBuyScreen(sender: AnyObject) {
@@ -269,55 +269,55 @@ class GameViewController : UIViewController{
         //the button also locks after a purchase is made
         
         switch sender {
-            case btn_Farm1 as UIButton:
-                if(juansFarm.hasBought[0]){
-                    return
-                }else{
-                    selectedFarm = 0
-                }
-            case btn_Farm2 as UIButton:
-                if(juansFarm.hasBought[1]){
-                    return
-                }
-                else{ selectedFarm = 1
+        case btn_Farm1 as UIButton:
+            if(juansFarm.hasBought[0]){
+                return
+            }else{
+                selectedFarm = 0
             }
-            case btn_Farm3 as UIButton:
-                if(juansFarm.hasBought[2]){
-                    return
-                }else{
-                   selectedFarm = 2
-                }
-            case btn_Farm4 as UIButton:
-                if(juansFarm.hasBought[3]){
-                    return
-                }else{
-                    selectedFarm = 3
-                }
-            case btn_Farm5 as UIButton:
-                if(juansFarm.hasBought[4]){
-                  return
-                }else{
-                    selectedFarm = 4
-                }
+        case btn_Farm2 as UIButton:
+            if(juansFarm.hasBought[1]){
+                return
+            }
+            else{ selectedFarm = 1
+            }
+        case btn_Farm3 as UIButton:
+            if(juansFarm.hasBought[2]){
+                return
+            }else{
+                selectedFarm = 2
+            }
+        case btn_Farm4 as UIButton:
+            if(juansFarm.hasBought[3]){
+                return
+            }else{
+                selectedFarm = 3
+            }
+        case btn_Farm5 as UIButton:
+            if(juansFarm.hasBought[4]){
+                return
+            }else{
+                selectedFarm = 4
+            }
         case btn_Farm6 as UIButton:
             if(juansFarm.hasBought[5]){
-            return
+                return
             }else{
                 selectedFarm = 5
             }
-            case btn_Farm7 as UIButton:
-                if(juansFarm.hasBought[6]){
-                    return
-                }else{
-                    selectedFarm = 6
-                }
-            case btn_Farm8 as UIButton:
-                if(juansFarm.hasBought[7]){
-                    return
-                }else{
-                    selectedFarm = 7
-                }
-            default: selectedFarm = 0
+        case btn_Farm7 as UIButton:
+            if(juansFarm.hasBought[6]){
+                return
+            }else{
+                selectedFarm = 6
+            }
+        case btn_Farm8 as UIButton:
+            if(juansFarm.hasBought[7]){
+                return
+            }else{
+                selectedFarm = 7
+            }
+        default: selectedFarm = 0
         }
         //Do the segue to buy view
         self.performSegueWithIdentifier("toBuyView", sender: self)
@@ -326,8 +326,8 @@ class GameViewController : UIViewController{
     //Methods for Segues
     
     /*
-        Prepares app to go to the buy view or results view by figuring out which view is needed and
-        sending the correct data for that view.
+    Prepares app to go to the buy view or results view by figuring out which view is needed and
+    sending the correct data for that view.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         segue.destinationViewController
@@ -339,32 +339,32 @@ class GameViewController : UIViewController{
         }
         else if(segue.identifier == "toResultsView"){
             var dest : ResultsTableViewController = segue.destinationViewController as! ResultsTableViewController
-           
+            
             dest.year = juansFarm.yearCount
             dest.mod = modifier
             dest.modText = eventText
             dest.profit = self.profit
             dest.totalMoney = juansFarm.currentMoney
-          
+            
         }
         else if(segue.identifier == "toGameOverView"){
             var dest: GameOverViewController = segue.destinationViewController as! GameOverViewController
             dest.yearsPassed = juansFarm.yearCount
             dest.currentMoney = juansFarm.currentMoney
         }
-        
+            
         else if(segue.identifier == "toMarketView"){
             var dest : MarketViewController = segue.destinationViewController as! MarketViewController
             dest.mass = 100;
             dest.money = Double(juansFarm.currentMoney);
         }
-    
+        
         
         
     }
     
     /*
-        Rereshes the images and labels after returning from the buy screen.
+    Rereshes the images and labels after returning from the buy screen.
     */
     @IBAction func unwindFromBuy(unwindSegue: UIStoryboardSegue){
         refresh()

@@ -9,13 +9,13 @@
 import UIKit
 
 class TheBarnViewController: UIViewController {
-
+    
     //Internal Variables
     var whichInfoToPresent : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +24,7 @@ class TheBarnViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toCropInfo"){
             var dest: CropViewController = segue.destinationViewController as! CropViewController
@@ -55,7 +55,7 @@ class TheBarnViewController: UIViewController {
         whichInfoToPresent = 1
         self.performSegueWithIdentifier("toCropInfo", sender: self)
     }
-
+    
     @IBAction func btn_StemCareers(sender: AnyObject) {
         whichInfoToPresent = 5
         self.performSegueWithIdentifier("toCropInfo", sender: self)
@@ -66,6 +66,6 @@ class TheBarnViewController: UIViewController {
         self.performSegueWithIdentifier("toBarnInfo", sender: self)
         
     }
-   
-
+    
+    
 }

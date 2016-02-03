@@ -15,7 +15,7 @@ class MarketViewController: UIViewController {
     @IBOutlet var amount_Lbl: UILabel!
     @IBOutlet var sell_Btn: UIButton!
     @IBOutlet var money_Lbl: UILabel!
-
+    
     var money: Double = 0.0;
     var mass: Int = 10;
     
@@ -40,25 +40,25 @@ class MarketViewController: UIViewController {
         mass_Stepper.autorepeat = true;
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func amountValueChanged(sender: UIStepper) {
-         amount_Lbl.text = " \(Int(sender.value))";
+        amount_Lbl.text = " \(Int(sender.value))";
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

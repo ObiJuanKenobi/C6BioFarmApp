@@ -24,7 +24,7 @@ Clean some old values out and rename some functions to be more descriptive.
 
 
 /*
-    An Enumerated type for the for the different crops.
+An Enumerated type for the for the different crops.
 */
 enum CropType {
     case Corn
@@ -41,9 +41,9 @@ class Land {
     //Crop Rotation Variables
     var oldCrop : CropType = CropType.Empty
     var numOldCrop : Int = 0
-
+    
     /*
-        Intializes the land object with the specified size an empty croptype and no insurance.
+    Intializes the land object with the specified size an empty croptype and no insurance.
     */
     init(size : Int) {
         self.size = size
@@ -52,7 +52,7 @@ class Land {
     }
     
     /*
-        Intializes the land object with the specified size, crop type and insurance.
+    Intializes the land object with the specified size, crop type and insurance.
     */
     init(size : Int, type : CropType, insur : Bool){
         self.size = size
@@ -63,14 +63,14 @@ class Land {
     //LAND FUNCTIONS
     
     /*
-        Sets the crop type of the land to the specified crop type.
+    Sets the crop type of the land to the specified crop type.
     */
     func plant (toPlant : CropType){
         type = toPlant
     }
     
     /*
-        Returns the profit of the of harvesting from the land based on the crop type and size of land.
+    Returns the profit of the of harvesting from the land based on the crop type and size of land.
     */
     func harvest (modifier : Double) -> Double {
         var profit : Double = self.getCropProfit() * Double(self.size)
@@ -100,14 +100,14 @@ class Land {
     }
     
     /*
-        Reutrns the size of the land in acres.
+    Reutrns the size of the land in acres.
     */
     func getLandSize() -> Double {
         return Double(size)
     }
     
     /*
-        Creates a deep copy of the land.
+    Creates a deep copy of the land.
     */
     func copy() -> Land{
         let tempLand = Land(size: size,type: type,insur: insured)
@@ -117,14 +117,14 @@ class Land {
     //CROP FUNCTIONS
     
     /*
-        Returns the crop type planted on the land.
+    Returns the crop type planted on the land.
     */
     func getCrop() -> CropType {
         return self.type
     }
     
     /*
-        Returns the cost of buying the crop type of the land.
+    Returns the cost of buying the crop type of the land.
     */
     func getCropCost() -> Double {
         switch type {
@@ -148,14 +148,14 @@ class Land {
     }
     
     /*
-        Returns the cost of buying of buying the land.
+    Returns the cost of buying of buying the land.
     */
     func getPlotCost() -> Double {
         return getCropCost() * getLandSize()
     }
     
     /*
-        Returns the current crop name.
+    Returns the current crop name.
     */
     func getCropName() ->String {
         switch type {
@@ -167,27 +167,27 @@ class Land {
     }
     
     /*
-        Returns how much profit can be earned from the land.
+    Returns how much profit can be earned from the land.
     */
     func getCropProfit() -> Double {
         return Double(getCropYield()) * getCropSellPrice()
     }
     
     /*
-        Returns the yield of the land's current crop.
+    Returns the yield of the land's current crop.
     */
     func getCropYield() -> Int {
         switch type {
-            case .Corn : return 178
-            case .Soy : return 52
-            case .Grass : return 4
-            case .Empty : return 0
-            default : return 0
+        case .Corn : return 178
+        case .Soy : return 52
+        case .Grass : return 4
+        case .Empty : return 0
+        default : return 0
         }
     }
     
     /*
-        Returns the price of the land's crop.
+    Returns the price of the land's crop.
     */
     func getCropSellPrice() -> Double {
         
@@ -208,7 +208,7 @@ class Land {
     }
     
     /*
-        Reurns the name of the image that the land's crop has.
+    Reurns the name of the image that the land's crop has.
     */
     func getCropSprite() -> String {
         switch type {
@@ -229,7 +229,7 @@ class Land {
     }
     
     /*
-        Returns whether the land is insured or not.
+    Returns whether the land is insured or not.
     */
     func isInsured() -> Bool {
         return insured
@@ -240,14 +240,14 @@ class Land {
     }
     
     /*
-        Sets the lands crop to the specified type.
+    Sets the lands crop to the specified type.
     */
     func setCrop (newCrop : CropType) {
         type = newCrop
     }
     
     /*
-        Set whether the land is insured or not. 
+    Set whether the land is insured or not.
     */
     func setInsured (newInsured : Bool) {
         insured = newInsured

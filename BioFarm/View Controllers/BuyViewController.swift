@@ -6,7 +6,7 @@
 //
 // Money does not change for some reason
 //  yield is mispelled
-//potential 
+//potential
 //2 dukes of hazard
 //1 lightning
 //2 aliens
@@ -16,7 +16,7 @@ import Foundation
 import UIKit
 
 class BuyViewController: UIViewController {
-
+    
     // Segment Controller for crop choice
     @IBOutlet var seg_CropChoice: UISegmentedControl!
     
@@ -29,7 +29,7 @@ class BuyViewController: UIViewController {
     @IBOutlet var lbl_CornBiomassAmount: UILabel!
     @IBOutlet var lbl_GrowBiomass: UILabel!
     @IBOutlet var lbl_tonsPerAcre: UILabel!
-
+    
     // Switch
     @IBOutlet var swt_Insur: UISwitch!
     
@@ -60,17 +60,17 @@ class BuyViewController: UIViewController {
     //System Methods
     
     /*
-        A defualt function to set up the view when its first loaded. Sets up an image of the farms current crop
-        and sets the label to show the price of that crop for the farm. Then updates the crop to whatever the 
-        selector has set.
+    A defualt function to set up the view when its first loaded. Sets up an image of the farms current crop
+    and sets the label to show the price of that crop for the farm. Then updates the crop to whatever the
+    selector has set.
     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         //Set Crop Image
+        //Set Crop Image
         img_Crop.image = UIImage(named: juansFarmInBuyView!.fields[selectedFarm].getCropSprite())
-
+        
         
         //Show Price of land
         lbl_Price.text = String(format: "$%.2f", juansFarmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy))
@@ -86,46 +86,46 @@ class BuyViewController: UIViewController {
     }
     
     /*
-        A defualt function to deal with memory warnings.
+    A defualt function to deal with memory warnings.
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     //GUI Methods
     
     /*
-        Updates the image displayed based on the segment selected. then changes calls change Insurance.
+    Updates the image displayed based on the segment selected. then changes calls change Insurance.
     */
     
     @IBAction func cropUpdate(sender: AnyObject) {
         
         switch seg_CropChoice.selectedSegmentIndex {
-                
+            
             // Corn
-            case 0: cropToBuy = Crops.Corn
-            swt_Insur.hidden = false
-            swt_Insur.on = true
-            stepr_CornBiomass.hidden = false
-            lbl_CornBiomassAmount.hidden = false
-            lbl_GrowBiomass.hidden = false
-            lbl_Insur.hidden = false
-            
-            //sets what C6 will say in his text bubbles
-            if(juansFarmInBuyView!.yearCount != 1){
-                lbl_OtherCropInfo.text = String(format: "This field had %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
-            }
-            else{
-                lbl_OtherCropInfo.text = "Remember to rotate your crops!"
-            }
-            lbl_CropInfo.text = "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
-            
-            img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-            cropSellingPrice = Float(juansFarmInBuyView!.cornSellingPrice)
+        case 0: cropToBuy = Crops.Corn
+        swt_Insur.hidden = false
+        swt_Insur.on = true
+        stepr_CornBiomass.hidden = false
+        lbl_CornBiomassAmount.hidden = false
+        lbl_GrowBiomass.hidden = false
+        lbl_Insur.hidden = false
+        
+        //sets what C6 will say in his text bubbles
+        if(juansFarmInBuyView!.yearCount != 1){
+            lbl_OtherCropInfo.text = String(format: "This field had %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
+        }
+        else{
+            lbl_OtherCropInfo.text = "Remember to rotate your crops!"
+        }
+        lbl_CropInfo.text = "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
+        
+        img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
+        cropSellingPrice = Float(juansFarmInBuyView!.cornSellingPrice)
             
             // Soybean
-            case 1:
+        case 1:
             cropToBuy = Crops.Soybean
             swt_Insur.hidden = false
             swt_Insur.on = true
@@ -134,9 +134,9 @@ class BuyViewController: UIViewController {
             lbl_GrowBiomass.hidden = true
             lbl_Insur.hidden = false
             lbl_tonsPerAcre.hidden = true
-
             
-             //sets what C6 will say in his text bubbles
+            
+            //sets what C6 will say in his text bubbles
             if(juansFarmInBuyView!.yearCount != 1){
                 lbl_OtherCropInfo.text = String(format: "You planted %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
             }
@@ -147,31 +147,31 @@ class BuyViewController: UIViewController {
             
             img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
             cropSellingPrice = Float(juansFarmInBuyView!.soybeanSellingPrice)
-
+            
             // Switchgrass
-            case 2: cropToBuy = Crops.Switchgrass
-            swt_Insur.hidden = true
-            stepr_CornBiomass.hidden = true
-            lbl_CornBiomassAmount.hidden = true
-            lbl_GrowBiomass.hidden = true
-            lbl_Insur.hidden = true
-            lbl_tonsPerAcre.hidden = true
-            
-
-            
-             //sets what C6 will say in his text bubbles
-            if(juansFarmInBuyView!.yearCount != 1){
-                lbl_OtherCropInfo.text = String(format: "You planted %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
-            }
-            else{
-                lbl_OtherCropInfo.text = "Remember to rotate your crops!"
-            }
-            lbl_CropInfo.text = "Switchgrass is used as feedstock for animals and other bio-friendly uses such as the development of bio-mass, methods for energy production, and cover for soil."
-            
-            swt_Insur.setOn(false, animated: false) //changes insure switch off since switch grass has no insurance
-            img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-            cropSellingPrice = Float(juansFarmInBuyView!.switchgrassSellingPrice)
-            default: break
+        case 2: cropToBuy = Crops.Switchgrass
+        swt_Insur.hidden = true
+        stepr_CornBiomass.hidden = true
+        lbl_CornBiomassAmount.hidden = true
+        lbl_GrowBiomass.hidden = true
+        lbl_Insur.hidden = true
+        lbl_tonsPerAcre.hidden = true
+        
+        
+        
+        //sets what C6 will say in his text bubbles
+        if(juansFarmInBuyView!.yearCount != 1){
+            lbl_OtherCropInfo.text = String(format: "You planted %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
+        }
+        else{
+            lbl_OtherCropInfo.text = "Remember to rotate your crops!"
+        }
+        lbl_CropInfo.text = "Switchgrass is used as feedstock for animals and other bio-friendly uses such as the development of bio-mass, methods for energy production, and cover for soil."
+        
+        swt_Insur.setOn(false, animated: false) //changes insure switch off since switch grass has no insurance
+        img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
+        cropSellingPrice = Float(juansFarmInBuyView!.switchgrassSellingPrice)
+        default: break
         }
         
         //Update Insur Policy
@@ -179,7 +179,7 @@ class BuyViewController: UIViewController {
     }
     
     /*
-        Changes the state of the insurance label depending on if the state of the insurance switch.
+    Changes the state of the insurance label depending on if the state of the insurance switch.
     */
     @IBAction func changeInsurance(sender: AnyObject) {
         // Change insur on crop
@@ -207,8 +207,8 @@ class BuyViewController: UIViewController {
     }
     
     /*
-        Buys the selected crop on the selected farm. It also determines if the player can afford to purchase the crop
-        and if not it changes the C6's text color to red and changes what he says.
+    Buys the selected crop on the selected farm. It also determines if the player can afford to purchase the crop
+    and if not it changes the C6's text color to red and changes what he says.
     */
     @IBAction func buy() {
         if(juansFarmInBuyView!.currentMoney < juansFarmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy)){
@@ -217,33 +217,33 @@ class BuyViewController: UIViewController {
             return
         }
         else{
-             juansFarmInBuyView!.plant(whichField: selectedFarm, whichCrop: cropToBuy)
+            juansFarmInBuyView!.plant(whichField: selectedFarm, whichCrop: cropToBuy)
             self.performSegueWithIdentifier("exitFromStore", sender: self)
         }
-      
-    
+        
+        
     }
     
     @IBAction func changeBiomassValue(sender: UIStepper) {
-     lbl_CornBiomassAmount.text = " \(sender.value)"
+        lbl_CornBiomassAmount.text = " \(sender.value)"
         
     }
     
     //Background Methods
     
     /*
-        Updates the calculation label based on the current crop selected and its insurance. 
+    Updates the calculation label based on the current crop selected and its insurance.
     */
     func updateCalculation () {
         //values used in method
         
         var cost = cropToBuy.getCropCost()
         var name = juansFarmInBuyView!.fields[selectedFarm].getCropName()
-            
+        
         lbl_Calculation.text = String(format: "%@: \nnumber of acres %.0f * \nprice of crop %.2f\n Market Price: %.2f", name, juansFarmInBuyView!.fieldSizes[selectedFarm], cost, cropSellingPrice)
         
         var calculatedCost = cost * juansFarmInBuyView!.fieldSizes[selectedFarm]
         lbl_Price.text = String(format: "$%.2f", calculatedCost)
-     
+        
     }
 }

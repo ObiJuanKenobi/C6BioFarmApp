@@ -13,12 +13,12 @@ The Following is the code for the main menu screen
 */
 class ViewController: UIViewController {
     //variables that handle the music
-     var backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
-     var musicPlayer = AVAudioPlayer()
-     var effectsPlayer = AVAudioPlayer()
+    var backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
+    var musicPlayer = AVAudioPlayer()
+    var effectsPlayer = AVAudioPlayer()
     
     /*
-        Loads when the view is loaded. Initializes the Music player.
+    Loads when the view is loaded. Initializes the Music player.
     */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,26 +28,26 @@ class ViewController: UIViewController {
     
     /*
     The following hides teh back button from the view controller.
-    It is not needed in the main menu and prevents players from going back 
+    It is not needed in the main menu and prevents players from going back
     to the game over page after they go to the main menu page.
     */
     override func viewWillAppear(animated: Bool) {
         //self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationItem.hidesBackButton = true
     }
-
+    
     /*
-        A defualt function that deals with memomory warnings.
+    A defualt function that deals with memomory warnings.
     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-  
+    
     
     /*
-        Prepares app to move to the next scene by sending refrences to data that may be used there.
+    Prepares app to move to the next scene by sending refrences to data that may be used there.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toOptionsView"){
@@ -56,35 +56,35 @@ class ViewController: UIViewController {
             dest.effectsPlayer = effectsPlayer
         }
         else if(segue.identifier == "toGameViewID"){
-           var dest : GameViewController = segue.destinationViewController as! GameViewController
-           dest.effectsPlayer = effectsPlayer
+            var dest : GameViewController = segue.destinationViewController as! GameViewController
+            dest.effectsPlayer = effectsPlayer
         }
         
-            
+        
         
     }
     
     
     
     /*
-        Prepares the musicPlayer to play the background song. Sets default volume and inifite loops.
+    Prepares the musicPlayer to play the background song. Sets default volume and inifite loops.
     */
     func prepareSound(){
-       
+        
         self.musicPlayer = try! AVAudioPlayer(contentsOfURL: backgroundSong, fileTypeHint: nil)
         
         musicPlayer.prepareToPlay()
         musicPlayer.numberOfLoops = -1
         musicPlayer.volume = 0.5
-
+        
         
         let snd_applause = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
         effectsPlayer = try! AVAudioPlayer(contentsOfURL: snd_applause, fileTypeHint: nil)
         effectsPlayer.volume = 0.3
         
         
-
-     
+        
+        
     }
     
 }
