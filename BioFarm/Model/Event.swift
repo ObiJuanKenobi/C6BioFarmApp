@@ -15,6 +15,10 @@ import Foundation
  currently very coupled, need to seperate certain methods into seperate calls.
  Also would be good to redo some naming here and use enums for various things.
  ***************************************************************************/
+
+
+//Should event stay as a class object or be redone as an enum?
+
 class Event{
     
     var rand: Int = 0

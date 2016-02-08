@@ -17,6 +17,17 @@ Need to change some enums to be updated. Also need to add the Biomass.
 Clean some old values out and rename some functions to be more descriptive.
 ***************************************************************************/
 
+//Land should stay as a class becuase it can be very useful for further changes, but the methods 
+//need to be changed so that it accurately calculates and stores data
+// this is very long but can be adjusted and simplified for better management
+//Juan: I would actually like to use this in the game
+
+//should CropType be seperated from this class and have its own seperate catagory?
+//Juan: I believe it would be best because enums can have function which can simplify
+//some of the functions being used in this class
+
+
+
 //enum LandType {
 //    case Wet
 //    case Dry
@@ -71,6 +82,7 @@ class Land {
     
     /*
     Returns the profit of the of harvesting from the land based on the crop type and size of land.
+    Currently inaccurate and needs to be adjusted
     */
     func harvest (modifier : Double) -> Double {
         var profit : Double = self.getCropProfit() * Double(self.size)
@@ -108,6 +120,7 @@ class Land {
     
     /*
     Creates a deep copy of the land.
+    Not sure if this is still necessary
     */
     func copy() -> Land{
         let tempLand = Land(size: size,type: type,insur: insured)
@@ -125,6 +138,8 @@ class Land {
     
     /*
     Returns the cost of buying the crop type of the land.
+    This fuction could be simplified if the enum CropType had a 
+    return crop cost function
     */
     func getCropCost() -> Double {
         switch type {
@@ -156,6 +171,8 @@ class Land {
     
     /*
     Returns the current crop name.
+    This function could be simplified if the enum
+    had a function like this
     */
     func getCropName() ->String {
         switch type {
@@ -175,6 +192,7 @@ class Land {
     
     /*
     Returns the yield of the land's current crop.
+    Inaccurate and needs to be redone
     */
     func getCropYield() -> Int {
         switch type {
@@ -188,6 +206,7 @@ class Land {
     
     /*
     Returns the price of the land's crop.
+    
     */
     func getCropSellPrice() -> Double {
         

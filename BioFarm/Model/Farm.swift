@@ -15,6 +15,8 @@ import AVFoundation
  
  Could use a bit of renaming and redoing of certain variables. Land Array needs to be created.
  Make sure to keep decoupled from GUI and store all info needed here. GUI should not call anything but this.
+
+ Juan: This is very short, simplified and I like it. I would like to use this instead of my class so that it would be easier to maintain for future coders. The library will probably be replaced with something else depending on what we agree on. 
  ***************************************************************************/
 public class Farm {
     
@@ -88,6 +90,7 @@ public class Farm {
     
     /*
     Returns a farm object with a deep copy of the farmLand dictionary and the amount of cash in farm.
+    Is this still necessary?
     */
     func copy() -> Farm{
         var temp_farm : Farm

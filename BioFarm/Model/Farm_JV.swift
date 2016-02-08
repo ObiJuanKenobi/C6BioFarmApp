@@ -8,6 +8,10 @@
 
 //the enums for the crops has Insured corn and insured soybeans as a crop to make calcuation easier
 
+/**
+This is the current model for the game, but needs to be re adjusted so that it is much more readable and is seperated into much more managable chunks of code.
+**/
+
 enum Crops{
     case Corn, Soybean, Switchgrass, InsuredCorn, InsuredSoybean, Empty
     
