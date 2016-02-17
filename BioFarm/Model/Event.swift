@@ -17,7 +17,8 @@ import Foundation
  ***************************************************************************/
 
 
-//Should event stay as a class object or be redone as an enum?
+//Stay as class redo function call so no tuple
+
 
 class Event{
     

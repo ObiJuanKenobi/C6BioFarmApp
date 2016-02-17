@@ -199,7 +199,6 @@ enum Events{
 class FarmJV {
     //variables 
     //note: cannot decide whether to make private or public
-    let fieldSizes:[Float] = [175.0, 250.0, 180.0, 150.0, 60.0, 60.0, 65.0, 60.0]
     var fields:[Crops]
     var previousYearFields: [Crops]
     var fieldYields:[Float]

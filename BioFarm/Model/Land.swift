@@ -28,27 +28,19 @@ Clean some old values out and rename some functions to be more descriptive.
 
 
 
-//enum LandType {
-//    case Wet
-//    case Dry
-//}
-
-
 /*
 An Enumerated type for the for the different crops.
+take it out and have it seperated 
 */
-enum CropType {
-    case Corn
-    case Grass
-    case Soy
-    case Empty
-}
+
 
 class Land {
-    private let size : Int
-    private var type : CropType
+    private var size : Int
+    private var crop : CropType
     private var insured : Bool
-    
+    let fieldSizes:[Int] = [175, 250, 180, 150, 60, 60, 65, 60]
+    var fieldYield : Double = 0.0;
+
     //Crop Rotation Variables
     var oldCrop : CropType = CropType.Empty
     var numOldCrop : Int = 0
@@ -56,20 +48,12 @@ class Land {
     /*
     Intializes the land object with the specified size an empty croptype and no insurance.
     */
-    init(size : Int) {
-        self.size = size
-        type = CropType.Empty
+    init(whichField: Int) {
+        size = fieldSizes[whichField -1];
+        crop = CropType.Empty
         insured = false
     }
     
-    /*
-    Intializes the land object with the specified size, crop type and insurance.
-    */
-    init(size : Int, type : CropType, insur : Bool){
-        self.size = size
-        self.type = type
-        insured = insur
-    }
     
     //LAND FUNCTIONS
     
@@ -77,173 +61,64 @@ class Land {
     Sets the crop type of the land to the specified crop type.
     */
     func plant (toPlant : CropType){
-        type = toPlant
+        crop = toPlant
     }
     
-    /*
-    Returns the profit of the of harvesting from the land based on the crop type and size of land.
-    Currently inaccurate and needs to be adjusted
-    */
-    func harvest (modifier : Double) -> Double {
-        var profit : Double = self.getCropProfit() * Double(self.size)
-        
-        if(self.isInsured()) {
-            profit = profit * max(modifier,0.75)
-        } else {
-            profit = profit * modifier
-        }
-        
-        //Crop Rotation
-        if(type != CropType.Empty && type == oldCrop) {
-            numOldCrop++;
-            
-            //TODO: Get actually calculation
-            //Each for each time replanted, mutiply profit by 80%
-            for(var i = 0; i < numOldCrop; i++) {
-                profit *= 0.8
-            }
-        } else {
-            oldCrop = type
-            numOldCrop = 0;
-        }
-        
-        type = .Empty // Resets crop to blank
-        return profit
-    }
     
     /*
     Reutrns the size of the land in acres.
     */
-    func getLandSize() -> Double {
-        return Double(size)
+    func getLandSize() -> Int {
+        return size
     }
     
     /*
-    Creates a deep copy of the land.
-    Not sure if this is still necessary
+    Calculates the yield but does not take into account of flooding
     */
-    func copy() -> Land{
-        let tempLand = Land(size: size,type: type,insur: insured)
-        return tempLand
-    }
-    
-    //CROP FUNCTIONS
-    
-    /*
-    Returns the crop type planted on the land.
-    */
-    func getCrop() -> CropType {
-        return self.type
-    }
-    
-    /*
-    Returns the cost of buying the crop type of the land.
-    This fuction could be simplified if the enum CropType had a 
-    return crop cost function
-    */
-    func getCropCost() -> Double {
-        switch type {
-        case .Corn :
-            if(insured) {
-                return 800
+    func calculateYield(modifier : Double){
+        if(getCrop() == .Corn && isInsured()){
+            if(modifier == 1.0){
+                fieldYield = 160.0 * Double(getLandSize());
+            }else{
+                fieldYield = (160.0 * 0.75) * Double(getLandSize());
             }
-            else {
-                return 600
+            
+        }else if (getCrop() == .Corn && !(isInsured())){
+            if(modifier == 1.0){
+                fieldYield = (160.0 * Double(getLandSize()))
+            }else if(modifier == 0.0){
+                fieldYield = 0;
+            }else{
+                fieldYield = 160.0 * (1 - modifier) * Double(getLandSize());
             }
-        case .Soy :
-            if(insured){
-                return 600
+            
+        }else if (getCrop() == .Soy && isInsured()){
+            if(modifier == 1.0){
+                fieldYield = 45.0 * Double(getLandSize())
+            }else{
+                fieldYield = (45.0 * 0.75) * Double(getLandSize())
             }
-            else {
-                return 450
+            
+        }else if (getCrop() == .Soy && !(isInsured())){
+            if(modifier == 1.0){
+                fieldYield = (45.0 * Double(getLandSize()))
+            }else if(modifier == 0.0){
+                fieldYield = 0;
+            }else{
+                fieldYield = 45.0 * (1 - modifier) * Double(getLandSize());
             }
-        case .Grass : return 150
-        case .Empty : return 0
-        }
-    }
-    
-    /*
-    Returns the cost of buying of buying the land.
-    */
-    func getPlotCost() -> Double {
-        return getCropCost() * getLandSize()
-    }
-    
-    /*
-    Returns the current crop name.
-    This function could be simplified if the enum
-    had a function like this
-    */
-    func getCropName() ->String {
-        switch type {
-        case .Corn: return "Corn"
-        case .Soy: return "Soybean"
-        case .Grass: return "Switchgrass"
-        case .Empty: return "Empty"
-        }
-    }
-    
-    /*
-    Returns how much profit can be earned from the land.
-    */
-    func getCropProfit() -> Double {
-        return Double(getCropYield()) * getCropSellPrice()
-    }
-    
-    /*
-    Returns the yield of the land's current crop.
-    Inaccurate and needs to be redone
-    */
-    func getCropYield() -> Int {
-        switch type {
-        case .Corn : return 178
-        case .Soy : return 52
-        case .Grass : return 4
-        case .Empty : return 0
-        default : return 0
-        }
-    }
-    
-    /*
-    Returns the price of the land's crop.
-    
-    */
-    func getCropSellPrice() -> Double {
-        
-        var price = 0.0
-        var rand = 0.0
-        var rand1 : Int = 0
-        
-        rand = Double(arc4random_uniform(1000))
-        rand1 = Int(arc4random_uniform(10)) + 1
-        price = Double(rand1) + (rand / 100.0)
-        
-        switch type {
-        case .Corn : return price
-        case .Soy : return price
-        case .Grass : return price
-        case .Empty : return price
-        }
-    }
-    
-    /*
-    Reurns the name of the image that the land's crop has.
-    */
-    func getCropSprite() -> String {
-        switch type {
-        case .Corn : return "R-corn.png"
-        case .Soy : return "R-soybean.png"
-        case .Grass : return "R-switchgrass.png"
-        case .Empty : return ""
-        }
-    }
-    
-    func getLandSprite(farmNum : Int) -> String{
-        switch type{
-        case .Corn: return String(format:"R-map%d_corn", farmNum)
-        case .Soy: return String(format:"R-map%d_bean", farmNum)
-        case .Grass: return String(format:"R-map%d_grass", farmNum)
-        default : return String(format:"R-map%d", farmNum)
+            
+        }else if(getCrop() == .Grass){
+            if(modifier == 1.0){
+                fieldYield = (6.0 * Double(getLandSize()))
+            }else if(modifier == 0.0){
+                fieldYield = 0;
+            }else{
+                fieldYield = 6.0 * (1 - modifier) * Double(getLandSize());
+            }
+            
+        }else{
+            fieldYield = 0.0;
         }
     }
     
@@ -254,21 +129,61 @@ class Land {
         return insured
     }
     
-    func hasCornorBeans() -> Bool{
-        return type == .Corn || type == .Soy
-    }
-    
-    /*
-    Sets the lands crop to the specified type.
-    */
-    func setCrop (newCrop : CropType) {
-        type = newCrop
-    }
-    
-    /*
+     /*
     Set whether the land is insured or not.
     */
     func setInsured (newInsured : Bool) {
         insured = newInsured
     }
+    
+    
+    /*
+    Returns the crop type planted on the land.
+    */
+    func getCrop() -> CropType {
+        return crop
+    }
+    
+    /*
+    Returns the cost of buying the crop type of the land.
+    This fuction could be simplified if the enum CropType had a 
+    return crop cost function
+    */
+    func getCropCost() -> Double {
+        if(insured && crop == .Corn){
+            return 800.0;
+        }else if(insured && crop == .Soy){
+            return 600.0
+        }else{
+            return crop.getCropCost()
+        }
+        
+    }
+    /*
+    Returns the current crop name.
+    */
+    func getCropName() ->String {
+        return crop.getCropName();
+    }
+    
+    
+    /*
+    Reurns the name of the image that the land's crop has.
+    */
+  
+    func getLandSprite(whichField: Int) -> String{
+        
+        return crop.getLandSprite(whichField);
+    }
+    
+    
+    
+    /*
+    Sets the lands crop to the specified type.
+    */
+    func setCrop (newCrop : CropType) {
+        crop = newCrop
+    }
+    
+   
 }
