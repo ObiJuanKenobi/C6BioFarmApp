@@ -49,7 +49,7 @@ class Land {
     Intializes the land object with the specified size an empty croptype and no insurance.
     */
     init(whichField: Int) {
-        size = fieldSizes[whichField -1];
+        size = fieldSizes[whichField - 1];
         crop = CropType.Empty
         insured = false
     }
@@ -74,8 +74,9 @@ class Land {
     
     /*
     Calculates the yield but does not take into account of flooding
+    ? Where should we calculate flooding?
     */
-    func calculateYield(modifier : Double){
+    func calculateYield(modifier : Double) -> Double{
         if(getCrop() == .Corn && isInsured()){
             if(modifier == 1.0){
                 fieldYield = 160.0 * Double(getLandSize());
@@ -120,6 +121,16 @@ class Land {
         }else{
             fieldYield = 0.0;
         }
+        
+        return fieldYield;
+    }
+    
+    /*
+    Returns the yield of the field but this value is calculated in another function
+    alex: made this since we need it in Farm
+    */
+    func getYield() -> Double {
+        return fieldYield;
     }
     
     /*
@@ -155,6 +166,7 @@ class Land {
         }else if(insured && crop == .Soy){
             return 600.0
         }else{
+            //alex: Um this makes a recusive loop, I think
             return crop.getCropCost()
         }
         
@@ -176,7 +188,10 @@ class Land {
         return crop.getLandSprite(whichField);
     }
     
-    
+    func resetLand() {
+        insured = false;
+        crop = CropType.Empty;
+    }
     
     /*
     Sets the lands crop to the specified type.

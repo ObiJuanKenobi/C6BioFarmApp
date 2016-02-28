@@ -31,8 +31,22 @@ class Event{
     /*
     Returns the Modifer of the Event that has been chosen
     */
-    func getModifier() ->(eventModifier: Double, eventText: String, eventSound: String){
-        return (eventModifier, eventText, eventSound)
+    func getModifier() -> Double {
+        return eventModifier;
+    }
+    
+    /*
+    Returns the Text of the Event that has been chosen
+    */
+    func getText() -> String {
+        return eventText;
+    }
+    
+    /*
+    Returns the Text of the Event that has been chosen
+    */
+    func getSound() -> String {
+        return eventSound;
     }
     
     /*

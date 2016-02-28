@@ -35,12 +35,18 @@ public class Farm {
     
     
     /*
-    Harvest all farms stored in the farmLand dictionary.
+    Harvest all farms stored in the farmLand array.
     */
     func harvestAll(modifier : Double) -> Double{
+        var revenue : Double = 0.0;
+        for field in fields {
+            //alex: still need to check for flooding
+            
+            //Add revenue to total
+            revenue += field.calculateYield(1.0); //Change mod to event mod
+        }
         
-        
-        return 0.0
+        return revenue;
     }
     
     func plant (whichField : Int, crop : CropType){
@@ -75,7 +81,9 @@ public class Farm {
     to buy that farm to cash.
     */
     func resetFarm(farmNumber : Int){
-      
+        for field in fields {
+            field.resetLand();
+        }
     }
    
    
