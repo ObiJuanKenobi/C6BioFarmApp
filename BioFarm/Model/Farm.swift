@@ -22,6 +22,7 @@ public class Farm {
     
     var fields : [Land]
     var cash: Double
+    var event: Event
     
     /*
     Initalizes farm with the default farms saved in a dictionary, and 1 million dollars.
@@ -38,12 +39,22 @@ public class Farm {
     Harvest all farms stored in the farmLand array.
     */
     func harvestAll(modifier : Double) -> Double{
+<<<<<<< Updated upstream
         var revenue : Double = 0.0;
         for field in fields {
             //alex: still need to check for flooding
             
             //Add revenue to total
             revenue += field.calculateYield(1.0); //Change mod to event mod
+=======
+        var eventInfo = event.doEvent();
+        var modifierNumber = eventInfo.eventModifier;
+        var eventSound = eventInfo.eventSound;
+        var eventText = eventInfo.eventText;
+        
+        for(var i  = 0; i < 8; i++){
+            fields[i].calculateYield(modifierNumber);
+>>>>>>> Stashed changes
         }
         
         return revenue;
