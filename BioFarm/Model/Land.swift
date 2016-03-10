@@ -17,7 +17,7 @@ Need to change some enums to be updated. Also need to add the Biomass.
 Clean some old values out and rename some functions to be more descriptive.
 ***************************************************************************/
 
-//Land should stay as a class becuase it can be very useful for further changes, but the methods 
+//Land should stay as a class becuase it can be very useful for further changes, but the methods
 //need to be changed so that it accurately calculates and stores data
 // this is very long but can be adjusted and simplified for better management
 //Juan: I would actually like to use this in the game
@@ -30,7 +30,7 @@ Clean some old values out and rename some functions to be more descriptive.
 
 /*
 An Enumerated type for the for the different crops.
-take it out and have it seperated 
+take it out and have it seperated
 */
 
 
@@ -38,9 +38,10 @@ class Land {
     private var size : Int
     private var crop : CropType
     private var insured : Bool
+    var revenue: Double = 0.0
     let fieldSizes:[Int] = [175, 250, 180, 150, 60, 60, 65, 60]
     var fieldYield : Double = 0.0;
-
+    
     //Crop Rotation Variables
     var oldCrop : CropType = CropType.Empty
     var numOldCrop : Int = 0
@@ -79,30 +80,30 @@ class Land {
     func calculateYield(modifier : Double) -> Double{
         if(getCrop() == .Corn && isInsured()){
             if(modifier == 1.0){
-                fieldYield = 160.0 * Double(getLandSize());
+                fieldYield = crop.getCropYield() * Double(getLandSize());
             }else{
-                fieldYield = (160.0 * 0.75) * Double(getLandSize());
+                fieldYield = (crop.getCropYield() * 0.75) * Double(getLandSize());
             }
             
         }else if (getCrop() == .Corn && !(isInsured())){
             if(modifier == 1.0){
-                fieldYield = (160.0 * Double(getLandSize()))
+                fieldYield = (crop.getCropYield() * Double(getLandSize()))
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
-                fieldYield = 160.0 * (1 - modifier) * Double(getLandSize());
+                fieldYield = crop.getCropYield() * (1 - modifier) * Double(getLandSize());
             }
             
         }else if (getCrop() == .Soy && isInsured()){
             if(modifier == 1.0){
-                fieldYield = 45.0 * Double(getLandSize())
+                fieldYield = crop.getCropYield() * Double(getLandSize())
             }else{
-                fieldYield = (45.0 * 0.75) * Double(getLandSize())
+                fieldYield = (crop.getCropYield() * 0.75) * Double(getLandSize())
             }
             
         }else if (getCrop() == .Soy && !(isInsured())){
             if(modifier == 1.0){
-                fieldYield = (45.0 * Double(getLandSize()))
+                fieldYield = (crop.getCropYield() * Double(getLandSize()))
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
@@ -125,6 +126,11 @@ class Land {
         return fieldYield;
     }
     
+    func calculateRevenue() -> Double{
+        revenue = crop.getCropSellingPrice() * fieldYield;
+        return revenue;
+    }
+    
     /*
     Returns the yield of the field but this value is calculated in another function
     alex: made this since we need it in Farm
@@ -140,7 +146,7 @@ class Land {
         return insured
     }
     
-     /*
+    /*
     Set whether the land is insured or not.
     */
     func setInsured (newInsured : Bool) {
@@ -157,7 +163,7 @@ class Land {
     
     /*
     Returns the cost of buying the crop type of the land.
-    This fuction could be simplified if the enum CropType had a 
+    This fuction could be simplified if the enum CropType had a
     return crop cost function
     */
     func getCropCost() -> Double {
@@ -182,23 +188,46 @@ class Land {
     /*
     Reurns the name of the image that the land's crop has.
     */
-  
+    
     func getLandSprite(whichField: Int) -> String{
         
         return crop.getLandSprite(whichField);
     }
     
     func resetLand() {
+        if(crop == .Grass) {
+            if( numOldCrop % 7 != 0 || numOldCrop == 0) {
+                numOldCrop++;
+            } else {
+                //reset grass stuff
+                numOldCrop = 0;
+                crop = .Empty;
+            }
+            revenue = 0.0;
+            fieldYield = 0.0;
+            return;
+        }
+        
+        if(oldCrop == crop){
+            numOldCrop++;
+        }else{
+            numOldCrop = 0
+        }
+        
+        oldCrop = crop;
         insured = false;
         crop = CropType.Empty;
+        revenue = 0.0;
+        fieldYield = 0.0;
+
     }
-    
-    /*
-    Sets the lands crop to the specified type.
-    */
-    func setCrop (newCrop : CropType) {
-        crop = newCrop
-    }
-    
-   
+
+/*
+Sets the lands crop to the specified type.
+*/
+func setCrop (newCrop : CropType) {
+    crop = newCrop
+}
+
+
 }

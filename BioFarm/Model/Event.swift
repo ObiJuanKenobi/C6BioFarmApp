@@ -31,6 +31,11 @@ class Event{
     /*
     Returns the Modifer of the Event that has been chosen
     */
+    
+    init(){
+        
+    }
+    
     func getModifier() -> Double {
         return eventModifier;
     }

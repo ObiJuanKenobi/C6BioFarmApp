@@ -12,7 +12,7 @@
 This is the current model for the game, but needs to be re adjusted so that it is much more readable and is seperated into much more managable chunks of code.
 **/
 
-enum Crops{
+/*enum Crops{
     case Corn, Soybean, Switchgrass, InsuredCorn, InsuredSoybean, Empty
     
     //Methos originally by Alex and Jackson, but modified by Juan
@@ -89,7 +89,7 @@ enum Crops{
             return ""
         }
     }
-}
+}*/
     
 /*
 enums of the events that can occur
@@ -195,7 +195,7 @@ enum Events{
         }
     }
 }
-
+/*
 class FarmJV {
     //variables 
     //note: cannot decide whether to make private or public
@@ -521,7 +521,7 @@ class FarmJV {
     }
     
     
-    
+    */
     
 
 

@@ -41,6 +41,32 @@ enum CropType {
         }
     }
     
+    func getCropSellingPrice() -> Double{
+        switch self{
+        case .Corn:
+            return 4.75
+        case .Soy:
+            return 11.0
+        case .Grass:
+            return 50.0
+        default:
+            return 0.0
+        }
+    }
+    
+    func getCropYield() -> Double{
+        switch self{
+        case .Corn:
+            return 160.0
+        case .Soy:
+            return 45.0
+        case .Grass:
+            return 6.0
+        default:
+            return 0.0
+        }
+    }
+    
     func getCropSprite() -> String {
         switch self {
         case .Corn : return "R-corn.png"

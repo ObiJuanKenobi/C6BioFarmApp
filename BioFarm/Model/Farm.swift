@@ -23,15 +23,17 @@ public class Farm {
     var fields : [Land]
     var cash: Double
     var event: Event
+    var year: Int
     
     /*
     Initalizes farm with the default farms saved in a dictionary, and 1 million dollars.
     
     */
     init(){
-        fields = [Land(whichField: 1), Land(whichField: 2), Land(whichField: 3), Land(whichField: 4), Land(whichField: 5), Land(whichField: 6), Land(whichField: 7), Land(whichField: 8)];
-        cash = 1000000;
-        
+        fields = [Land(whichField: 1), Land(whichField: 2), Land(whichField: 3), Land(whichField: 4), Land(whichField: 5), Land(whichField: 6), Land(whichField: 7), Land(whichField: 8)]
+        cash = 1000000
+        event = Event()
+        year = 1;
     }
     
     
@@ -39,27 +41,48 @@ public class Farm {
     Harvest all farms stored in the farmLand array.
     */
     func harvestAll(modifier : Double) -> Double{
-<<<<<<< Updated upstream
-        var revenue : Double = 0.0;
-        for field in fields {
-            //alex: still need to check for flooding
-            
-            //Add revenue to total
-            revenue += field.calculateYield(1.0); //Change mod to event mod
-=======
-        var eventInfo = event.doEvent();
-        var modifierNumber = eventInfo.eventModifier;
-        var eventSound = eventInfo.eventSound;
-        var eventText = eventInfo.eventText;
         
-        for(var i  = 0; i < 8; i++){
-            fields[i].calculateYield(modifierNumber);
->>>>>>> Stashed changes
-        }
+            event.doEvent()
+//       var eventSound = eventInfo.eventSound
+//        var eventText = eventInfo.eventText
+
+   
+        
+        
+        calcYield(event.eventModifier);
+        var revenue = calcRevenue()
+        reset()
         
         return revenue;
     }
     
+    func reset(){
+        //todo reset lands, 
+        
+        for field in fields{
+            field.resetLand()
+        }
+        
+        
+    }
+    
+    func calcYield(modifierNum:Double) -> Double{
+        var totalYield: Double = 0.0;
+        for field in fields{
+            totalYield += field.calculateYield(modifierNum);
+        }
+        return totalYield;
+    }
+    
+    func calcRevenue() -> Double{
+        var revenue : Double = 0.0;
+        for field in fields{
+            revenue += field.calculateRevenue();
+        }
+        return revenue;
+    }
+    
+    //is this function still neccessary when we can just call it on land?
     func plant (whichField : Int, crop : CropType){
         fields[whichField - 1].plant(crop);
     }
