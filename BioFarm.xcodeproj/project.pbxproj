@@ -40,6 +40,7 @@
 		EB0AB8811BA7506100C81521 /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB87C1BA7506100C81521 /* OBShapedButton.m */; };
 		EB0AB8821BA7506100C81521 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB87E1BA7506100C81521 /* UIImage+ColorAtPixel.m */; };
 		EB5803141B5D32310096178B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5803121B5D32310096178B /* Main.storyboard */; };
+		EBBEAB141C9B467D00A1CA6F /* Crops.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEAB131C9B467D00A1CA6F /* Crops.swift */; };
 		EBBF43D51C0DE46200E10C2C /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBF43D41C0DE46200E10C2C /* MarketViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		EB0AB87D1BA7506100C81521 /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
 		EB0AB87E1BA7506100C81521 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
 		EB5803131B5D32310096178B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EBBEAB131C9B467D00A1CA6F /* Crops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crops.swift; sourceTree = "<group>"; };
 		EBBF43D41C0DE46200E10C2C /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 		EB0AB83F1BA7502400C81521 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EBBEAB131C9B467D00A1CA6F /* Crops.swift */,
 				EB0AB8401BA7502400C81521 /* Event.swift */,
 				EB0AB8411BA7502400C81521 /* Farm.swift */,
 				EB0AB8421BA7502400C81521 /* Farm_JV.swift */,
@@ -363,6 +366,7 @@
 				EB0AB8811BA7506100C81521 /* OBShapedButton.m in Sources */,
 				EB0AB8561BA7503600C81521 /* AboutViewController.swift in Sources */,
 				EB0AB8461BA7502400C81521 /* Farm_JV.swift in Sources */,
+				EBBEAB141C9B467D00A1CA6F /* Crops.swift in Sources */,
 				EB0AB8601BA7503600C81521 /* ViewController.swift in Sources */,
 				EBBF43D51C0DE46200E10C2C /* MarketViewController.swift in Sources */,
 				EB0AB85F1BA7503600C81521 /* TheBarnViewController.swift in Sources */,

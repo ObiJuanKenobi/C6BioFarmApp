@@ -37,10 +37,14 @@ public class Farm {
     }
     
     
-    /*
-    Harvest all farms stored in the farmLand array.
-    */
-    func harvestAll(modifier : Double) -> Double{
+    /*********************
+
+    Farm related Functions
+
+    *********************/
+    
+    
+    func harvestAll() -> Double{
         
             event.doEvent()
 //       var eventSound = eventInfo.eventSound
@@ -66,7 +70,60 @@ public class Farm {
         
     }
     
-    func calcYield(modifierNum:Double) -> Double{
+  
+    
+    //is this function still neccessary when we can just call it on land?
+    func plant (whichField : Int, crop : CropType){
+        fields[whichField - 1].plant(crop);
+    }
+    
+    func isEmpty() -> Bool{
+        for field in fields{
+            if (field.getCrop() != CropType.Empty){
+                return false
+            }
+            
+        }
+        return true
+    }
+    
+    func cannotBuy() -> Bool{
+        //todo 
+        return false
+    }
+    
+   
+    
+    /*******
+     
+    Getters
+     
+    *******/
+    
+     func getEventSound() -> String{
+        return event.eventSound
+    }
+    
+    func getModNumber() -> Double{
+        return event.eventModifier
+    }
+    
+    func getEventText() -> String{
+        return event.eventText
+    }
+    
+    func getCash() -> Double {
+        return cash
+    }
+    
+    
+    /******
+     
+    Helper
+    
+    ******/
+     
+       func calcYield(modifierNum:Double) -> Double{
         var totalYield: Double = 0.0;
         for field in fields{
             totalYield += field.calculateYield(modifierNum);
@@ -82,13 +139,14 @@ public class Farm {
         return revenue;
     }
     
-    //is this function still neccessary when we can just call it on land?
-    func plant (whichField : Int, crop : CropType){
-        fields[whichField - 1].plant(crop);
+    func resetFarm(farmNumber : Int){
+        for field in fields {
+            field.resetLand();
+        }
     }
     
-    //Money Methods $$
     
+     
     /*
     Adds the amount of money that is sent to the function to cash.
     */
@@ -103,22 +161,5 @@ public class Farm {
         cash = cash - amount
     }
     
-    /*
-    Retruns the amount of cash that is in the farm.
-    */
-    func getCash() -> Double {
-        return cash
-    }
-    
-    /*
-    Resets a farm based on the number of the farm. Sets crop to empty and insured to false. Readds money spent
-    to buy that farm to cash.
-    */
-    func resetFarm(farmNumber : Int){
-        for field in fields {
-            field.resetLand();
-        }
-    }
-   
    
 }

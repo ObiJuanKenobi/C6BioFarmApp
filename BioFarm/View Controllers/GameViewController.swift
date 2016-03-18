@@ -42,11 +42,10 @@ class GameViewController : UIViewController{
     
     //Other Instance Variables
     private var selectedFarm : Int = 1
-    private var juansFarm : FarmJV = FarmJV()
-    private var modifier: Float = 0.0
-    private var eventText: String = ""
+    private var farm : Farm = Farm();
+    
     private var profit : Float = 0.0
-    private var totalMoney: Float = 0.0
+   
     
     //Sound Variables
     var effectsPlayer : AVAudioPlayer? = AVAudioPlayer()
@@ -65,7 +64,7 @@ class GameViewController : UIViewController{
         //setting default outputs
         self.refresh()
         setButtonAspect()
-        lbl_harvestMod.text = "Year: \(juansFarm.yearCount)"
+        lbl_harvestMod.text = "Year: \(farm.year)"
     }
     
     /*
@@ -73,7 +72,7 @@ class GameViewController : UIViewController{
     if the field is empty.
     */
     override func viewDidAppear(animated: Bool) {
-        if(juansFarm.cannotBuy() && juansFarm.isFarmEmpty()){
+        if(farm.cannotBuy() && farm.isFarmEmpty()){
             self.performSegueWithIdentifier("toGameOverView", sender: self)
         }
     }
@@ -113,17 +112,17 @@ class GameViewController : UIViewController{
         
         
         //Updates the amount of money shown
-        lbl_Money.text = String(format: "$%.2f", juansFarm.currentMoney)
+        lbl_Money.text = String(format: "$%.2f", farm.cash)
         
         //Update labels for each farm
-        lbl_Farm1.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[0], juansFarm.fields[0].getCropName())
-        lbl_Farm2.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[1], juansFarm.fields[1].getCropName())
-        lbl_Farm3.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[2], juansFarm.fields[2].getCropName())
-        lbl_Farm4.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[3], juansFarm.fields[3].getCropName())
-        lbl_Farm5.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[4], juansFarm.fields[4].getCropName())
-        lbl_Farm6.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[5], juansFarm.fields[5].getCropName())
-        lbl_Farm7.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[6], juansFarm.fields[6].getCropName())
-        lbl_Farm8.text = String(format: "%.0f acres of %@", juansFarm.fieldSizes[7], juansFarm.fields[7].getCropName())
+        lbl_Farm1.text = String(format: "%.0f acres of %@", farm.fields[0].getLandSize(), farm.fields[0].getCropName())
+        lbl_Farm2.text = String(format: "%.0f acres of %@", farm.fields[1].getLandSize(), farm.fields[1].getCropName())
+        lbl_Farm3.text = String(format: "%.0f acres of %@", farm.fields[2].getLandSize(), farm.fields[2].getCropName())
+        lbl_Farm4.text = String(format: "%.0f acres of %@", farm.fields[3].getLandSize(), farm.fields[3].getCropName())
+        lbl_Farm5.text = String(format: "%.0f acres of %@", farm.fields[4].getLandSize(), farm.fields[4].getCropName())
+        lbl_Farm6.text = String(format: "%.0f acres of %@", farm.fields[5].getLandSize(), farm.fields[5].getCropName())
+        lbl_Farm7.text = String(format: "%.0f acres of %@", farm.fields[6].getLandSize(), farm.fields[6].getCropName())
+        lbl_Farm8.text = String(format: "%.0f acres of %@", farm.fields[7].getLandSize(), farm.fields[7].getCropName())
         //TODO: put this in a loop for easier future formating
         
     }
@@ -135,7 +134,7 @@ class GameViewController : UIViewController{
     
     func refreshImages(){
         
-        var tempImage : UIImage = UIImage(named: juansFarm.fields[selectedFarm].getLandSprite(selectedFarm))!
+        var tempImage : UIImage = UIImage(named: farm.fields[selectedFarm].getLandSprite(selectedFarm))!
         switch selectedFarm{
         case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
         case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
@@ -155,9 +154,9 @@ class GameViewController : UIViewController{
     */
     
     func reset() {
-        juansFarm.reset()
+        farm.reset()
         for(var i = 0; i < 8; i++){
-            var tempImage : UIImage = UIImage(named: juansFarm.fields[i].getLandSprite(i))!
+            var tempImage : UIImage = UIImage(named: farm.fields[i].getLandSprite(i))!
             switch i{
             case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
             case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
@@ -182,7 +181,7 @@ class GameViewController : UIViewController{
     
     @IBAction func harvestYear(sender: AnyObject) {
         //Checks if there is something in the farm first
-        if(juansFarm.isFarmEmpty()){
+        if(farm.isEmpty()){
             return
         }
             //performs the procedures for harvesting a year
@@ -190,45 +189,48 @@ class GameViewController : UIViewController{
             //creates an event, mod number and then calculates the yield of each field based on the mod number
             //it then calculates the revenue made and finally adds the revenue to the current money of the farm
             
-            juansFarm.eventGenerator()
-            juansFarm.calculateYield()
-            juansFarm.calculateRevenue()
-            juansFarm.Harvest()
+            //farm.eventGenerator()
+            //farm.calculateYield()
+            //farm.calculateRevenue()
+            
+            
+            farm.harvestAll();
             
             //checks if the player can go another year and buy land and if not game over
             
-            if(juansFarm.currentMoney < 12000){
+            if(farm.cash < 12000){
                 self.performSegueWithIdentifier("toGameOverView", sender: self)
             }
             else{
-                var eventSound : String = ""
+                //var eventSound : String = ""
                 
                 
-                eventSound = juansFarm.event!.getEventSound()!
+                //eventSound = farm.event!.getEventSound()!
                 //Play sound
-                prepareHarvestSound(eventSound)
+                
+                prepareHarvestSound(farm.getEventSound())
                 effectsPlayer!.play()
                 
                 //Temp Variable for profit and tempFarm for results view
-                profit = juansFarm.getProfit()
-                modifier = juansFarm.modifierNumber
-                eventText = juansFarm.event!.getEventText()
-                totalMoney = juansFarm.currentMoney
+                //profit = farm.getProfit()
+                modifier = farm.getModNumber()
+                eventText = farm.getEventText()
+                totalMoney = farm.cash
                 
                 
                 
                 
                 //Print Year Results
-                lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", juansFarm.yearCount, juansFarm.modifierNumber, profit)
+                lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", farm.year, farm.getModNumber(), profit)
                 
                 //print flavor Text
                 if(modifier == 1.0){
                     lbl_modiferText.textColor = greenColor
-                    lbl_modiferText.text = juansFarm.event!.getEventText()
+                    lbl_modiferText.text = farm.event!.getEventText()
                 }
                 else{
                     lbl_modiferText.textColor = redColor
-                    lbl_modiferText.text = juansFarm.event!.getEventText()
+                    lbl_modiferText.text = farm.event!.getEventText()
                 }
                 
                 
@@ -270,49 +272,49 @@ class GameViewController : UIViewController{
         
         switch sender {
         case btn_Farm1 as UIButton:
-            if(juansFarm.hasBought[0]){
+            if(farm.hasBought[0]){
                 return
             }else{
                 selectedFarm = 0
             }
         case btn_Farm2 as UIButton:
-            if(juansFarm.hasBought[1]){
+            if(farm.hasBought[1]){
                 return
             }
             else{ selectedFarm = 1
             }
         case btn_Farm3 as UIButton:
-            if(juansFarm.hasBought[2]){
+            if(farm.hasBought[2]){
                 return
             }else{
                 selectedFarm = 2
             }
         case btn_Farm4 as UIButton:
-            if(juansFarm.hasBought[3]){
+            if(farm.hasBought[3]){
                 return
             }else{
                 selectedFarm = 3
             }
         case btn_Farm5 as UIButton:
-            if(juansFarm.hasBought[4]){
+            if(farm.hasBought[4]){
                 return
             }else{
                 selectedFarm = 4
             }
         case btn_Farm6 as UIButton:
-            if(juansFarm.hasBought[5]){
+            if(farm.hasBought[5]){
                 return
             }else{
                 selectedFarm = 5
             }
         case btn_Farm7 as UIButton:
-            if(juansFarm.hasBought[6]){
+            if(farm.hasBought[6]){
                 return
             }else{
                 selectedFarm = 6
             }
         case btn_Farm8 as UIButton:
-            if(juansFarm.hasBought[7]){
+            if(farm.hasBought[7]){
                 return
             }else{
                 selectedFarm = 7
@@ -335,28 +337,28 @@ class GameViewController : UIViewController{
         if(segue.identifier == "toBuyView"){
             var dest : BuyViewController = segue.destinationViewController as! BuyViewController
             dest.selectedFarm = self.selectedFarm
-            dest.juansFarmInBuyView = juansFarm
+            dest.farmInBuyView = farm
         }
         else if(segue.identifier == "toResultsView"){
             var dest : ResultsTableViewController = segue.destinationViewController as! ResultsTableViewController
             
-            dest.year = juansFarm.yearCount
-            dest.mod = modifier
+            dest.year = farm.year
+            dest.mod = farm.getModNumber()
             dest.modText = eventText
             dest.profit = self.profit
-            dest.totalMoney = juansFarm.currentMoney
+            dest.totalMoney = farm.cash
             
         }
         else if(segue.identifier == "toGameOverView"){
             var dest: GameOverViewController = segue.destinationViewController as! GameOverViewController
-            dest.yearsPassed = juansFarm.yearCount
-            dest.currentMoney = juansFarm.currentMoney
+            dest.yearsPassed = farm.year
+            dest.currentMoney = farm.cash
         }
             
         else if(segue.identifier == "toMarketView"){
             var dest : MarketViewController = segue.destinationViewController as! MarketViewController
             dest.mass = 100;
-            dest.money = Double(juansFarm.currentMoney);
+            dest.money = farm.cash
         }
         
         
