@@ -38,9 +38,9 @@ class Land {
     private var size : Int
     private var crop : CropType
     private var insured : Bool
-    var revenue: Double = 0.0
+    var revenue: Float = 0.0
     let fieldSizes:[Int] = [175, 250, 180, 150, 60, 60, 65, 60]
-    var fieldYield : Double = 0.0;
+    var fieldYield : Float = 0.0;
     
     //Crop Rotation Variables
     var oldCrop : CropType = CropType.Empty
@@ -77,46 +77,46 @@ class Land {
     Calculates the yield but does not take into account of flooding
     ? Where should we calculate flooding?
     */
-    func calculateYield(modifier : Double) -> Double{
+    func calculateYield(modifier : Float) -> Float{
         if(getCrop() == .Corn && isInsured()){
             if(modifier == 1.0){
-                fieldYield = crop.getCropYield() * Double(getLandSize());
+                fieldYield = crop.getCropYield() * Float(getLandSize());
             }else{
-                fieldYield = (crop.getCropYield() * 0.75) * Double(getLandSize());
+                fieldYield = (crop.getCropYield() * 0.75) * Float(getLandSize());
             }
             
         }else if (getCrop() == .Corn && !(isInsured())){
             if(modifier == 1.0){
-                fieldYield = (crop.getCropYield() * Double(getLandSize()))
+                fieldYield = (crop.getCropYield() * Float(getLandSize()))
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
-                fieldYield = crop.getCropYield() * (1 - modifier) * Double(getLandSize());
+                fieldYield = crop.getCropYield() * (1 - modifier) * Float(getLandSize());
             }
             
         }else if (getCrop() == .Soy && isInsured()){
             if(modifier == 1.0){
-                fieldYield = crop.getCropYield() * Double(getLandSize())
+                fieldYield = crop.getCropYield() * Float(getLandSize())
             }else{
-                fieldYield = (crop.getCropYield() * 0.75) * Double(getLandSize())
+                fieldYield = (crop.getCropYield() * 0.75) * Float(getLandSize())
             }
             
         }else if (getCrop() == .Soy && !(isInsured())){
             if(modifier == 1.0){
-                fieldYield = (crop.getCropYield() * Double(getLandSize()))
+                fieldYield = (crop.getCropYield() * Float(getLandSize()))
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
-                fieldYield = 45.0 * (1 - modifier) * Double(getLandSize());
+                fieldYield = 45.0 * (1 - modifier) * Float(getLandSize());
             }
             
         }else if(getCrop() == .Grass){
             if(modifier == 1.0){
-                fieldYield = (6.0 * Double(getLandSize()))
+                fieldYield = (6.0 * Float(getLandSize()))
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
-                fieldYield = 6.0 * (1 - modifier) * Double(getLandSize());
+                fieldYield = 6.0 * (1.0 - modifier) * Floats(getLandSize());
             }
             
         }else{
@@ -126,7 +126,7 @@ class Land {
         return fieldYield;
     }
     
-    func calculateRevenue() -> Double{
+    func calculateRevenue() -> Float{
         revenue = crop.getCropSellingPrice() * fieldYield;
         return revenue;
     }
@@ -135,7 +135,7 @@ class Land {
     Returns the yield of the field but this value is calculated in another function
     alex: made this since we need it in Farm
     */
-    func getYield() -> Double {
+    func getYield() -> Float {
         return fieldYield;
     }
     
@@ -166,7 +166,7 @@ class Land {
     This fuction could be simplified if the enum CropType had a
     return crop cost function
     */
-    func getCropCost() -> Double {
+    func getCropCost() -> Float {
         if(insured && crop == .Corn){
             return 800.0;
         }else if(insured && crop == .Soy){

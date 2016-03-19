@@ -45,13 +45,13 @@ class BuyViewController: UIViewController {
     // Internal Variables
     
     var isInsured : Bool = true
-    var cropToBuy : Crops = .Empty
-    var calculatedCost : Double = 0
+    var cropToBuy : CropType = .Empty
+    var calculatedCost : Float = 0
     var cropSellingPrice: Float = 0
     
     // Values passed from GameView
     var selectedFarm : Int = 1
-    var juansFarmInBuyView: FarmJV?
+    var farmInBuyView: Farm?
     
     //Some colors that reflect Iowa State these were actually given to me to put in the game
     private var redColor : UIColor = UIColor(red: 206.0/255.0, green: 17.0/255.0, blue: 38.0/255.0, alpha: 1.0)
@@ -69,11 +69,11 @@ class BuyViewController: UIViewController {
         super.viewDidLoad()
         
         //Set Crop Image
-        img_Crop.image = UIImage(named: juansFarmInBuyView!.fields[selectedFarm].getCropSprite())
+        img_Crop.image = UIImage(named: farmInBuyView!.fields[selectedFarm].getCropSprite())
         
         
         //Show Price of land
-        lbl_Price.text = String(format: "$%.2f", juansFarmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy))
+        lbl_Price.text = String(format: "$%.2f", farmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy))
         
         //Set Up the Stepper
         stepr_CornBiomass.wraps = true

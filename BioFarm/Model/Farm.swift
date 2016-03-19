@@ -21,7 +21,7 @@ import AVFoundation
 public class Farm {
     
     var fields : [Land]
-    var cash: Double
+    var cash: Float
     var event: Event
     var year: Int
     
@@ -104,7 +104,7 @@ public class Farm {
         return event.eventSound
     }
     
-    func getModNumber() -> Double{
+    func getModNumber() -> Float{
         return event.eventModifier
     }
     
@@ -112,7 +112,7 @@ public class Farm {
         return event.eventText
     }
     
-    func getCash() -> Double {
+    func getCash() -> Float {
         return cash
     }
     
@@ -122,9 +122,9 @@ public class Farm {
     Helper
     
     ******/
-     
-       func calcYield(modifierNum:Double) -> Double{
-        var totalYield: Double = 0.0;
+
+       func calcYield(modifierNum: Float) -> Float{
+        var totalYield: Float = 0.0;
         for field in fields{
             totalYield += field.calculateYield(modifierNum);
         }

@@ -72,7 +72,7 @@ class GameViewController : UIViewController{
     if the field is empty.
     */
     override func viewDidAppear(animated: Bool) {
-        if(farm.cannotBuy() && farm.isFarmEmpty()){
+        if(farm.cannotBuy() && farm.isEmpty()){
             self.performSegueWithIdentifier("toGameOverView", sender: self)
         }
     }
@@ -213,9 +213,9 @@ class GameViewController : UIViewController{
                 
                 //Temp Variable for profit and tempFarm for results view
                 //profit = farm.getProfit()
-                modifier = farm.getModNumber()
-                eventText = farm.getEventText()
-                totalMoney = farm.cash
+                //modifier = farm.getModNumber()
+                //eventText = farm.getEventText()
+                //totalMoney = farm.cash
                 
                 
                 
@@ -224,13 +224,13 @@ class GameViewController : UIViewController{
                 lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", farm.year, farm.getModNumber(), profit)
                 
                 //print flavor Text
-                if(modifier == 1.0){
+                if(farm.getModNumber() == 1.0){
                     lbl_modiferText.textColor = greenColor
-                    lbl_modiferText.text = farm.event!.getEventText()
+                    lbl_modiferText.text = farm.getEventText()
                 }
                 else{
                     lbl_modiferText.textColor = redColor
-                    lbl_modiferText.text = farm.event!.getEventText()
+                    lbl_modiferText.text = farm.getEventText()
                 }
                 
                 
@@ -344,7 +344,7 @@ class GameViewController : UIViewController{
             
             dest.year = farm.year
             dest.mod = farm.getModNumber()
-            dest.modText = eventText
+            dest.modText = farm.getEventText()
             dest.profit = self.profit
             dest.totalMoney = farm.cash
             

@@ -23,7 +23,7 @@ import Foundation
 class Event{
     
     var rand: Int = 0
-    var eventModifier : Double =  0.0
+    var eventModifier : Float =  0.0
     var eventID : Int = 0
     var eventText : String = ""
     var eventSound : String = "applause"
@@ -36,7 +36,7 @@ class Event{
         
     }
     
-    func getModifier() -> Double {
+    func getModifier() -> Float {
         return eventModifier;
     }
     

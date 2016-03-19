@@ -27,7 +27,7 @@ enum CropType {
         }
     }
     
-    func getCropCost() -> Double{
+    func getCropCost() -> Float{
         switch self{
         case .Corn:
             return 600.0
@@ -41,7 +41,7 @@ enum CropType {
         }
     }
     
-    func getCropSellingPrice() -> Double{
+    func getCropSellingPrice() -> Float{
         switch self{
         case .Corn:
             return 4.75
@@ -54,7 +54,7 @@ enum CropType {
         }
     }
     
-    func getCropYield() -> Double{
+    func getCropYield() -> Float{
         switch self{
         case .Corn:
             return 160.0
