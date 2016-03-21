@@ -56,7 +56,13 @@ class Land {
     }
     
     
-    //LAND FUNCTIONS
+    /********************
+
+    Land related Functions
+
+    ********************/
+     
+     
     
     /*
     Sets the crop type of the land to the specified crop type.
@@ -66,11 +72,32 @@ class Land {
     }
     
     
-    /*
-    Reutrns the size of the land in acres.
-    */
-    func getLandSize() -> Int {
-        return size
+    func resetLand() {
+        if(crop == .Grass) {
+            if( numOldCrop % 7 != 0 || numOldCrop == 0) {
+                numOldCrop++;
+            } else {
+                //reset grass stuff
+                numOldCrop = 0;
+                crop = .Empty;
+            }
+            revenue = 0.0;
+            fieldYield = 0.0;
+            return;
+        }
+        
+        if(oldCrop == crop){
+            numOldCrop++;
+        }else{
+            numOldCrop = 0
+        }
+        
+        oldCrop = crop;
+        insured = false;
+        crop = CropType.Empty;
+        revenue = 0.0;
+        fieldYield = 0.0;
+
     }
     
     /*
@@ -116,7 +143,7 @@ class Land {
             }else if(modifier == 0.0){
                 fieldYield = 0;
             }else{
-                fieldYield = 6.0 * (1.0 - modifier) * Floats(getLandSize());
+                fieldYield = 6.0 * (1.0 - modifier) * Float(getLandSize());
             }
             
         }else{
@@ -131,6 +158,13 @@ class Land {
         return revenue;
     }
     
+    
+    /*************************
+    
+    Getters
+
+    *************************/
+     
     /*
     Returns the yield of the field but this value is calculated in another function
     alex: made this since we need it in Farm
@@ -138,21 +172,6 @@ class Land {
     func getYield() -> Float {
         return fieldYield;
     }
-    
-    /*
-    Returns whether the land is insured or not.
-    */
-    func isInsured() -> Bool {
-        return insured
-    }
-    
-    /*
-    Set whether the land is insured or not.
-    */
-    func setInsured (newInsured : Bool) {
-        insured = newInsured
-    }
-    
     
     /*
     Returns the crop type planted on the land.
@@ -177,11 +196,16 @@ class Land {
         }
         
     }
+    
     /*
     Returns the current crop name.
     */
     func getCropName() ->String {
         return crop.getCropName();
+    }
+    
+    func getCropSprite() -> String {
+        return crop.getCropSprite();
     }
     
     
@@ -191,43 +215,46 @@ class Land {
     
     func getLandSprite(whichField: Int) -> String{
         
-        return crop.getLandSprite(whichField);
+        return crop.getLandSprite(whichField-1);
+    }
+    /*
+    Returns whether the land is insured or not.
+    */
+    func isInsured() -> Bool {
+        return insured
     }
     
-    func resetLand() {
-        if(crop == .Grass) {
-            if( numOldCrop % 7 != 0 || numOldCrop == 0) {
-                numOldCrop++;
-            } else {
-                //reset grass stuff
-                numOldCrop = 0;
-                crop = .Empty;
-            }
-            revenue = 0.0;
-            fieldYield = 0.0;
-            return;
-        }
-        
-        if(oldCrop == crop){
-            numOldCrop++;
-        }else{
-            numOldCrop = 0
-        }
-        
-        oldCrop = crop;
-        insured = false;
-        crop = CropType.Empty;
-        revenue = 0.0;
-        fieldYield = 0.0;
+    /*
+    Set whether the land is insured or not.
+    */
+    func setInsured (newInsured : Bool) {
+        insured = newInsured
+    }
+    
+    /*
+    Reutrns the size of the land in acres.
+    */
+    func getLandSize() -> Int {
+        return size
+    }
+    
+    /*********************
 
+    Setters
+
+    *********************/
+    
+    /*
+    Sets the lands crop to the specified type.
+    */
+    func setCrop (newCrop : CropType) {
+    crop = newCrop
     }
 
-/*
-Sets the lands crop to the specified type.
-*/
-func setCrop (newCrop : CropType) {
-    crop = newCrop
-}
+    
+    
+    
+
 
 
 }

@@ -272,52 +272,52 @@ class GameViewController : UIViewController{
         
         switch sender {
         case btn_Farm1 as UIButton:
-            if(farm.hasBought[0]){
+            if(farm.hasPlanted(1)){
                 return
             }else{
-                selectedFarm = 0
+                selectedFarm = 1
             }
         case btn_Farm2 as UIButton:
-            if(farm.hasBought[1]){
+            if(farm.hasPlanted(2)){
                 return
             }
-            else{ selectedFarm = 1
+            else{ selectedFarm = 2
             }
         case btn_Farm3 as UIButton:
-            if(farm.hasBought[2]){
-                return
-            }else{
-                selectedFarm = 2
-            }
-        case btn_Farm4 as UIButton:
-            if(farm.hasBought[3]){
+            if(farm.hasPlanted(3)){
                 return
             }else{
                 selectedFarm = 3
             }
-        case btn_Farm5 as UIButton:
-            if(farm.hasBought[4]){
+        case btn_Farm4 as UIButton:
+            if(farm.hasPlanted(4)){
                 return
             }else{
                 selectedFarm = 4
             }
-        case btn_Farm6 as UIButton:
-            if(farm.hasBought[5]){
+        case btn_Farm5 as UIButton:
+            if(farm.hasPlanted(5)){
                 return
             }else{
                 selectedFarm = 5
             }
-        case btn_Farm7 as UIButton:
-            if(farm.hasBought[6]){
+        case btn_Farm6 as UIButton:
+            if(farm.hasPlanted(6)){
                 return
             }else{
                 selectedFarm = 6
             }
-        case btn_Farm8 as UIButton:
-            if(farm.hasBought[7]){
+        case btn_Farm7 as UIButton:
+            if(farm.hasPlanted(7)){
                 return
             }else{
                 selectedFarm = 7
+            }
+        case btn_Farm8 as UIButton:
+            if(farm.hasPlanted(8)){
+                return
+            }else{
+                selectedFarm = 8
             }
         default: selectedFarm = 0
         }

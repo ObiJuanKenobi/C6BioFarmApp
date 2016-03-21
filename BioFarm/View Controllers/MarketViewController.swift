@@ -16,7 +16,7 @@ class MarketViewController: UIViewController {
     @IBOutlet var sell_Btn: UIButton!
     @IBOutlet var money_Lbl: UILabel!
     
-    var money: Double = 0.0;
+    var money: Float = 0.0;
     var mass: Int = 10;
     
     //this will set up the environment only once

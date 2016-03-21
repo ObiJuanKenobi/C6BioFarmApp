@@ -104,7 +104,7 @@ class BuyViewController: UIViewController {
         switch seg_CropChoice.selectedSegmentIndex {
             
             // Corn
-        case 0: cropToBuy = Crops.Corn
+        case 0: cropToBuy = .Corn
         swt_Insur.hidden = false
         swt_Insur.on = true
         stepr_CornBiomass.hidden = false
@@ -113,8 +113,8 @@ class BuyViewController: UIViewController {
         lbl_Insur.hidden = false
         
         //sets what C6 will say in his text bubbles
-        if(juansFarmInBuyView!.yearCount != 1){
-            lbl_OtherCropInfo.text = String(format: "This field had %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
+        if(farmInBuyView!.year != 1){
+            lbl_OtherCropInfo.text = String(format: "This field had %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"
@@ -122,11 +122,11 @@ class BuyViewController: UIViewController {
         lbl_CropInfo.text = "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
         
         img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-        cropSellingPrice = Float(juansFarmInBuyView!.cornSellingPrice)
+        cropSellingPrice = Float(farmInBuyView!.cornSellingPrice)
             
             // Soybean
         case 1:
-            cropToBuy = Crops.Soybean
+            cropToBuy = .Soy
             swt_Insur.hidden = false
             swt_Insur.on = true
             stepr_CornBiomass.hidden = true
@@ -137,8 +137,8 @@ class BuyViewController: UIViewController {
             
             
             //sets what C6 will say in his text bubbles
-            if(juansFarmInBuyView!.yearCount != 1){
-                lbl_OtherCropInfo.text = String(format: "You planted %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
+            if(farmInBuyView!.year != 1){
+                lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
             }
             else{
                 lbl_OtherCropInfo.text = "Remember to rotate your crops!"
@@ -146,10 +146,10 @@ class BuyViewController: UIViewController {
             lbl_CropInfo.text = "Soybeans are processed for oil, animal feed, and other industrial products. A small percentage is used for human consumption such as soymilk, soy, and flour."
             
             img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-            cropSellingPrice = Float(juansFarmInBuyView!.soybeanSellingPrice)
+            cropSellingPrice = Float(farmInBuyView!.soybeanSellingPrice)
             
             // Switchgrass
-        case 2: cropToBuy = Crops.Switchgrass
+        case 2: cropToBuy = .Grass
         swt_Insur.hidden = true
         stepr_CornBiomass.hidden = true
         lbl_CornBiomassAmount.hidden = true
@@ -160,8 +160,8 @@ class BuyViewController: UIViewController {
         
         
         //sets what C6 will say in his text bubbles
-        if(juansFarmInBuyView!.yearCount != 1){
-            lbl_OtherCropInfo.text = String(format: "You planted %@ last year", juansFarmInBuyView!.previousYearFields[selectedFarm].getCropName())
+        if(farmInBuyView!.year != 1){
+            lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"
@@ -170,7 +170,7 @@ class BuyViewController: UIViewController {
         
         swt_Insur.setOn(false, animated: false) //changes insure switch off since switch grass has no insurance
         img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-        cropSellingPrice = Float(juansFarmInBuyView!.switchgrassSellingPrice)
+        cropSellingPrice = Float(farmInBuyView!.switchgrassSellingPrice)
         default: break
         }
         
@@ -198,7 +198,7 @@ class BuyViewController: UIViewController {
                 cropToBuy = .Corn
             }
             else if(cropToBuy == .InsuredSoybean){
-                cropToBuy = .Soybean
+                cropToBuy = .Soy
             }
         }
         
@@ -211,13 +211,13 @@ class BuyViewController: UIViewController {
     and if not it changes the C6's text color to red and changes what he says.
     */
     @IBAction func buy() {
-        if(juansFarmInBuyView!.currentMoney < juansFarmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy)){
+        if(farmInBuyView!.getCash() < farmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy)){
             lbl_OtherCropInfo.text = "You do not have enough money to buy that"
             lbl_OtherCropInfo.textColor = redColor
             return
         }
         else{
-            juansFarmInBuyView!.plant(whichField: selectedFarm, whichCrop: cropToBuy)
+            farmInBuyView!.plant(whichField: selectedFarm, whichCrop: cropToBuy)
             self.performSegueWithIdentifier("exitFromStore", sender: self)
         }
         
@@ -238,11 +238,11 @@ class BuyViewController: UIViewController {
         //values used in method
         
         var cost = cropToBuy.getCropCost()
-        var name = juansFarmInBuyView!.fields[selectedFarm].getCropName()
+        var name = farmInBuyView!.fields[selectedFarm].getCropName()
         
-        lbl_Calculation.text = String(format: "%@: \nnumber of acres %.0f * \nprice of crop %.2f\n Market Price: %.2f", name, juansFarmInBuyView!.fieldSizes[selectedFarm], cost, cropSellingPrice)
+        lbl_Calculation.text = String(format: "%@: \nnumber of acres %.0f * \nprice of crop %.2f\n Market Price: %.2f", name, farmInBuyView!.fieldSizes[selectedFarm], cost, cropSellingPrice)
         
-        var calculatedCost = cost * juansFarmInBuyView!.fieldSizes[selectedFarm]
+        var calculatedCost = cost * farmInBuyView!.fieldSizes[selectedFarm]
         lbl_Price.text = String(format: "$%.2f", calculatedCost)
         
     }

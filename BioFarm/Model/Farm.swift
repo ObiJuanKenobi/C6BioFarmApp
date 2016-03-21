@@ -44,7 +44,7 @@ public class Farm {
     *********************/
     
     
-    func harvestAll() -> Double{
+    func harvestAll() -> Float{
         
             event.doEvent()
 //       var eventSound = eventInfo.eventSound
@@ -71,8 +71,6 @@ public class Farm {
     }
     
   
-    
-    //is this function still neccessary when we can just call it on land?
     func plant (whichField : Int, crop : CropType){
         fields[whichField - 1].plant(crop);
     }
@@ -89,6 +87,14 @@ public class Farm {
     
     func cannotBuy() -> Bool{
         //todo 
+        return false
+    }
+    
+    func hasPlanted(whichfield : Int) -> Bool{
+        if(fields[whichfield - 1].getCrop() != CropType.Empty){
+            return true
+        }
+        
         return false
     }
     
@@ -116,6 +122,10 @@ public class Farm {
         return cash
     }
     
+    func getCrop(whichfield : Int) -> CropType{
+        return fields[whichfield - 1].getCrop()
+    }
+    
     
     /******
      
@@ -131,8 +141,8 @@ public class Farm {
         return totalYield;
     }
     
-    func calcRevenue() -> Double{
-        var revenue : Double = 0.0;
+    func calcRevenue() -> Float{
+        var revenue : Float = 0.0;
         for field in fields{
             revenue += field.calculateRevenue();
         }
@@ -150,14 +160,14 @@ public class Farm {
     /*
     Adds the amount of money that is sent to the function to cash.
     */
-    func addMoney(amount : Double){
+    func addMoney(amount : Float){
         cash = cash + amount
     }
     
     /*
     Subtracts the amount of money that is sent to the fuction from cash.
     */
-    func subMoney(amount : Double){
+    func subMoney(amount : Float){
         cash = cash - amount
     }
     
