@@ -5,26 +5,26 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB" : 0,
-    "4145EFE599085EC34BE42B57A5379DFD702B29BA" : 0
+    "04E8414E728A79B62C524D7ECF067FF604FF7BCD" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0EC5698B-2546-4EA7-B934-31F8E9F02E03",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB" : "C6BioFarmApp\/",
-    "4145EFE599085EC34BE42B57A5379DFD702B29BA" : "C6BioFarm"
+    "04E8414E728A79B62C524D7ECF067FF604FF7BCD" : "C6BioFarm"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BioFarm",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BioFarm.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cjvoigt\/C6BioFarm-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "04E8414E728A79B62C524D7ECF067FF604FF7BCD"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ObiJuanKenobi\/C6BioFarmApp.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cjvoigt\/C6BioFarm-iOS.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4145EFE599085EC34BE42B57A5379DFD702B29BA"
     }
   ]
 }

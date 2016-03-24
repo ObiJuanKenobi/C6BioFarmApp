@@ -73,7 +73,7 @@ class BuyViewController: UIViewController {
         
         
         //Show Price of land
-        lbl_Price.text = String(format: "$%.2f", farmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy))
+        lbl_Price.text = String(format: "$%.2f", farmInBuyView!.costOfPurchase(selectedFarm, whichCrop: cropToBuy))
         
         //Set Up the Stepper
         stepr_CornBiomass.wraps = true
@@ -122,7 +122,7 @@ class BuyViewController: UIViewController {
         lbl_CropInfo.text = "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
         
         img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-        cropSellingPrice = Float(farmInBuyView!.cornSellingPrice)
+        cropSellingPrice = CropType.Corn.getCropSellingPrice()
             
             // Soybean
         case 1:
@@ -146,7 +146,7 @@ class BuyViewController: UIViewController {
             lbl_CropInfo.text = "Soybeans are processed for oil, animal feed, and other industrial products. A small percentage is used for human consumption such as soymilk, soy, and flour."
             
             img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-            cropSellingPrice = Float(farmInBuyView!.soybeanSellingPrice)
+            cropSellingPrice = CropType.Soy.getCropSellingPrice()
             
             // Switchgrass
         case 2: cropToBuy = .Grass
@@ -170,7 +170,7 @@ class BuyViewController: UIViewController {
         
         swt_Insur.setOn(false, animated: false) //changes insure switch off since switch grass has no insurance
         img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-        cropSellingPrice = Float(farmInBuyView!.switchgrassSellingPrice)
+        cropSellingPrice = CropType.Grass.getCropSellingPrice()
         default: break
         }
         
@@ -211,7 +211,7 @@ class BuyViewController: UIViewController {
     and if not it changes the C6's text color to red and changes what he says.
     */
     @IBAction func buy() {
-        if(farmInBuyView!.getCash() < farmInBuyView!.getCostOfPurchase(selectedFarm, whichCrop: cropToBuy)){
+        if(farmInBuyView!.getCash() < farmInBuyView!.costOfPurchase(selectedFarm, whichCrop: cropToBuy)){
             lbl_OtherCropInfo.text = "You do not have enough money to buy that"
             lbl_OtherCropInfo.textColor = redColor
             return

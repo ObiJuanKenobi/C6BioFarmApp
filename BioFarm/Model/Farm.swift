@@ -98,6 +98,11 @@ public class Farm {
         return false
     }
     
+    func costOfPurchase(whichField : Int, whichCrop : CropType) -> Float{
+        
+        return Float(fields[whichField].getLandSize()) * whichCrop.getCropCost()
+    }
+    
    
     
     /*******
