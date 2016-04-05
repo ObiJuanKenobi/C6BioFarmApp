@@ -169,6 +169,11 @@ class Land {
     Returns the yield of the field but this value is calculated in another function
     alex: made this since we need it in Farm
     */
+    
+    func getPreviousCrop() -> CropType {
+        return oldCrop
+    }
+    
     func getYield() -> Float {
         return fieldYield;
     }
