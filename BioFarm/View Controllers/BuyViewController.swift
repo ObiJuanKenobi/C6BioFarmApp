@@ -114,7 +114,7 @@ class BuyViewController: UIViewController {
         
         //sets what C6 will say in his text bubbles
         if(farmInBuyView!.year != 1){
-            lbl_OtherCropInfo.text = String(format: "This field had %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
+            lbl_OtherCropInfo.text = String(format: "This field had %@ last year", farmInBuyView!.fields[selectedFarm].getPreviousCrop())
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"
@@ -138,7 +138,7 @@ class BuyViewController: UIViewController {
             
             //sets what C6 will say in his text bubbles
             if(farmInBuyView!.year != 1){
-                lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
+                lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.fields[selectedFarm].getPreviousCrop())
             }
             else{
                 lbl_OtherCropInfo.text = "Remember to rotate your crops!"
@@ -161,7 +161,7 @@ class BuyViewController: UIViewController {
         
         //sets what C6 will say in his text bubbles
         if(farmInBuyView!.year != 1){
-            lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.previousYearFields[selectedFarm].getCropName())
+            lbl_OtherCropInfo.text = String(format: "You planted %@ last year", farmInBuyView!.fields[selectedFarm].getPreviousCrop())
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"
