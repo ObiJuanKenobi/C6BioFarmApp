@@ -64,7 +64,7 @@ class Event{
     /*
     Returns a tuple with a randomly choosen event for the year with a modifier, text and sound.
     */
-    func doEvent() -> (eventModifier: Double, eventText: String, eventSound: String) {
+    func doEvent() -> (eventModifier: Float, eventText: String, eventSound: String) {
         rand = Int(arc4random_uniform(1000)) + 1
         eventID = 0
         switch rand{
