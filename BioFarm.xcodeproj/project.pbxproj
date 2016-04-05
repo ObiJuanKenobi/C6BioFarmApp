@@ -15,7 +15,6 @@
 		EB0AB8451BA7502400C81521 /* Farm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB8411BA7502400C81521 /* Farm.swift */; };
 		EB0AB8461BA7502400C81521 /* Farm_JV.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB8421BA7502400C81521 /* Farm_JV.swift */; };
 		EB0AB8471BA7502400C81521 /* Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB8431BA7502400C81521 /* Land.swift */; };
-		EB0AB8551BA7503600C81521 /* AboutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB8491BA7503600C81521 /* AboutPageViewController.swift */; };
 		EB0AB8571BA7503600C81521 /* BarnInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB84B1BA7503600C81521 /* BarnInfoViewController.swift */; };
 		EB0AB8581BA7503600C81521 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB84C1BA7503600C81521 /* BuyViewController.swift */; };
 		EB0AB8591BA7503600C81521 /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AB84D1BA7503600C81521 /* CropViewController.swift */; };
@@ -66,7 +65,6 @@
 		EB0AB8411BA7502400C81521 /* Farm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farm.swift; sourceTree = "<group>"; };
 		EB0AB8421BA7502400C81521 /* Farm_JV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farm_JV.swift; sourceTree = "<group>"; };
 		EB0AB8431BA7502400C81521 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
-		EB0AB8491BA7503600C81521 /* AboutPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPageViewController.swift; sourceTree = "<group>"; };
 		EB0AB84B1BA7503600C81521 /* BarnInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarnInfoViewController.swift; sourceTree = "<group>"; };
 		EB0AB84C1BA7503600C81521 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		EB0AB84D1BA7503600C81521 /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		EB0AB8481BA7503600C81521 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB0AB8491BA7503600C81521 /* AboutPageViewController.swift */,
 				EB0AB84B1BA7503600C81521 /* BarnInfoViewController.swift */,
 				EB0AB84C1BA7503600C81521 /* BuyViewController.swift */,
 				EB0AB84D1BA7503600C81521 /* CropViewController.swift */,
@@ -353,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB0AB8471BA7502400C81521 /* Land.swift in Sources */,
-				EB0AB8551BA7503600C81521 /* AboutPageViewController.swift in Sources */,
 				EB0AB8581BA7503600C81521 /* BuyViewController.swift in Sources */,
 				EB0AB85D1BA7503600C81521 /* OptionsViewController.swift in Sources */,
 				EB0AB85C1BA7503600C81521 /* GoalViewController.swift in Sources */,
