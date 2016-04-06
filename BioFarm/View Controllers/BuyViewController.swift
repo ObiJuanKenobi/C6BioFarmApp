@@ -185,21 +185,11 @@ class BuyViewController: UIViewController {
         // Change insur on crop
         if(swt_Insur.on) {
             lbl_Insur.text = "You are insured"
-            if(cropToBuy == .Corn){
-                cropToBuy = .InsuredCorn
-            }
-            else if(cropToBuy == .Soybean){
-                cropToBuy = .InsuredSoybean
-            }
+           farmInBuyView!.fields[selectedFarm].setInsured(true)
         }
         else{
             lbl_Insur.text = "You are not insured"
-            if(cropToBuy == .InsuredCorn){
-                cropToBuy = .Corn
-            }
-            else if(cropToBuy == .InsuredSoybean){
-                cropToBuy = .Soy
-            }
+            farmInBuyView!.fields[selectedFarm].setInsured(false)
         }
         
         //Calls update on calculation text field
