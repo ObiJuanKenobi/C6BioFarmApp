@@ -87,7 +87,7 @@ class Event{
             eventID = 1;
         case 897...944:
             eventModifier = 0.6
-            eventText = "There was a flood this year -100% yeild."
+            eventText = "There was high wind this year -40% yeild."
             eventSound = "Wind"
         case 945...952:
             eventModifier = 0.6
@@ -115,7 +115,7 @@ class Event{
             eventSound = "UFO"
         case 986...990:
             eventModifier = 0.4
-            eventText = "There was a freak snowstorm this year. -40% yeild."
+            eventText = "There was a freak snowstorm this year. -60% yeild."
             eventSound = "Wind"
         case 991...995:
             eventModifier = 0.0

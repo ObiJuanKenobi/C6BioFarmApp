@@ -138,7 +138,7 @@ public class Farm {
     
     ******/
 
-       func calcYield(modifierNum: Float) -> Float{
+    func calcYield(modifierNum: Float) -> Float{
         var totalYield: Float = 0.0;
         for field in fields{
             totalYield += field.calculateYield(modifierNum);
