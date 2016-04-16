@@ -107,50 +107,34 @@ class Land {
     func calculateYield(modifier : Float) -> Float{
         if(getCrop() == .Corn && isInsured()){
             fieldYield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
-//            if(modifier == 1.0){
-//                fieldYield = crop.getCropYield() * Float(getLandSize());
-//            }else{
-//                fieldYield = (crop.getCropYield() * 0.75) * Float(getLandSize());
-//            }
-            
+            //Calculate crop rotation
+            for(var i = 0; i < numOldCrop; i++){
+                fieldYield *= 0.5;
+            }
         }else if (getCrop() == .Corn && !(isInsured())){
             fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
-//            if(modifier == 1.0){
-//                fieldYield = (crop.getCropYield() * Float(getLandSize()))
-//            }else if(modifier == 0.0){
-//                fieldYield = 0;
-//            }else{
-//                fieldYield = crop.getCropYield() * (1 - modifier) * Float(getLandSize());
-//            }
-            
+            //Calculate crop rotation
+            for(var i = 0; i < numOldCrop; i++){
+                fieldYield *= 0.5;
+            }
         }else if (getCrop() == .Soy && isInsured()){
             fieldYield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
-//            if(modifier == 1.0){
-//                fieldYield = crop.getCropYield() * Float(getLandSize())
-//            }else{
-//                fieldYield = (crop.getCropYield() * 0.75) * Float(getLandSize())
-//            }
-            
+            //Calculate crop rotation
+            for(var i = 0; i < numOldCrop; i++){
+                fieldYield *= 0.5;
+            }
         }else if (getCrop() == .Soy && !(isInsured())){
             fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
-//            if(modifier == 1.0){
-//                fieldYield = (crop.getCropYield() * Float(getLandSize()))
-//            }else if(modifier == 0.0){
-//                fieldYield = 0;
-//            }else{
-//                fieldYield = 45.0 * (1 - modifier) * Float(getLandSize());
-//            }
-            
+            //Calculate crop rotation
+            for(var i = 0; i < numOldCrop; i++){
+                fieldYield *= 0.5;
+            }
         }else if(getCrop() == .Grass){
             fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
-//            if(modifier == 1.0){
-//                fieldYield = (6.0 * Float(getLandSize()))
-//            }else if(modifier == 0.0){
-//                fieldYield = 0;
-//            }else{
-//                fieldYield = 6.0 * (1.0 - modifier) * Float(getLandSize());
-//            }
-            
+            //Calculate crop rotation
+            for(var i = 0; i < numOldCrop; i++){
+                fieldYield *= 0.5;
+            }
         }else{
             fieldYield = 0.0;
         }
