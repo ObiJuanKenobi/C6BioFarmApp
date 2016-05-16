@@ -27,7 +27,7 @@ class TheBarnViewController: UIViewController {
   
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toCropInfo"){
-            var dest: CropViewController = segue.destinationViewController as! CropViewController
+            let dest: CropViewController = segue.destinationViewController as! CropViewController
             
             dest.whichInfo = whichInfoToPresent
             

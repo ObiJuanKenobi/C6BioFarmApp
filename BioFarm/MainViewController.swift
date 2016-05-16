@@ -51,12 +51,12 @@ class ViewController: UIViewController {
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toOptionsView"){
-            var dest : OptionsViewController = segue.destinationViewController as! OptionsViewController
+            let dest : OptionsViewController = segue.destinationViewController as! OptionsViewController
             dest.musicPlayer = musicPlayer
             dest.effectsPlayer = effectsPlayer
         }
         else if(segue.identifier == "toGameViewID"){
-            var dest : GameViewController = segue.destinationViewController as! GameViewController
+            let dest : GameViewController = segue.destinationViewController as! GameViewController
             dest.effectsPlayer = effectsPlayer
         }
         
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         musicPlayer.numberOfLoops = -1
         musicPlayer.volume = 0.5
         
-      var snd_applause = try! NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
+      let snd_applause = try! NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
        // effectsPlayer = AVAudioPlayer(contentsOfURL: snd_applause, error: nil)
         effectsPlayer = try! AVAudioPlayer(contentsOfURL: snd_applause, fileTypeHint: nil)
         effectsPlayer.volume = 0.3

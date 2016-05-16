@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB" : 0,
+    "7259B235A028B74FAF5E0A79DA0F9400D3381701" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0EC5698B-2546-4EA7-B934-31F8E9F02E03",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB" : "C6BioFarmApp\/",
+    "7259B235A028B74FAF5E0A79DA0F9400D3381701" : "C6%20BioFarm%20New%20Game"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BioFarm",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BioFarm.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ObiJuanKenobi\/C6BioFarmApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B6B6C11309B92AFCA761C12C8838BB7D9512FEB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.webdev.its.iastate.edu:7999\/webdev-mobile\/biofarm.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7259B235A028B74FAF5E0A79DA0F9400D3381701"
+    }
+  ]
+}

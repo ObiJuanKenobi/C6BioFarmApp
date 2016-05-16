@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DC5BB551A37AA4400F8DA6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC5BB541A37AA4400F8DA6F /* AppDelegate.swift */; };
-		1DC5BB571A37AA4400F8DA6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC5BB561A37AA4400F8DA6F /* ViewController.swift */; };
+		1DC5BB571A37AA4400F8DA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC5BB561A37AA4400F8DA6F /* MainViewController.swift */; };
 		1DC5BB5C1A37AA4400F8DA6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC5BB5B1A37AA4400F8DA6F /* Images.xcassets */; };
 		1DC5BB5F1A37AA4400F8DA6F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC5BB5D1A37AA4400F8DA6F /* LaunchScreen.xib */; };
 		1DC5BB6B1A37AA4500F8DA6F /* BioFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC5BB6A1A37AA4500F8DA6F /* BioFarmTests.swift */; };
@@ -37,7 +37,7 @@
 		EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB889A711A8E99C700192944 /* UIImage+ColorAtPixel.m */; };
 		EB9C1F591A967F8D00A6EFF0 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C1F581A967F8D00A6EFF0 /* ResultsTableViewController.swift */; };
 		EBBA70581B431DBF00F4F985 /* Farm_JV.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA70571B431DBF00F4F985 /* Farm_JV.swift */; };
-		EBCC64061B55929D0087FDFB /* TheBarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC64051B55929D0087FDFB /* TheBarnViewController.swift */; };
+		EBCC64061B55929D0087FDFB /* BarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC64051B55929D0087FDFB /* BarnViewController.swift */; };
 		EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE4F1171A74571200C27A13 /* BuyViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		1DC5BB4F1A37AA4400F8DA6F /* BioFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC5BB531A37AA4400F8DA6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC5BB541A37AA4400F8DA6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1DC5BB561A37AA4400F8DA6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1DC5BB561A37AA4400F8DA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1DC5BB5B1A37AA4400F8DA6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1DC5BB5E1A37AA4400F8DA6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1DC5BB641A37AA4500F8DA6F /* BioFarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BioFarmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +89,7 @@
 		EB889A711A8E99C700192944 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
 		EB9C1F581A967F8D00A6EFF0 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		EBBA70571B431DBF00F4F985 /* Farm_JV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farm_JV.swift; sourceTree = "<group>"; };
-		EBCC64051B55929D0087FDFB /* TheBarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheBarnViewController.swift; sourceTree = "<group>"; };
+		EBCC64051B55929D0087FDFB /* BarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarnViewController.swift; sourceTree = "<group>"; };
 		EBE4F1171A74571200C27A13 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,12 +207,12 @@
 		EB3F7A771CD12CC50013E8B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1DC5BB561A37AA4400F8DA6F /* ViewController.swift */,
+				1DC5BB561A37AA4400F8DA6F /* MainViewController.swift */,
 				EB0CCBD81A72F4C8002E6134 /* GameViewController.swift */,
 				EBE4F1171A74571200C27A13 /* BuyViewController.swift */,
 				EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */,
 				EB9C1F581A967F8D00A6EFF0 /* ResultsTableViewController.swift */,
-				EBCC64051B55929D0087FDFB /* TheBarnViewController.swift */,
+				EBCC64051B55929D0087FDFB /* BarnViewController.swift */,
 				EB5803151B5D9E830096178B /* BarnInfoViewController.swift */,
 				EB3B7FB81B53F74900E3CE4C /* GameOverViewController.swift */,
 				EB5803081B5941080096178B /* CropViewController.swift */,
@@ -345,7 +345,7 @@
 				EB3F7A7B1CD12D6E0013E8B7 /* Crops.swift in Sources */,
 				EB3F7A791CD12D160013E8B7 /* Land.swift in Sources */,
 				EB5803091B5941080096178B /* CropViewController.swift in Sources */,
-				1DC5BB571A37AA4400F8DA6F /* ViewController.swift in Sources */,
+				1DC5BB571A37AA4400F8DA6F /* MainViewController.swift in Sources */,
 				EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */,
 				EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */,
 				EB3F7A7D1CD12DF50013E8B7 /* Event.swift in Sources */,
@@ -355,7 +355,7 @@
 				EB65AFED1A71BE02006A4235 /* OptionsViewController.swift in Sources */,
 				EB889A6F1A8E99A700192944 /* OBShapedButton.m in Sources */,
 				1DC5BB551A37AA4400F8DA6F /* AppDelegate.swift in Sources */,
-				EBCC64061B55929D0087FDFB /* TheBarnViewController.swift in Sources */,
+				EBCC64061B55929D0087FDFB /* BarnViewController.swift in Sources */,
 				EB5803161B5D9E830096178B /* BarnInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
