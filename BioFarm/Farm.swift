@@ -24,17 +24,30 @@ public class Farm {
     var cash: Float
     var event: Event
     var year: Int
+    
+    var yield: Float
+    var expense: Float
     var revenue : Float
+    
+    var reports: [Report]
+    var currentReport : Report
+    
     /*
-     Initalizes farm with the default farms saved in a dictionary, and 1 million dollars.
+     Initalizes farm with the default farms saved in an Array, and 1 million dollars.
      
      */
     init(){
         fields = [Land(whichField: 0), Land(whichField: 1), Land(whichField: 2), Land(whichField: 3), Land(whichField: 4), Land(whichField: 5), Land(whichField: 6), Land(whichField: 7)]
         cash = 1000000
         event = Event()
-        year = 1;
-        revenue = 0.0;
+        year = 0
+        
+        yield = 0.0
+        expense = 0.0
+        revenue = 0.0
+        
+        reports = []
+        currentReport = Report()
     }
     
     
@@ -44,19 +57,61 @@ public class Farm {
      
      *********************/
     
+    func startYear () {
+        //Make new Report
+        currentReport = Report()
+        
+        //Incriment Year
+        year += 1
+        
+        //Add data to report
+        currentReport.boyCash = cash
+        currentReport.year = year
+        
+    }
+    
+    func endYear () {
+        //Harvest Crops
+        harvestAll()
+        
+        //Calculate new Cash
+        cash += revenue;
+        
+        //Add data to report
+        currentReport.expense = expense
+        currentReport.revenue = revenue
+        currentReport.event = event.eventName
+        currentReport.eventModifier = event.eventModifier
+        currentReport.eoyCash = cash
+        
+        //Store Report
+        reports.insert(currentReport, atIndex: 0)
+        
+        //Reset
+        reset()
+    }
+    
     
     func harvestAll() -> Float{
+        //Trigger new Event
         event.doEvent()
         
-        calcYield(event.eventModifier);
-        revenue = calcRevenue()
-        reset()
+        //Calc Revenue
+        calcRevenue(event.eventModifier)
+        
+        //Calc Expense
+        calcExpense()
         
         return revenue;
     }
     
     func reset(){
+        //Reset Variables
+        expense = 0.0
+        revenue = 0.0
         
+        
+        //Reset Land
         for field in fields{
             field.resetLand()
         }
@@ -64,7 +119,33 @@ public class Farm {
     }
     
     func plant (whichField : Int, crop : Crops){
-        fields[whichField].plant(crop);
+        //Check if something is already planted
+        if(hasPlanted(whichField)) {
+            return
+        }
+        
+        //Plant
+        fields[whichField].plant(crop)
+        
+        //Subtract the money for planting
+        cash -= fields[whichField].expense
+    }
+    
+    func replacePlant (whichField : Int, crop : Crops) {
+        //Check for Switch Grass
+        if(fields[whichField].getCrop() == Crops.Grass) {
+            //Cant Replace Switchgrass
+            return
+        }
+        
+        //Add back money
+        cash += fields[whichField].expense
+        
+        //Plant
+        fields[whichField].plant(crop)
+        
+        //Subtract the money for planting
+        cash -= fields[whichField].expense
     }
     
     func isEmpty() -> Bool{
@@ -77,7 +158,7 @@ public class Farm {
         return true
     }
     
-    func cannotBuy() -> Bool{
+    func canBuy() -> Bool{
         if(cash < 12000){
             return false
         }
@@ -88,7 +169,6 @@ public class Farm {
         if(fields[whichfield].getCrop() != Crops.Empty){
             return true
         }
-        
         return false
     }
     
@@ -96,8 +176,6 @@ public class Farm {
         
         return Float(fields[whichField].getLandSize()) * whichCrop.getCropCost()
     }
-    
-    
     
     /*******
      
@@ -133,7 +211,6 @@ public class Farm {
         return revenue
     }
     
-    
     /******
      
      Helper
@@ -148,35 +225,17 @@ public class Farm {
         return totalYield;
     }
     
-    func calcRevenue() -> Float{
-        var revenue : Float = 0.0;
-        for field in fields{
-            revenue += field.calculateRevenue();
+    func calcExpense() -> Float {
+        for field in fields {
+            expense += field.getExpense();
+        }
+        return expense;
+    }
+    
+    func calcRevenue(modifierNum: Float) -> Float{
+        for field in fields {
+            revenue += field.calculateRevenue(modifierNum);
         }
         return revenue;
     }
-    
-    func resetFarm(farmNumber : Int){
-        for field in fields {
-            field.resetLand();
-        }
-    }
-    
-    
-    
-    /*
-     Adds the amount of money that is sent to the function to cash.
-     */
-    func addMoney(amount : Float){
-        cash = cash + amount
-    }
-    
-    /*
-     Subtracts the amount of money that is sent to the fuction from cash.
-     */
-    func subMoney(amount : Float){
-        cash = cash - amount
-    }
-    
-    
 }

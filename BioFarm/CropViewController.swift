@@ -9,16 +9,21 @@
 import UIKit
 
 class CropViewController: UIViewController {
-    //internal variable
+    /******************************
+     Internal Variables
+     ******************************/
     var whichInfo : Int = 0
     
-    
-    
+    /******************************
+     UI Variables
+     ******************************/
     @IBOutlet var lbl_CropInfo: UILabel!
     @IBOutlet var img_CropImage: UIImageView!
     @IBOutlet var img_CropImage2: UIImageView!
     
-    
+    /******************************
+     System Methods
+     ******************************/
     override func viewDidLoad() {
         super.viewDidLoad()
 

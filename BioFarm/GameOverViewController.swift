@@ -10,13 +10,20 @@ import UIKit
 
 class GameOverViewController: UIViewController {
 
-    
-    
-    @IBOutlet var lbl_gameInfo: UILabel!
-// Passed Variables from Game Scene
+    /******************************
+        Passed In Variables
+     ******************************/
     var yearsPassed: Int = 0
     var currentMoney: Float = 0.0
     
+    /******************************
+        UI Variables
+     ******************************/
+    @IBOutlet var lbl_gameInfo: UILabel!
+    
+    /******************************
+     System Methods
+     ******************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         lbl_gameInfo.text = String("Your farm lasted \(yearsPassed) years and it has $\(currentMoney)")
@@ -32,7 +39,10 @@ class GameOverViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func goToMainMenu(sender: AnyObject) {
+    /******************************
+     Button Methods
+     ******************************/
+    @IBAction func button_GoToMainMenu(sender: AnyObject) {
         
     }
 

@@ -1,0 +1,47 @@
+//
+//  Report.swift
+//  BioFarm
+//
+//  Created by Alex Berns on 5/16/16.
+//
+//
+
+import Foundation
+
+
+public class Report {
+    
+    /******************************
+     Internal Variables
+     ******************************/
+    //Year
+    var year : Int
+    
+    //Money
+    var expense: Float
+    var revenue: Float
+    var boyCash: Float
+    var eoyCash: Float
+    
+    //Event
+    var event: String
+    var eventModifier: Float
+    
+    init () {
+        year = 1
+        expense = 0.0
+        revenue = 0.0
+        eoyCash = 0.0
+        boyCash = 0.0
+        
+        event = ""
+        eventModifier = 0.0
+    }
+    
+    
+    func profit() -> Float{
+        return revenue - expense
+    }
+    
+}
+

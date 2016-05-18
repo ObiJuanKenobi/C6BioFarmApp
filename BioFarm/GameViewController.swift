@@ -12,11 +12,17 @@ import UIKit
 import AVFoundation
 
 class GameViewController : UIViewController{
-    //Passed In Variables
+    /******************************
+     Passed in Variables
+     ******************************/
     var effectsPlayer : AVAudioPlayer? = AVAudioPlayer()
     
+    /******************************
+     UI Variables
+     ******************************/
     //Labels
     @IBOutlet var lbl_money : UILabel!
+    var lbl_year : UILabel!
     @IBOutlet var lbl_harvestMod: UILabel!
     @IBOutlet var lbl_modiferText: UILabel!
     @IBOutlet var lbl_Farm1: UILabel!
@@ -43,31 +49,32 @@ class GameViewController : UIViewController{
     private var redColor : UIColor = UIColor(red: 206.0/255.0, green: 17.0/255.0, blue: 38.0/255.0, alpha: 1.0)
     private var greenColor: UIColor = UIColor(red: 7.0/255.0, green: 109.0/255.0, blue: 84.0/255.0, alpha: 1.0)
     
-    //Other Instance Variables
+    /******************************
+     Internal Variables
+     ******************************/
     private var selectedFarm : Int = 1
     private var farm : Farm = Farm()
     
-    private var modifier: Float = 0.0
-    private var eventText: String = ""
-    private var profit : Float = 0.0
-    private var totalMoney: Float = 0.0
     
-    
-    //System Methods
-    
+    /******************************
+     System Methods
+     ******************************/
     /*
-     A defualt function to set up the view when it is first loaded. It sets up the buttons with defualt imagesa
+     A defualt function to set up the view when it is first loaded. It sets up the buttons with defualt images
      and aspect ratios.
      */
     override func viewDidLoad(){
         //what runs when this view is first loaded
         super.viewDidLoad()
         
+        //Start farm year
+        farm.startYear()
+        
         //setting default outputs
-        self.refresh()
+        self.refreshLabels()
         setButtonAspect()
-        //lbl_harvestMod.text = "Year: \(farm.getYear())"
-        lbl_harvestMod.text = "Test"
+        
+        
     }
     
     /*
@@ -75,19 +82,14 @@ class GameViewController : UIViewController{
      if the field is empty.
      */
     override func viewDidAppear(animated: Bool) {
-        if(farm.cannotBuy() && farm.isEmpty()){
-            //self.performSegueWithIdentifier("toGameOverView", sender: self)
+        if(!farm.canBuy() && farm.isEmpty()){
+            self.performSegueWithIdentifier("toGameOverView", sender: self)
         }
     }
     
-    
-    /*
-     A defualt function that deals with memory warnings.
-     */
-    override func didReceiveMemoryWarning() {
-        // Dispose of any resources that can be recreated.
-        //super.didReceiveMemoryWarning()/Users/jstaker/Documents/Jackson-/BioFarm_NEW/BioFarm/BioFarm/GameViewController.swift
-    }
+    /******************************
+     UI Methods
+     ******************************/
     
     /*
      Sets the aspect ratio for all the picturs in the farm buttons.
@@ -107,25 +109,27 @@ class GameViewController : UIViewController{
      Refreshes the information on all labels on the game screen. These labels are temporary and used for debugging.
      "People like the labels so keep them on or modify them." - Juan
      */
-    func refresh(){
-        //Updates the amount of money shown
-        lbl_money.text = String(format: "$%.2f", farm.getCash())
-/*
-        //Update labels for each farm
-        lbl_Farm1.text = String(format: "%.0f acres of %@", farm.fields[0].getLandSize(), farm.fields[0].getCropName())
-        lbl_Farm2.text = String(format: "%.0f acres of %@", farm.fields[1].getLandSize(), farm.fields[1].getCropName())
-        lbl_Farm3.text = String(format: "%.0f acres of %@", farm.fields[2].getLandSize(), farm.fields[2].getCropName())
-        lbl_Farm4.text = String(format: "%.0f acres of %@", farm.fields[3].getLandSize(), farm.fields[3].getCropName())
-        lbl_Farm5.text = String(format: "%.0f acres of %@", farm.fields[4].getLandSize(), farm.fields[4].getCropName())
-        lbl_Farm6.text = String(format: "%.0f acres of %@", farm.fields[5].getLandSize(), farm.fields[5].getCropName())
-        lbl_Farm7.text = String(format: "%.0f acres of %@", farm.fields[6].getLandSize(), farm.fields[6].getCropName())
-        lbl_Farm8.text = String(format: "%.0f acres of %@", farm.fields[7].getLandSize(), farm.fields[7].getCropName())
-*/
+    func refreshLabels(){
+        let nf = NSNumberFormatter()
+        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        
+        lbl_money.text = String(format: "$%@", nf.stringFromNumber(farm.getCash())!)
+        
+        lbl_harvestMod.text = String(format: "Year: %d", farm.getYear())
+        
+        lbl_Farm1.text = farm.fields[0].getLabel()
+        lbl_Farm2.text = farm.fields[1].getLabel()
+        lbl_Farm3.text = farm.fields[2].getLabel()
+        lbl_Farm4.text = farm.fields[3].getLabel()
+        lbl_Farm5.text = farm.fields[4].getLabel()
+        lbl_Farm6.text = farm.fields[5].getLabel()
+        lbl_Farm7.text = farm.fields[6].getLabel()
+        lbl_Farm8.text = farm.fields[7].getLabel()
     }
     
     
     /*
-     Refreshs all button images after a new crop has been planted.
+     Refreshs button images after a new crop has been planted.
      */
     func refreshImages(){
         let tempImage : UIImage = UIImage(named: farm.fields[selectedFarm].getLandSprite(selectedFarm))!
@@ -146,12 +150,10 @@ class GameViewController : UIViewController{
      The following is a reset method used for clearing certain information after a year.
      It clears certain information from the farm class, and resets the background images for the buttons
      */
-    
-    func reset() {
-        farm.reset()
+    func resetImages() {
         for(var i = 0; i < 8; i += 1){
             let tempImage : UIImage = UIImage(named: farm.fields[i].getLandSprite(i))!
-            switch i{
+            switch i {
             case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
             case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
             case 2:btn_Farm3.setBackgroundImage(tempImage, forState: btn_Farm3.state)
@@ -167,75 +169,53 @@ class GameViewController : UIViewController{
     }
     
     /*
-     Used when the harvest button is pressed. It gets the event for that year and cacluates the profit.
-     It also plays a sound effect based on that event and resets all farms.
-     */
-    @IBAction func button_HarvestYear(sender: AnyObject) {
-        //Checks if there is something in the farm first
-        if(farm.isEmpty()){
-            return
-        }
-        else{ //performs the procedures for harvesting a year
-            //creates an event, mod number and then calculates the yield of each field based on the mod number
-            //it then calculates the revenue made and finally adds the revenue to the current money of the farm
-            
-            //Harvest All handles calculation of revenue
-            
-            farm.harvestAll();
-            
-            //Check Money for Game Over
-            if(farm.getCash() < 12000){
-                self.performSegueWithIdentifier("toGameOverView", sender: self)
-            }
-            else{ //Game Over
-                var eventSound : String = ""
-                
-                eventSound = farm.getEventSound()
-                //Play sound
-                prepareEventSound(eventSound)
-                effectsPlayer!.play()
-                
-                //Temp Variable for profit and tempFarm for results view TODO
-                profit = farm.getRevenue()
-                modifier = farm.getModNumber()
-                eventText = farm.getEventText()
-                totalMoney = farm.getCash()
-                
-                //Print Year Results
-                lbl_harvestMod.text = String(format: "Year: %d \nModifier: %.2f\nProfit: $%.2f", farm.getYear(), farm.getModNumber(), profit)
-                
-                //print flavor Text
-                if(modifier == 1.0){
-                    lbl_modiferText.textColor = greenColor
-                    lbl_modiferText.text = farm.getEventText()
-                }
-                else{
-                    lbl_modiferText.textColor = redColor
-                    lbl_modiferText.text = farm.getEventText()
-                }
-                
-                
-                //Refresh Screen (for crops)
-                reset()
-                refresh()
-                
-                //toResultsView
-                self.performSegueWithIdentifier("toResultsView", sender: self)
-                
-            }
-            
-        }
-    }
-    
-    /*
      Prepares the the sound effect from the yearly event to be played.
      */
     func prepareEventSound(eventSound : String) {
         let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(eventSound, ofType: "mp3")!)
-        let tempVol = effectsPlayer!.volume
+        //let tempVol = effectsPlayer!.volume
         effectsPlayer = try!AVAudioPlayer(contentsOfURL: sound, fileTypeHint: nil)
         effectsPlayer!.prepareToPlay()
-        effectsPlayer!.volume = tempVol
+        //effectsPlayer!.volume = tempVol
+    }
+    
+    /******************************
+     Button Methods
+     ******************************/
+    /*
+     Used when the harvest button is pressed. It gets the event for that year and cacluates the profit.
+     It also plays a sound effect based on that event and resets all farms.
+     */
+    @IBAction func button_HarvestYear(sender: AnyObject) {
+        //Check for empty Farm
+        if(farm.isEmpty()){
+            return
+        }
+        
+        //endYear handles calculation of revenue and expense
+        farm.endYear();
+        
+        let eventSound : String = farm.getEventSound()
+        
+        //Play sound
+        prepareEventSound(eventSound)
+        effectsPlayer!.play()        
+        
+        //Refresh Screen (for crops)
+        resetImages()
+        refreshLabels()
+        
+        farm.startYear()
+        
+        
+        //Check Money for Game Over
+        if(!farm.canBuy()){
+            self.performSegueWithIdentifier("toGameOverView", sender: self)
+        }
+        else {
+            self.performSegueWithIdentifier("toResultsView", sender: self)
+        }
+        
     }
     
     /*
@@ -301,6 +281,9 @@ class GameViewController : UIViewController{
         self.performSegueWithIdentifier("toBuyView", sender: self)
     }
     
+    /******************************
+     Segue Methods
+     ******************************/
     /*
      Prepare Segue and pass required info to new view
      */
@@ -316,12 +299,7 @@ class GameViewController : UIViewController{
         else if(segue.identifier == "toResultsView"){
             let dest : ResultsTableViewController = segue.destinationViewController as! ResultsTableViewController
             
-            dest.year = farm.getYear()
-            dest.mod = farm.getModNumber()
-            dest.modText = farm.getEventText()
-            dest.profit = self.profit
-            dest.totalMoney = farm.getCash()
-            
+            dest.reports = farm.reports;            
         }
         else if(segue.identifier == "toGameOverView"){
             let dest: GameOverViewController = segue.destinationViewController as! GameOverViewController
@@ -345,7 +323,7 @@ class GameViewController : UIViewController{
      Refreshes the images and labels after returning from the buy screen.
      */
     @IBAction func unwindFromBuy(unwindSegue: UIStoryboardSegue){
-        refresh()
+        refreshLabels()
         refreshImages()
     }
     

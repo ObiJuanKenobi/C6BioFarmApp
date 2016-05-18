@@ -39,9 +39,10 @@ class Land {
     private var size : Int
     private var crop : Crops
     private var insured : Bool
+    var expense: Float = 0.0
     var revenue: Float = 0.0
+    var yield: Float = 0.0
     let fieldSizes:[Int] = [175, 250, 180, 150, 60, 60, 65, 60]
-    var fieldYield : Float = 0.0;
     
     //Crop Rotation Variables
     var oldCrop : Crops = Crops.Empty
@@ -70,34 +71,41 @@ class Land {
      */
     func plant (toPlant : Crops){
         crop = toPlant
+        expense = crop.getCropCost() * Float(getLandSize())
     }
     
     
     func resetLand() {
+        //Check for Switchgrass
         if(crop == .Grass) {
-            if( numOldCrop % 7 != 0 || numOldCrop == 0) {
-                numOldCrop += 1;
+            //Check how long it has been planted
+            if( numOldCrop % 6 != 0 || numOldCrop == 0) {
+                numOldCrop += 1
             } else {
-                //reset grass stuff
-                numOldCrop = 0;
-                crop = .Empty;
+                //reset switchgrass if older than 7 years
+                numOldCrop = 0
+                crop = .Empty
             }
-            revenue = 0.0;
-            fieldYield = 0.0;
-            return;
+            //Reset internal values for money
+            revenue = 0.0
+            yield = 0.0
+            //Reset Expense since you only pay once
+            expense = 0.0
+            return
         }
         
         if(oldCrop == crop){
-            numOldCrop += 1;
+            numOldCrop += 1
         }else{
             numOldCrop = 0
         }
         
-        oldCrop = crop;
-        insured = false;
-        crop = Crops.Empty;
-        revenue = 0.0;
-        fieldYield = 0.0;
+        oldCrop = crop
+        insured = false
+        crop = Crops.Empty
+        revenue = 0.0
+        expense = 0.0
+        yield = 0.0
         
     }
     
@@ -106,47 +114,48 @@ class Land {
      ? Where should we calculate flooding?
      */
     func calculateYield(modifier : Float) -> Float{
+        
         if(getCrop() == .Corn && isInsured()){
-            fieldYield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
-            //Calculate crop rotation
-            for(var i = 0; i < numOldCrop; i += 1){
-                fieldYield *= 0.5;
-            }
+            yield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
+            
+            checkCropRotation()
+            
         }
         else if (getCrop() == .Corn && !(isInsured())){
-            fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
-            //Calculate crop rotation
-            for(var i = 0; i < numOldCrop; i += 1){
-                fieldYield *= 0.5;
-            }
-        }else if (getCrop() == .Soy && isInsured()){
-            fieldYield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
-            //Calculate crop rotation
-            for(var i = 0; i < numOldCrop; i += 1){
-                fieldYield *= 0.5;
-            }
-        }else if (getCrop() == .Soy && !(isInsured())){
-            fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
-            //Calculate crop rotation
-            for(var i = 0; i < numOldCrop; i += 1){
-                fieldYield *= 0.5;
-            }
-        }else if(getCrop() == .Grass){
-            fieldYield = crop.getCropYield() * Float(getLandSize()) * modifier;
+            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
             
-            for(var i = 0; i < numOldCrop; i += 1){
-                fieldYield *= 0.5
-            }
+            checkCropRotation()
+            
+        }else if (getCrop() == .Soy && isInsured()){
+            yield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
+            
+            checkCropRotation()
+            
+        }else if (getCrop() == .Soy && !(isInsured())){
+            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
+            
+            checkCropRotation()
+    
+        }else if(getCrop() == .Grass){
+            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
         }
         else{
-            fieldYield = 0.0;
+            yield = 0.0;
         }
         
-        return fieldYield;
+        return yield;
     }
     
-    func calculateRevenue() -> Float{
-        revenue = crop.getCropSellingPrice() * fieldYield;
+    func checkCropRotation() {
+        //Calculate crop rotation
+        for _ in 0..<numOldCrop {
+            yield *= 0.5;
+        }
+    }
+    
+    func calculateRevenue(modifier : Float) -> Float{
+        calculateYield(modifier)
+        revenue = crop.getCropSellingPrice() * yield;
         return revenue;
     }
     
@@ -157,19 +166,17 @@ class Land {
      
      *************************/
     
-    /*
-     Returns the yield of the field but this value is calculated in another function
-     alex: made this since we need it in Farm
-     */
-    
-    func getPreviousCrop() -> Crops {
-        return oldCrop
-    }
-    
     func getYield() -> Float {
-        return fieldYield;
+        return yield;
     }
     
+    func getRevenue() -> Float {
+        return revenue
+    }
+    
+    func getExpense() -> Float {
+        return expense
+    }
   
     func getCrop() -> Crops {
         return crop
@@ -193,7 +200,6 @@ class Land {
             //alex: Um this makes a recusive loop, I think
             return crop.getCropCost()
         }
-        
     }
     
     /*
@@ -209,7 +215,7 @@ class Land {
     
     
     /*
-     Reurns the name of the image that the land's crop has.
+     Returns the name of the image that the land's crop has.
      */
     
     func getLandSprite(whichField: Int) -> String{
@@ -224,17 +230,14 @@ class Land {
     }
     
     /*
-     Set whether the land is insured or not.
-     */
-    func setInsured (newInsured : Bool) {
-        insured = newInsured
-    }
-    
-    /*
      Reutrns the size of the land in acres.
      */
     func getLandSize() -> Int {
         return size
+    }
+    
+    func getLabel() -> String {
+        return String(format: "%d acres of %@", getLandSize(), getCropName())
     }
     
     /*********************
@@ -242,12 +245,11 @@ class Land {
      Setters
      
      *********************/
-    
     /*
-     Sets the lands crop to the specified type.
+     Set whether the land is insured or not.
      */
-    func setCrop (newCrop : Crops) {
-        crop = newCrop
+    func setInsured (newInsured : Bool) {
+        insured = newInsured
     }
     
     

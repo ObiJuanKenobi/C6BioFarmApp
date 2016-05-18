@@ -121,7 +121,7 @@
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Main" id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="BioFarm" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MUj-cc-UFw"/>
                         <viewControllerLayoutGuide type="bottom" id="Yvf-WY-9jx"/>
@@ -242,8 +242,8 @@
                                     <action selector="volumeOnOff:" destination="xMM-AB-dDi" eventType="valueChanged" id="6hy-FN-lh5"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q73-cS-cIY">
-                                <rect key="frame" x="351" y="172" width="66" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q73-cS-cIY">
+                                <rect key="frame" x="290" y="172" width="188" height="28"/>
                                 <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -281,7 +281,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HB5-5I-3zS">
                                 <rect key="frame" x="360" y="370" width="51" height="31"/>
                                 <connections>
-                                    <action selector="effectsOnOff:" destination="xMM-AB-dDi" eventType="valueChanged" id="JYr-Ip-5F4"/>
+                                    <action selector="effectsOnOff:" destination="xMM-AB-dDi" eventType="valueChanged" id="mOp-QL-MaC"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -301,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qn-wf-YJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2368" y="-1375.5733333333335"/>
+            <point key="canvasLocation" x="-2368" y="-1376"/>
         </scene>
         <!--GoalViewController-->
         <scene sceneID="ViV-Rs-fKg">
@@ -590,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nir-T3-L1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3711.5" y="619"/>
+            <point key="canvasLocation" x="-3657.5" y="597"/>
         </scene>
         <!--Game Over-->
         <scene sceneID="uvG-Lz-PWH">
@@ -654,18 +654,88 @@
         <scene sceneID="xce-Ar-aYc">
             <objects>
                 <tableViewController id="zFX-oZ-jnJ" customClass="ResultsTableViewController" customModule="BioFarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zDh-uG-Y45">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="zDh-uG-Y45">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="44" id="2qP-pO-5Dg">
-                                <rect key="frame" x="0.0" y="22" width="414" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReportCell" rowHeight="90" id="2qP-pO-5Dg" customClass="ReportTableViewCell" customModule="BioFarm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2qP-pO-5Dg" id="K38-aP-XSL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kq-rU-dq4">
+                                            <rect key="frame" x="5" y="5" width="39" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjJ-OW-vO0">
+                                            <rect key="frame" x="183" y="5" width="48" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expense" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oi-Kh-NcX">
+                                            <rect key="frame" x="0.0" y="34" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Revenue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3d-u2-pBX">
+                                            <rect key="frame" x="138" y="34" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-WR-CQS">
+                                            <rect key="frame" x="284" y="34" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEB-cP-4Jh">
+                                            <rect key="frame" x="52" y="5" width="123" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gln-eC-S0V">
+                                            <rect key="frame" x="0.0" y="61" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvX-Ye-cEG">
+                                            <rect key="frame" x="138" y="61" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUb-xM-1hp">
+                                            <rect key="frame" x="276" y="61" width="130" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cs-rX-Gcb">
+                                            <rect key="frame" x="239" y="5" width="175" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lbl_event" destination="2cs-rX-Gcb" id="hPM-X5-OZU"/>
+                                    <outlet property="lbl_expense" destination="Gln-eC-S0V" id="K8a-z1-Vlq"/>
+                                    <outlet property="lbl_profit" destination="mUb-xM-1hp" id="37O-1R-kSC"/>
+                                    <outlet property="lbl_revenue" destination="yvX-Ye-cEG" id="kQT-C9-g2p"/>
+                                    <outlet property="lbl_year" destination="CEB-cP-4Jh" id="ndG-sK-FqD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -673,16 +743,17 @@
                             <outlet property="delegate" destination="zFX-oZ-jnJ" id="zhj-lS-2d2"/>
                         </connections>
                     </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbm-eh-rcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3702" y="1844"/>
+            <point key="canvasLocation" x="-3384" y="2360"/>
         </scene>
-        <!--The Barn Learning Center-->
+        <!--Barn Learning Center-->
         <scene sceneID="Q97-cT-jdr">
             <objects>
-                <viewController id="6c4-kr-8aH" customClass="TheBarnViewController" customModule="BioFarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Barn Learning Center" id="6c4-kr-8aH" customClass="BarnViewController" customModule="BioFarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l9U-cU-Fbe"/>
                         <viewControllerLayoutGuide type="bottom" id="xNn-fy-w6y"/>
@@ -698,7 +769,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_Carbon:" destination="6c4-kr-8aH" eventType="touchUpInside" id="dFr-NO-Yb3"/>
+                                    <action selector="btn_Carbon:" destination="6c4-kr-8aH" eventType="touchUpInside" id="icB-Ny-wFd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-Cp-JKF">
@@ -707,7 +778,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_Corn:" destination="6c4-kr-8aH" eventType="touchUpInside" id="GMr-Zw-mRu"/>
+                                    <action selector="btn_Corn:" destination="6c4-kr-8aH" eventType="touchUpInside" id="xjD-mb-oqI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-Qw-OHo">
@@ -716,7 +787,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_Switchgrass:" destination="6c4-kr-8aH" eventType="touchUpInside" id="KJv-vJ-PYG"/>
+                                    <action selector="btn_StemCareers:" destination="6c4-kr-8aH" eventType="touchUpInside" id="OdH-h6-vUt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxy-vv-So4">
@@ -725,7 +796,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_Soybeans:" destination="6c4-kr-8aH" eventType="touchUpInside" id="Dec-0N-ocf"/>
+                                    <action selector="btn_Soybeans:" destination="6c4-kr-8aH" eventType="touchUpInside" id="uL3-bv-n3M"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="C6" translatesAutoresizingMaskIntoConstraints="NO" id="zAz-Co-srR">
@@ -738,7 +809,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_StemCareers:" destination="6c4-kr-8aH" eventType="touchUpInside" id="8MS-BY-c0L"/>
+                                    <action selector="btn_StemCareers:" destination="6c4-kr-8aH" eventType="touchUpInside" id="ltE-uD-dlE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkE-c7-h2W">
@@ -748,14 +819,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btn_HowToPlay:" destination="6c4-kr-8aH" eventType="touchUpInside" id="nhH-1L-cOW"/>
+                                    <action selector="btn_HowToPlay:" destination="6c4-kr-8aH" eventType="touchUpInside" id="dAh-Hm-1rA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.027450980390000001" green="0.42745098040000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The Barn Learning Center" id="v3Q-7M-rzP"/>
+                    <navigationItem key="navigationItem" title="Barn Learning Center" id="v3Q-7M-rzP"/>
                     <connections>
                         <segue destination="YpC-Ws-FDu" kind="popover" identifier="toCropInfo" popoverAnchorView="zAz-Co-srR" id="iQn-ei-PX2">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -765,7 +836,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2J-gd-sS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3105.5" y="1774"/>
+            <point key="canvasLocation" x="-2685.5" y="1342"/>
         </scene>
         <!--Barn Info View Controller-->
         <scene sceneID="dLo-O7-MIV">
@@ -927,8 +998,8 @@
                                     <action selector="buy" destination="evP-8u-UxC" eventType="touchUpInside" id="xYA-gi-ikq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Calculation" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vv-oA-wDk">
-                                <rect key="frame" x="20" y="763" width="217" height="103"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Calculation" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vv-oA-wDk">
+                                <rect key="frame" x="20" y="763" width="464" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="103" id="MrJ-O0-loo"/>
                                     <constraint firstAttribute="width" constant="217" id="yvr-qX-7p3"/>

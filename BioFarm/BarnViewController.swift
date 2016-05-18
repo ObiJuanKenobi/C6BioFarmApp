@@ -8,11 +8,16 @@
 
 import UIKit
 
-class TheBarnViewController: UIViewController {
+class BarnViewController: UIViewController {
 
-    //Internal Variables
+    /******************************
+        Internal Variables
+     ******************************/
     var whichInfoToPresent : Int = 0
     
+    /******************************
+        System Methods
+     ******************************/
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,16 +29,9 @@ class TheBarnViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "toCropInfo"){
-            let dest: CropViewController = segue.destinationViewController as! CropViewController
-            
-            dest.whichInfo = whichInfoToPresent
-            
-        }
-        
-    }
+    /******************************
+     Button Methods
+     ******************************/
     @IBAction func btn_Carbon(sender: AnyObject) {
         whichInfoToPresent = 4
         self.performSegueWithIdentifier("toCropInfo", sender: self)
@@ -64,6 +62,20 @@ class TheBarnViewController: UIViewController {
     }
     @IBAction func btn_HowToPlay(sender: AnyObject) {
         self.performSegueWithIdentifier("toBarnInfo", sender: self)
+        
+    }
+    
+    /******************************
+        Segue Methods
+     ******************************/
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toCropInfo"){
+            let dest: CropViewController = segue.destinationViewController as! CropViewController
+            
+            dest.whichInfo = whichInfoToPresent
+            
+        }
         
     }
    

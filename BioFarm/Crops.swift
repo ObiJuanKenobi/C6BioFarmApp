@@ -76,6 +76,15 @@ enum Crops{
         }
     }
     
+    func getCropInfo() -> String {
+        switch self {
+        case .Corn : return "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
+        case .Soy : return "Soybeans are processed for oil, animal feed, and other industrial products. A small percentage is used for human consumption such as soymilk, soy, and flour."
+        case .Grass : return "Switchgrass is used as feedstock for animals and other bio-friendly uses such as the development of bio-mass, methods for energy production, and cover for soil."
+        case .Empty : return ""
+        }
+    }
+    
     func getLandSprite(farmNum : Int) -> String{
         switch self{
         case .Corn: return String(format:"R-map%d_corn", farmNum)

@@ -24,6 +24,8 @@
 		EB5803111B599A810096178B /* Drankin Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB5803101B599A810096178B /* Drankin Song.mp3 */; };
 		EB5803141B5D32310096178B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5803121B5D32310096178B /* Main.storyboard */; };
 		EB5803161B5D9E830096178B /* BarnInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5803151B5D9E830096178B /* BarnInfoViewController.swift */; };
+		EB5E50921CEA30F1007CD94E /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E50911CEA30F1007CD94E /* Report.swift */; };
+		EB5E509A1CECD0E8007CD94E /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E50991CECD0E8007CD94E /* ReportTableViewCell.swift */; };
 		EB65AFED1A71BE02006A4235 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */; };
 		EB83042F1AD4565B00BA9128 /* Wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB83042E1AD4565B00BA9128 /* Wind.mp3 */; };
 		EB8304311AD4595300BA9128 /* Water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB8304301AD4595300BA9128 /* Water.mp3 */; };
@@ -73,6 +75,8 @@
 		EB5803101B599A810096178B /* Drankin Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Drankin Song.mp3"; path = "../Drankin Song.mp3"; sourceTree = "<group>"; };
 		EB5803131B5D32310096178B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB5803151B5D9E830096178B /* BarnInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarnInfoViewController.swift; sourceTree = "<group>"; };
+		EB5E50911CEA30F1007CD94E /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		EB5E50991CECD0E8007CD94E /* ReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		EB83042E1AD4565B00BA9128 /* Wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wind.mp3; sourceTree = "<group>"; };
 		EB8304301AD4595300BA9128 /* Water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Water.mp3; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				EB3F7A7A1CD12D6E0013E8B7 /* Crops.swift */,
 				EB3F7A7C1CD12DF50013E8B7 /* Event.swift */,
 				EB3F7A7E1CD12E790013E8B7 /* Farm.swift */,
+				EB5E50911CEA30F1007CD94E /* Report.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				EB5803151B5D9E830096178B /* BarnInfoViewController.swift */,
 				EB3B7FB81B53F74900E3CE4C /* GameOverViewController.swift */,
 				EB5803081B5941080096178B /* CropViewController.swift */,
+				EB5E50991CECD0E8007CD94E /* ReportTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -344,7 +350,9 @@
 				EB0CCBD91A72F4C8002E6134 /* GameViewController.swift in Sources */,
 				EB3F7A7B1CD12D6E0013E8B7 /* Crops.swift in Sources */,
 				EB3F7A791CD12D160013E8B7 /* Land.swift in Sources */,
+				EB5E509A1CECD0E8007CD94E /* ReportTableViewCell.swift in Sources */,
 				EB5803091B5941080096178B /* CropViewController.swift in Sources */,
+				EB5E50921CEA30F1007CD94E /* Report.swift in Sources */,
 				1DC5BB571A37AA4400F8DA6F /* MainViewController.swift in Sources */,
 				EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */,
 				EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */,

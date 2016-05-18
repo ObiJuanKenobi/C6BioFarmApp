@@ -11,14 +11,23 @@ import UIKit
 import AVFoundation
 
 class OptionsViewController : UIViewController{
+    /******************************
+     Passed In Variables
+     ******************************/
     
     var musicPlayer : AVAudioPlayer?
     var effectsPlayer : AVAudioPlayer?
+    
+    /******************************
+     UI Variables
+     ******************************/
     @IBOutlet var sld_Volume: UISlider!
     @IBOutlet var swt_Volume: UISwitch!
     @IBOutlet var swt_Effects: UISwitch!
     
-    
+    /******************************
+     System Methods
+     ******************************/
     /*
         A defualt function to set up the view when its first loaded. Sets the volume switch and slider based on the
         volume of the sound and whether the music is playing. 
@@ -45,6 +54,10 @@ class OptionsViewController : UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+
+    /******************************
+     UI Methods
+     ******************************/
     /*
         Changes the volume of the music player based on the state of the slider.
     */
@@ -79,7 +92,7 @@ class OptionsViewController : UIViewController{
             effectsPlayer!.volume = 0.3
         }
         else{
-            effectsPlayer!.volume = 0
+            effectsPlayer!.volume = 0.0
         }
     }
     

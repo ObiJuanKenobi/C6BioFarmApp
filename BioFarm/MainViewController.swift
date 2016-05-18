@@ -1,19 +1,21 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  BioFarm
 //
 //  Created by Berns, Alex J on 12/9/14.
+//  Last Modified by Alex Berns on 4/16/16
 //
 //
 
 import UIKit
 import AVFoundation
+
 /*
-The Following is the code for the main menu screen
+Main Menu View
 */
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     //variables that handle the music
-    private var backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
+    
     private var musicPlayer = AVAudioPlayer()
     private var effectsPlayer = AVAudioPlayer()
     
@@ -44,8 +46,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  
-    
     /*
         Prepares app to move to the next scene by sending refrences to data that may be used there.
     */
@@ -59,26 +59,23 @@ class ViewController: UIViewController {
             let dest : GameViewController = segue.destinationViewController as! GameViewController
             dest.effectsPlayer = effectsPlayer
         }
-        
+        else if(segue.identifier == "toCreditView"){
             
-        
+        }
     }
-    
-    
     
     /*
         Prepares the musicPlayer to play the background song. Sets default volume and inifite loops.
     */
     func prepareSound(){
-        //musicPlayer = AVAudioPlayer(contentsOfURL: backgroundSong, error: nil)
+        let backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
         self.musicPlayer = try! AVAudioPlayer(contentsOfURL: backgroundSong, fileTypeHint: nil)
-        musicPlayer.prepareToPlay()
         musicPlayer.numberOfLoops = -1
         musicPlayer.volume = 0.5
+        musicPlayer.prepareToPlay()
         
-      let snd_applause = try! NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
-       // effectsPlayer = AVAudioPlayer(contentsOfURL: snd_applause, error: nil)
-        effectsPlayer = try! AVAudioPlayer(contentsOfURL: snd_applause, fileTypeHint: nil)
+      let sound = try! NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
+        effectsPlayer = try! AVAudioPlayer(contentsOfURL: sound, fileTypeHint: nil)
         effectsPlayer.volume = 0.3
     }
     

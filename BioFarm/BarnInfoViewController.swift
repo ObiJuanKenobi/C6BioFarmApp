@@ -9,12 +9,16 @@
 import UIKit
 
 class BarnInfoViewController: UIViewController {
-    
-    //Internal variables
+    /******************************
+        UI Variables
+     ******************************/
     @IBOutlet var lbl_Info: UILabel!
     @IBOutlet var lbl_Info2: UILabel!
     @IBOutlet var lbl_Info3: UILabel!
     
+    /******************************
+     System Methods
+     ******************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         lbl_Info.text = "The objective of this game is to have your farm make a profit and survive random weather events while making environmentally friendly choices."
@@ -28,8 +32,4 @@ class BarnInfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
-
 }
