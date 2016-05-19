@@ -3,6 +3,7 @@
 //  BioFarm
 //
 //  Created by Berns, Alex J on 12/11/14.
+//  Last Modified by Alex Berns on Summer 2016
 //
 //
 
@@ -97,7 +98,7 @@ public class Farm {
         event.doEvent()
         
         //Calc Revenue
-        calcRevenue(event.eventModifier)
+        calcRevenue()
         
         //Calc Expense
         calcExpense()
@@ -217,10 +218,10 @@ public class Farm {
      
      ******/
     
-    func calcYield(modifierNum: Float) -> Float{
+    func calcYield() -> Float{
         var totalYield: Float = 0.0;
         for field in fields{
-            totalYield += field.calculateYield(modifierNum);
+            totalYield += field.calculateYield(event);
         }
         return totalYield;
     }
@@ -232,9 +233,9 @@ public class Farm {
         return expense;
     }
     
-    func calcRevenue(modifierNum: Float) -> Float{
+    func calcRevenue() -> Float{
         for field in fields {
-            revenue += field.calculateRevenue(modifierNum);
+            revenue += field.calculateRevenue(event);
         }
         return revenue;
     }

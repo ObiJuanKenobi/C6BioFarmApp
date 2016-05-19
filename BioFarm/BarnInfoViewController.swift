@@ -2,8 +2,8 @@
 //  BarnInfoViewController.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 7/20/15.
-//
+//  Created by Juan Venegas on 7/20/15.
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import UIKit

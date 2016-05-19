@@ -4,7 +4,7 @@
 //  BioFarm
 //
 //  Created by Berns, Alex J on 12/11/14.
-//
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import Foundation
@@ -71,7 +71,8 @@ class Land {
      */
     func plant (toPlant : Crops){
         crop = toPlant
-        expense = crop.getCropCost() * Float(getLandSize())
+        //Calc expense for crop (insured handled in getCropCost)
+        expense = self.getCropCost() * Float(getLandSize())
     }
     
     
@@ -113,31 +114,32 @@ class Land {
      Calculates the yield but does not take into account of flooding
      ? Where should we calculate flooding?
      */
-    func calculateYield(modifier : Float) -> Float{
+    func calculateYield(event : Event) -> Float{
         
         if(getCrop() == .Corn && isInsured()){
-            yield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
+            yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, 0.75);
             
             checkCropRotation()
             
         }
         else if (getCrop() == .Corn && !(isInsured())){
-            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
+            yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifier;
             
             checkCropRotation()
             
         }else if (getCrop() == .Soy && isInsured()){
-            yield = crop.getCropYield() * Float(getLandSize()) * max(modifier, 0.75);
+            yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, 0.75);
             
             checkCropRotation()
             
         }else if (getCrop() == .Soy && !(isInsured())){
-            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
+            yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifier;
             
             checkCropRotation()
     
         }else if(getCrop() == .Grass){
-            yield = crop.getCropYield() * Float(getLandSize()) * modifier;
+            //If there is a flood, switchgrass is immune
+            yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifierGrass;
         }
         else{
             yield = 0.0;
@@ -153,8 +155,8 @@ class Land {
         }
     }
     
-    func calculateRevenue(modifier : Float) -> Float{
-        calculateYield(modifier)
+    func calculateRevenue(event : Event) -> Float{
+        calculateYield(event)
         revenue = crop.getCropSellingPrice() * yield;
         return revenue;
     }
@@ -192,12 +194,9 @@ class Land {
      return crop cost function
      */
     func getCropCost() -> Float {
-        if(insured && crop == .Corn){
-            return 800.0;
-        }else if(insured && crop == .Soy){
-            return 600.0
+        if(insured){
+            return crop.getCropInsuredCost()
         }else{
-            //alex: Um this makes a recusive loop, I think
             return crop.getCropCost()
         }
     }

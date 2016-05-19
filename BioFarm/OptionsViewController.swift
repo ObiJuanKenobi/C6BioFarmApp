@@ -2,8 +2,8 @@
 //  OptionsViewController.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 1/22/15.
-//
+//  Created by Jackson Voigt on 1/22/15.
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import Foundation

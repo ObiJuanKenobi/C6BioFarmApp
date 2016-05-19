@@ -2,8 +2,8 @@
 //  CropViewController.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 7/17/15.
-//
+//  Created by Juan Venegas on 7/17/15.
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import UIKit
@@ -58,7 +58,7 @@ class CropViewController: UIViewController {
             lbl_CropInfo.text = "Insurance Specialists work with farmers and various agriculture based companies to provide them with information they need in order to make profitable decisions within an ethical and professional manner.\nPlant Engineers work to plan, design, modify, and maintain systems, and equipment within  various plant manufacturing facilities.\nResearch Scientists are scientific professionals who specialize in laboratory research in various areas of science. They outline, conduct experiments, collect data based on established knowledge and understanding."
         }
         else{
-            lbl_CropInfo.text = "the crop number was not sent correctly"
+            lbl_CropInfo.text = "ERROR: the crop number was not sent correctly"
         }
     }
 

@@ -150,7 +150,7 @@
                                     <constraint firstAttribute="width" secondItem="sw5-bF-Cqn" secondAttribute="height" multiplier="169:187" id="rwk-jx-ClU"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="R-corn" translatesAutoresizingMaskIntoConstraints="NO" id="ue5-Lx-aDs">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="R-switchgrass" translatesAutoresizingMaskIntoConstraints="NO" id="ue5-Lx-aDs">
                                 <rect key="frame" x="70" y="620" width="152" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ue5-Lx-aDs" secondAttribute="height" multiplier="160:279" id="zix-cK-mon"/>
@@ -172,7 +172,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="R-Menu" translatesAutoresizingMaskIntoConstraints="NO" id="mOY-40-lDh">
-                                <rect key="frame" x="4" y="57" width="760" height="536"/>
+                                <rect key="frame" x="-6" y="48" width="779" height="547"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mOY-40-lDh" secondAttribute="height" multiplier="768:541" id="uMj-3n-2Sw"/>
                                 </constraints>
@@ -198,13 +198,13 @@
                             <constraint firstAttribute="centerX" secondItem="sw5-bF-Cqn" secondAttribute="centerX" constant="-244.5" id="QC5-F7-H2n"/>
                             <constraint firstItem="sw5-bF-Cqn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="528" id="Xko-VY-q4h"/>
                             <constraint firstAttribute="centerY" secondItem="lad-fA-9ix" secondAttribute="centerY" constant="-147.5" id="YVn-lc-0oy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mOY-40-lDh" secondAttribute="trailing" constant="-16" id="dud-2e-xW2"/>
                             <constraint firstAttribute="centerY" secondItem="sw5-bF-Cqn" secondAttribute="centerY" constant="-194.5" id="ewY-CH-gI2"/>
                             <constraint firstAttribute="centerX" secondItem="ue5-Lx-aDs" secondAttribute="centerX" constant="238" id="jTJ-aQ-arO"/>
+                            <constraint firstItem="mOY-40-lDh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-26" id="lDc-lN-A4i"/>
                             <constraint firstItem="CKf-se-rhE" firstAttribute="top" secondItem="lad-fA-9ix" secondAttribute="bottom" constant="36" id="lUQ-VV-s8i"/>
                             <constraint firstAttribute="centerY" secondItem="CKf-se-rhE" secondAttribute="centerY" constant="-241" id="rs1-pR-nj0"/>
                             <constraint firstAttribute="centerX" secondItem="mOY-40-lDh" secondAttribute="centerX" id="u56-d4-LtO"/>
-                            <constraint firstItem="mOY-40-lDh" firstAttribute="top" secondItem="MUj-cc-UFw" secondAttribute="bottom" constant="-7" id="y51-tt-5Ds"/>
+                            <constraint firstItem="mOY-40-lDh" firstAttribute="top" secondItem="MUj-cc-UFw" secondAttribute="bottom" id="y51-tt-5Ds"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main Menu" id="hlY-1f-NdL"/>
@@ -363,7 +363,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDN-hT-yUj">
-                                <rect key="frame" x="97" y="109" width="10" height="21"/>
+                                <rect key="frame" x="97" y="109" width="179" height="21"/>
                                 <accessibility key="accessibilityConfiguration" label="label1"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <nil key="highlightedColor"/>
@@ -411,6 +411,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDC-FL-F5n" customClass="OBShapedButton">
                                         <rect key="frame" x="226" y="0.0" width="446" height="523"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" backgroundImage="R-map8">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1010,9 +1011,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="C6_Explaining" translatesAutoresizingMaskIntoConstraints="NO" id="xlc-f9-IFK">
                                 <rect key="frame" x="223" y="376" width="275" height="250"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvK-xd-8An">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvK-xd-8An">
                                 <rect key="frame" x="370" y="400" width="114" height="210"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.027450980390000001" green="0.42745098040000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1116,7 +1117,6 @@
         <image name="R-button_buy" width="512" height="256"/>
         <image name="R-button_harvest" width="512" height="256"/>
         <image name="R-button_start" width="512" height="256"/>
-        <image name="R-corn" width="256" height="512"/>
         <image name="R-map1" width="963" height="888"/>
         <image name="R-map2" width="1023" height="648"/>
         <image name="R-map3" width="736" height="603"/>
@@ -1128,6 +1128,7 @@
         <image name="R-map_full" width="2062" height="1536"/>
         <image name="R-map_river" width="1242" height="1536"/>
         <image name="R-soybean" width="256" height="256"/>
+        <image name="R-switchgrass" width="256" height="512"/>
         <image name="Soybeans2" width="768" height="768"/>
         <image name="Switchgrass2" width="768" height="768"/>
     </resources>

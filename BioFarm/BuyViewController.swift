@@ -2,8 +2,8 @@
 //  BuyViewController.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 1/24/15.
-//
+//  Created by Alex Berns on 1/24/15.
+//  Last Modified by Alex Berns on Summer 2016
 
 
 import Foundation
@@ -120,6 +120,7 @@ class BuyViewController: UIViewController {
             swt_Insur.hidden = true
             //changes insure switch off since switch grass has no insurance
             swt_Insur.setOn(false, animated: false)
+            farmInBuyView!.fields[selectedFarm].setInsured(false)
             
 
             default: break
@@ -190,15 +191,23 @@ class BuyViewController: UIViewController {
         //Make the number readable with a formatter
         let nf = NSNumberFormatter()
         nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        
+        var cropCost : Float
+        if(farmInBuyView!.fields[selectedFarm].isInsured()){
+            cropCost = cropToBuy.getCropInsuredCost()
+        }
+        else {
+            cropCost = cropToBuy.getCropCost()
+        }
             
-        lbl_Calculation.text = String(format: "%@\nNumber of acres: %@ \nPrice of crop: %@\nMarket Price per Yield: %@\nYield per Acre: %@",
+        lbl_Calculation.text = String(format: "%@\nNumber of acres: %@ \nPrice of crop: %@\n",
                                       cropToBuy.getCropName(),
                                       nf.stringFromNumber(farmInBuyView!.fields[selectedFarm].getLandSize())!,
-                                      nf.stringFromNumber(cropToBuy.getCropCost())!,
-                                      nf.stringFromNumber(cropToBuy.getCropSellingPrice())!,
-                                      nf.stringFromNumber(cropToBuy.getCropYield())!)
+                                      nf.stringFromNumber(cropCost)!)
+                                      //nf.stringFromNumber(cropToBuy.getCropSellingPrice())!,
+                                      //nf.stringFromNumber(cropToBuy.getCropYield())!)
         
-        let calculatedCost = cropToBuy.getCropCost() * Float (farmInBuyView!.fields[selectedFarm].getLandSize())
+        let calculatedCost = cropCost * Float (farmInBuyView!.fields[selectedFarm].getLandSize())
         lbl_Price.text = String(format: "$%@", nf.stringFromNumber(calculatedCost)!)
      
     }

@@ -2,8 +2,8 @@
 //  ResultsTableViewController.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 2/19/15.
-//
+//  Created by Juan Venegas on 2/19/15.
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import Foundation

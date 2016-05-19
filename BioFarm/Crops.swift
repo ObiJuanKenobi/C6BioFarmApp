@@ -3,7 +3,7 @@
 //
 //
 //  Created by Juan Venegas on 2/14/16.
-//
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import Foundation
@@ -27,6 +27,9 @@ enum Crops{
         }
     }
     
+    /*
+     Returns the cost / acre
+     */
     func getCropCost() -> Float{
         switch self{
         case .Corn:
@@ -41,6 +44,25 @@ enum Crops{
         }
     }
     
+    /*
+     Returns the cost / acre
+     */
+    func getCropInsuredCost() -> Float {
+        switch self{
+        case .Corn:
+            return 800.0
+        case .Soy:
+            return 600.0
+        case Grass:
+            return 200.0
+        default:
+            return 0.0
+            
+        }
+    }
+    /*
+     Returns the Dollars per Bushel/Ton
+     */
     func getCropSellingPrice() -> Float{
         switch self{
         case .Corn:
@@ -54,6 +76,9 @@ enum Crops{
         }
     }
     
+    /*
+     Returns the Bushels/Ton per Acre
+     */
     func getCropYield() -> Float{
         switch self{
         case .Corn:
@@ -80,7 +105,7 @@ enum Crops{
         switch self {
         case .Corn : return "Corn is processed for food for both humans and animals along with industrial products such as ethanol."
         case .Soy : return "Soybeans are processed for oil, animal feed, and other industrial products. A small percentage is used for human consumption such as soymilk, soy, and flour."
-        case .Grass : return "Switchgrass is used as feedstock for animals and other bio-friendly uses such as the development of bio-mass, methods for energy production, and cover for soil."
+        case .Grass : return "Switchgrass is used as feedstock for animals and other bio-friendly uses such as the development of bio-mass, methods for energy production, and cover for soil.\nSwitchgrass is also resistent to flooding."
         case .Empty : return ""
         }
     }

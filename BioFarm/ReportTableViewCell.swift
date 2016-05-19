@@ -2,19 +2,13 @@
 //  ReportTableViewCell.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 5/18/16.
-//
+//  Created by Alex Berns on 5/18/16.
+//  Last Modified by Alex Berns on Summer 2016
 //
 
 import UIKit
 
 class ReportTableViewCell: UITableViewCell {
-//    var report : Report?
-//    var year : String?
-//    var event : String?
-//    var expense : String?
-//    var revenue : String?
-//    var profit : String?
     
     @IBOutlet var lbl_year: UILabel!
     @IBOutlet var lbl_event: UILabel!

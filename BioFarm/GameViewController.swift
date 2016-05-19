@@ -3,7 +3,7 @@
 //  BioFarm
 //
 //  Created by Alex Berns on 1/23/15.
-//  Last Modified by Alex Berns on 4/16/16
+//  Last Modified by Alex Berns on Summer 2016
 //
 //  TODO: put a select all button for quick selection
 
@@ -73,8 +73,6 @@ class GameViewController : UIViewController{
         //setting default outputs
         self.refreshLabels()
         setButtonAspect()
-        
-        
     }
     
     /*
