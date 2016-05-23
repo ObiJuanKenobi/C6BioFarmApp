@@ -34,6 +34,10 @@ class GameViewController : UIViewController{
     @IBOutlet var lbl_Farm7: UILabel!
     @IBOutlet var lbl_Farm8: UILabel!
     
+    @IBOutlet var lbl_cornCost: UILabel!
+    @IBOutlet var lbl_soyCost: UILabel!
+    @IBOutlet var lbl_grassCost: UILabel!
+    
     //Buttons
     @IBOutlet var btn_Farm1: OBShapedButton!
     @IBOutlet var btn_Farm2: OBShapedButton!
@@ -44,6 +48,8 @@ class GameViewController : UIViewController{
     @IBOutlet var btn_Farm7: OBShapedButton!
     @IBOutlet var btn_Farm8: OBShapedButton!
     @IBOutlet var btn_harvest: UIButton!
+    
+    @IBOutlet var img_event: UIImageView!
     
     //Iowa State red and Greeen colors
     private var redColor : UIColor = UIColor(red: 206.0/255.0, green: 17.0/255.0, blue: 38.0/255.0, alpha: 1.0)
@@ -109,11 +115,15 @@ class GameViewController : UIViewController{
      */
     func refreshLabels(){
         let nf = NSNumberFormatter()
-        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        nf.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
-        lbl_money.text = String(format: "$%@", nf.stringFromNumber(farm.getCash())!)
+        lbl_money.text = nf.stringFromNumber(farm.getCash())!
         
         lbl_harvestMod.text = String(format: "Year: %d", farm.getYear())
+        
+        lbl_cornCost.text = "Corn: " + nf.stringFromNumber(CropSellPrice.corn)!
+        lbl_soyCost.text = "Soy: " + nf.stringFromNumber(CropSellPrice.soy)!
+        lbl_grassCost.text = "Switchgrass: " + nf.stringFromNumber(CropSellPrice.grass)!
         
         lbl_Farm1.text = farm.fields[0].getLabel()
         lbl_Farm2.text = farm.fields[1].getLabel()
@@ -149,7 +159,7 @@ class GameViewController : UIViewController{
      It clears certain information from the farm class, and resets the background images for the buttons
      */
     func resetImages() {
-        for(var i = 0; i < 8; i += 1){
+        for i in 0 ..< 8 {
             let tempImage : UIImage = UIImage(named: farm.fields[i].getLandSprite(i))!
             switch i {
             case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
@@ -187,8 +197,16 @@ class GameViewController : UIViewController{
     @IBAction func button_HarvestYear(sender: AnyObject) {
         //Check for empty Farm
         if(farm.isEmpty()){
-            return
+            //They should be able to have a year of nothing planted
+            //return
         }
+        
+        //Animation for later update
+//        img_event.image = UIImage(named: "DO_NOT_USE")
+//        
+//        UIView.animateWithDuration(5, animations: {
+//            self.img_event.center.y += 1200
+//        })
         
         //endYear handles calculation of revenue and expense
         farm.endYear();
@@ -197,13 +215,13 @@ class GameViewController : UIViewController{
         
         //Play sound
         prepareEventSound(eventSound)
-        effectsPlayer!.play()        
+        effectsPlayer!.play()
+        
+        farm.startYear()
         
         //Refresh Screen (for crops)
         resetImages()
         refreshLabels()
-        
-        farm.startYear()
         
         
         //Check Money for Game Over

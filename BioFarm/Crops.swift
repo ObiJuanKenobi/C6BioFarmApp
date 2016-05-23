@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum Crops{
     case Corn, Grass, Soy, Empty
     
@@ -19,7 +18,7 @@ enum Crops{
         else if(self == .Soy){
             return "Soybean"
         }
-        else if(self == Grass){
+        else if(self == .Grass){
             return "Switchgrass"
         }
         else{
@@ -36,7 +35,7 @@ enum Crops{
             return 600.0
         case .Soy:
             return 450.0
-        case Grass:
+        case .Grass:
             return 200.0
         default:
             return 0.0
@@ -53,7 +52,7 @@ enum Crops{
             return 800.0
         case .Soy:
             return 600.0
-        case Grass:
+        case .Grass:
             return 200.0
         default:
             return 0.0

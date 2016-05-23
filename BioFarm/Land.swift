@@ -139,7 +139,7 @@ class Land {
     
         }else if(getCrop() == .Grass){
             //If there is a flood, switchgrass is immune
-            yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifierGrass;
+            yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, event.eventModifierGrass);
         }
         else{
             yield = 0.0;
@@ -157,7 +157,8 @@ class Land {
     
     func calculateRevenue(event : Event) -> Float{
         calculateYield(event)
-        revenue = crop.getCropSellingPrice() * yield;
+        revenue = CropSellPrice.getCropSellingPrice(crop) * yield;
+        revenue = round(revenue * 100.0) / 100.0 // 2 decimal precision
         return revenue;
     }
     

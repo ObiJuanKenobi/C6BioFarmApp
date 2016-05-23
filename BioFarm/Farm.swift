@@ -25,6 +25,7 @@ public class Farm {
     var cash: Float
     var event: Event
     var year: Int
+    var cropCostPicker : Int
     
     var yield: Float
     var expense: Float
@@ -42,6 +43,7 @@ public class Farm {
         cash = 1000000
         event = Event()
         year = 0
+        cropCostPicker = 0;
         
         yield = 0.0
         expense = 0.0
@@ -64,6 +66,9 @@ public class Farm {
         
         //Incriment Year
         year += 1
+        
+        //Modify Prices
+        CropSellPrice.changePrices()
         
         //Add data to report
         currentReport.boyCash = cash
@@ -230,6 +235,7 @@ public class Farm {
         for field in fields {
             expense += field.getExpense();
         }
+        expense = round(expense * 10.0) / 10.0 //2 Decimal Precision
         return expense;
     }
     
@@ -237,6 +243,7 @@ public class Farm {
         for field in fields {
             revenue += field.calculateRevenue(event);
         }
+        revenue = round(revenue * 10.0) / 10.0 //2 Decimal Precision
         return revenue;
     }
 }

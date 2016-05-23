@@ -13,11 +13,11 @@ class ResultsTableViewController: UITableViewController{
         Passed In Variables
      ******************************/
     var reports : [Report]?
-    var year: Int = 0
-    var profit: Float = 0.0
-    var mod: Float = 0.0
-    var modText: String = "Error"
-    var totalMoney: Float = 0.0
+//    var year: Int = 0
+//    var profit: Float = 0.0
+//    var mod: Float = 0.0
+//    var modText: String = "Error"
+//    var totalMoney: Float = 0.0
     
     /******************************
         Interal Variables
@@ -33,12 +33,12 @@ class ResultsTableViewController: UITableViewController{
     */
     override func viewDidLoad(){
         super.viewDidLoad()
-        let i = reports!.count - 1
-        year = reports![i].year
-        profit = reports![i].profit()
-        mod = reports![i].eventModifier
-        modText = reports![i].event
-        totalMoney = reports![i].eoyCash
+//        let i = reports!.count - 1
+//        year = reports![i].year
+//        profit = reports![i].profit()
+//        mod = reports![i].eventModifier
+//        modText = reports![i].event
+//        totalMoney = reports![i].eoyCash
         
     }
     
@@ -76,25 +76,30 @@ class ResultsTableViewController: UITableViewController{
         
         //Make the number readable with a formatter
         let nf = NSNumberFormatter()
-        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        nf.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
+        //Set label for current year
         if(i == 0) {
             cell.lbl_year.text = String(report.year) + " current"
         } else {
             cell.lbl_year.text = String(report.year)
         }
-        cell.lbl_event.text = report.event + " (" + nf.stringFromNumber(report.eventModifier)! + ")"
-        cell.lbl_expense.text = "$" + nf.stringFromNumber(report.expense)!
-        cell.lbl_revenue.text = "$" + nf.stringFromNumber(report.revenue)!
-        cell.lbl_profit.text = "$" + nf.stringFromNumber(report.profit())!
         
+        //Print values for report data
+        cell.lbl_event.text = report.event + " (" + String(report.eventModifier) + ")"
+        cell.lbl_expense.text = nf.stringFromNumber(report.expense)!
+        cell.lbl_revenue.text = nf.stringFromNumber(report.revenue)!
+        cell.lbl_profit.text = nf.stringFromNumber(report.profit())!
+        
+        //Change color of money for positive or negative values
         if(report.profit() <= 0) {
-            cell.lbl_profit.textColor = UIColor.redColor()
+            cell.lbl_profit.textColor = redColor
         }
         else {
-            cell.lbl_profit.textColor = UIColor.greenColor()
+            cell.lbl_profit.textColor = greenColor
         }
         
+        //Modulate the backgorund for seperation of years
         if(i % 2 == 0) {
             cell.contentView.backgroundColor = UIColor.lightGrayColor()
         }

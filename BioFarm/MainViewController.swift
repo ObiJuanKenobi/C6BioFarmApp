@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
         musicPlayer.volume = 0.5
         musicPlayer.prepareToPlay()
         
-      let sound = try! NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
+      let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
         effectsPlayer = try! AVAudioPlayer(contentsOfURL: sound, fileTypeHint: nil)
         effectsPlayer.volume = 0.3
     }

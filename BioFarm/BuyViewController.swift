@@ -134,7 +134,6 @@ class BuyViewController: UIViewController {
         
         //Set Crop Image
         img_Crop.image = UIImage(named: cropToBuy.getCropSprite())
-        cropSellingPrice = cropToBuy.getCropSellingPrice()
         
         //Update Insur Policy
         changeInsurance(self)
@@ -190,7 +189,7 @@ class BuyViewController: UIViewController {
     func updateCalculation () {
         //Make the number readable with a formatter
         let nf = NSNumberFormatter()
-        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        nf.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
         var cropCost : Float
         if(farmInBuyView!.fields[selectedFarm].isInsured()){
@@ -200,15 +199,13 @@ class BuyViewController: UIViewController {
             cropCost = cropToBuy.getCropCost()
         }
             
-        lbl_Calculation.text = String(format: "%@\nNumber of acres: %@ \nPrice of crop: %@\n",
+        lbl_Calculation.text = String(format: "%@\nNumber of acres in field: %d \nPrice of crop per acre: %@\n",
                                       cropToBuy.getCropName(),
-                                      nf.stringFromNumber(farmInBuyView!.fields[selectedFarm].getLandSize())!,
+                                      farmInBuyView!.fields[selectedFarm].getLandSize(),
                                       nf.stringFromNumber(cropCost)!)
-                                      //nf.stringFromNumber(cropToBuy.getCropSellingPrice())!,
-                                      //nf.stringFromNumber(cropToBuy.getCropYield())!)
         
         let calculatedCost = cropCost * Float (farmInBuyView!.fields[selectedFarm].getLandSize())
-        lbl_Price.text = String(format: "$%@", nf.stringFromNumber(calculatedCost)!)
+        lbl_Price.text = nf.stringFromNumber(calculatedCost)!
      
     }
 }

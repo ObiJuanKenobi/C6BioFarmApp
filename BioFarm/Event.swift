@@ -29,16 +29,12 @@ class Event{
     var eventModifierGrass : Float = 0.0
     var eventText : String = ""
     var eventName : String = ""
-    var eventSound : String = "applause"
+    var eventImage : String = ""
+    var eventSound : String = ""
     
     /*
      Returns the Modifer of the Event that has been chosen
      */
-    
-    init(){
-        
-    }
-    
     func getModifier() -> Float {
         return eventModifier;
     }
@@ -73,7 +69,7 @@ class Event{
      */
     func doEvent() -> (eventModifier: Float, eventText: String, eventSound: String) {
         rand = Int(arc4random_uniform(1000)) + 1
-        rand = 1 //DEBUG Quick Override for debuging
+        //rand = 1 //DEBUG Quick Override for debuging
         eventID = 0
         eventModifierGrass = 0.0
         switch rand{
@@ -100,7 +96,6 @@ class Event{
             eventName = "Flood"
             eventText = "There was a flood this year -100% yeild."
             eventSound = "Water"
-            eventID = 1;
         case 885...896:
             eventModifier = 0.6
             eventModifierGrass = 0.8 //TODO?
@@ -146,6 +141,7 @@ class Event{
             eventName = "Aliens"
             eventText = "Aliens left crop circles in your fields. -10% yeild."
             eventSound = "UFO"
+            eventImage = "DO_NOT_USE"
         case 986...990:
             eventModifier = 0.4
             eventName = "Snow"

@@ -26,6 +26,7 @@
 		EB5803161B5D9E830096178B /* BarnInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5803151B5D9E830096178B /* BarnInfoViewController.swift */; };
 		EB5E50921CEA30F1007CD94E /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E50911CEA30F1007CD94E /* Report.swift */; };
 		EB5E509A1CECD0E8007CD94E /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E50991CECD0E8007CD94E /* ReportTableViewCell.swift */; };
+		EB5E509C1CEE223F007CD94E /* CropSellPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */; };
 		EB65AFED1A71BE02006A4235 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */; };
 		EB83042F1AD4565B00BA9128 /* Wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB83042E1AD4565B00BA9128 /* Wind.mp3 */; };
 		EB8304311AD4595300BA9128 /* Water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB8304301AD4595300BA9128 /* Water.mp3 */; };
@@ -77,6 +78,7 @@
 		EB5803151B5D9E830096178B /* BarnInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarnInfoViewController.swift; sourceTree = "<group>"; };
 		EB5E50911CEA30F1007CD94E /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		EB5E50991CECD0E8007CD94E /* ReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropSellPrice.swift; sourceTree = "<group>"; };
 		EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		EB83042E1AD4565B00BA9128 /* Wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wind.mp3; sourceTree = "<group>"; };
 		EB8304301AD4595300BA9128 /* Water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Water.mp3; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				EB3F7A7A1CD12D6E0013E8B7 /* Crops.swift */,
 				EB3F7A7C1CD12DF50013E8B7 /* Event.swift */,
 				EB3F7A7E1CD12E790013E8B7 /* Farm.swift */,
+				EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */,
 				EB5E50911CEA30F1007CD94E /* Report.swift */,
 			);
 			name = Model;
@@ -348,6 +351,7 @@
 			files = (
 				EB9C1F591A967F8D00A6EFF0 /* ResultsTableViewController.swift in Sources */,
 				EB0CCBD91A72F4C8002E6134 /* GameViewController.swift in Sources */,
+				EB5E509C1CEE223F007CD94E /* CropSellPrice.swift in Sources */,
 				EB3F7A7B1CD12D6E0013E8B7 /* Crops.swift in Sources */,
 				EB3F7A791CD12D160013E8B7 /* Land.swift in Sources */,
 				EB5E509A1CECD0E8007CD94E /* ReportTableViewCell.swift in Sources */,
