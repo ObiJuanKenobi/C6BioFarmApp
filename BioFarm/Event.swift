@@ -69,7 +69,7 @@ class Event{
      */
     func doEvent() -> (eventModifier: Float, eventText: String, eventSound: String) {
         rand = Int(arc4random_uniform(1000)) + 1
-        //rand = 1 //DEBUG Quick Override for debuging
+        rand = 1 //DEBUG Quick Override for debuging
         eventID = 0
         eventModifierGrass = 0.0
         switch rand{

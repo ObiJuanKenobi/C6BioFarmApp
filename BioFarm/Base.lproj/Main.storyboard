@@ -362,12 +362,6 @@
                                     <constraint firstAttribute="width" secondItem="DUg-Am-vL4" secondAttribute="height" multiplier="299:66" id="PEa-Tq-n8O"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDN-hT-yUj">
-                                <rect key="frame" x="105" y="110.5" width="9" height="18"/>
-                                <accessibility key="accessibilityConfiguration" label="label1"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Farm 2 Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNP-OO-XZF">
                                 <rect key="frame" x="16" y="179" width="209" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
@@ -569,12 +563,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2u-9x-4S1">
                                 <rect key="frame" x="100" y="1050" width="240" height="128"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDN-hT-yUj">
+                                <rect key="frame" x="107" y="110" width="168" height="18"/>
+                                <accessibility key="accessibilityConfiguration" label="label1"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="DUg-Am-vL4" secondAttribute="trailing" constant="424" id="389-J4-ckL"/>
                             <constraint firstAttribute="centerY" secondItem="DUg-Am-vL4" secondAttribute="centerY" constant="403" id="3jx-dM-57U"/>
-                            <constraint firstItem="RDN-hT-yUj" firstAttribute="leading" secondItem="DUg-Am-vL4" secondAttribute="trailing" constant="-206" id="9tj-Mx-0Hr"/>
+                            <constraint firstItem="RDN-hT-yUj" firstAttribute="leading" secondItem="DUg-Am-vL4" secondAttribute="trailing" constant="-204" id="9tj-Mx-0Hr"/>
                             <constraint firstAttribute="centerX" secondItem="96L-oL-WID" secondAttribute="centerX" constant="14" id="RUL-Fq-s3e"/>
                             <constraint firstAttribute="centerY" secondItem="96L-oL-WID" secondAttribute="centerY" constant="-164.5" id="SLV-lF-B9M"/>
                             <constraint firstAttribute="centerX" secondItem="EAS-jo-gut" secondAttribute="centerX" constant="-266" id="Tv1-1O-tNx"/>

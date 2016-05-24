@@ -2,7 +2,7 @@
 //  CropSellingPrice.swift
 //  BioFarm
 //
-//  Created by Jay Staker on 5/19/16.
+//  Created by Alex Berns on 5/19/16.
 //
 //
 
@@ -14,8 +14,35 @@ class CropSellPrice {
     static var grass : Float = 50.0
     
     static func changePrices() {
-        corn = Float(arc4random_uniform(350)) / 100.0 + 3.5
-        soy = Float(arc4random_uniform(1500)) / 100.0 + 4.0
+        let i = arc4random_uniform(100)
+        if (i<25) { //25%
+            priceLow()
+        } else if (i < 75) { //50%
+            priceMid()
+        } else { //25%
+            priceHigh()
+        }
+    }
+    
+    private static func priceLow() {
+        //Corn Price: 3.5 - 4.5
+        corn = Float(arc4random_uniform(100)) / 100.0 + 3.5
+        //Soy Price: 4.0 - 8.0
+        soy = Float(arc4random_uniform(200)) / 100.0 + 6.0
+    }
+    
+    private static func priceMid() {
+        //Corn Price: 4.5 - 5.5
+        corn = Float(arc4random_uniform(100)) / 100.0 + 4.5
+        //Soy Price: 8.0 - 12.0
+        soy = Float(arc4random_uniform(400)) / 100.0 + 8.0
+    }
+    
+    private static func priceHigh() {
+        //Corn Price: 5.5 - 6.0
+        corn = Float(arc4random_uniform(50)) / 100.0 + 5.5
+        //Soy Price: 12.0 - 14.0
+        soy = Float(arc4random_uniform(200)) / 100.0 + 12.0
     }
     
     static func getCropSellingPrice(crop : Crops) -> Float {

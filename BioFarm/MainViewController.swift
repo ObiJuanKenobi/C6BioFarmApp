@@ -37,14 +37,6 @@ class MainViewController: UIViewController {
         //self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationItem.hidesBackButton = true
     }
-
-    /*
-        A defualt function that deals with memomory warnings.
-    */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     /*
         Prepares app to move to the next scene by sending refrences to data that may be used there.
@@ -71,7 +63,7 @@ class MainViewController: UIViewController {
         let backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
         self.musicPlayer = try! AVAudioPlayer(contentsOfURL: backgroundSong, fileTypeHint: nil)
         musicPlayer.numberOfLoops = -1
-        musicPlayer.volume = 0.5
+        musicPlayer.volume = 0.0
         musicPlayer.prepareToPlay()
         
       let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)

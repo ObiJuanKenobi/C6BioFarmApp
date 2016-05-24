@@ -24,11 +24,6 @@ class CropViewController: UIViewController {
     /******************************
      System Methods
      ******************************/
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     override func viewWillAppear(animated: Bool) {
         if(whichInfo == 1){
@@ -61,12 +56,6 @@ class CropViewController: UIViewController {
             lbl_CropInfo.text = "ERROR: the crop number was not sent correctly"
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

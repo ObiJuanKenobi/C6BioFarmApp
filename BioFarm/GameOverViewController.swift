@@ -33,11 +33,6 @@ class GameOverViewController: UIViewController {
         //self.navigationController!.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationItem.hidesBackButton = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     /******************************
      Button Methods

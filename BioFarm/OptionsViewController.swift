@@ -45,15 +45,6 @@ class OptionsViewController : UIViewController{
             }
         }
     }
-    
-    /*
-        A defualt function for dealing with memeory warnings.
-    */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /******************************
      UI Methods

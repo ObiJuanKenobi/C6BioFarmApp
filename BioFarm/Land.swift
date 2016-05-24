@@ -157,7 +157,7 @@ class Land {
     
     func calculateRevenue(event : Event) -> Float{
         calculateYield(event)
-        revenue = CropSellPrice.getCropSellingPrice(crop) * yield;
+        revenue = crop.getCropSellingPrice() * yield;
         revenue = round(revenue * 100.0) / 100.0 // 2 decimal precision
         return revenue;
     }

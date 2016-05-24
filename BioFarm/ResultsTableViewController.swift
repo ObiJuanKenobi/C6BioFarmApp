@@ -28,26 +28,6 @@ class ResultsTableViewController: UITableViewController{
     /******************************
         System Methods
      ******************************/
-    /*
-        A defualt function to set up the view when it is first loaded.
-    */
-    override func viewDidLoad(){
-        super.viewDidLoad()
-//        let i = reports!.count - 1
-//        year = reports![i].year
-//        profit = reports![i].profit()
-//        mod = reports![i].eventModifier
-//        modText = reports![i].event
-//        totalMoney = reports![i].eoyCash
-        
-    }
-    
-    /*
-        A defualt function to deal with memory warnings.
-    */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     /******************************
      Internal Methods

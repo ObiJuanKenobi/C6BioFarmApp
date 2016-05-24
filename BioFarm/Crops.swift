@@ -65,11 +65,11 @@ enum Crops{
     func getCropSellingPrice() -> Float{
         switch self{
         case .Corn:
-            return 4.75
+            return CropSellPrice.corn
         case .Soy:
-            return 11.0
+            return CropSellPrice.soy
         case .Grass:
-            return 50.0
+            return CropSellPrice.grass
         default:
             return 0.0
         }

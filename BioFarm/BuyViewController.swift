@@ -87,14 +87,6 @@ class BuyViewController: UIViewController {
         cropUpdate(self)
     }
     
-    /*
-        A defualt function to deal with memory warnings.
-    */
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     /******************************
         GUI Methods
      ******************************/
