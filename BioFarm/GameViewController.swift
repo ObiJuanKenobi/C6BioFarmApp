@@ -202,11 +202,11 @@ class GameViewController : UIViewController{
         }
         
         //Animation for later update
-//        img_event.image = UIImage(named: "DO_NOT_USE")
-//        
-//        UIView.animateWithDuration(5, animations: {
-//            self.img_event.center.y += 1200
-//        })
+        img_event.image = UIImage(named: "DO_NOT_USE")
+        
+        UIView.animateWithDuration(5, animations: {
+            self.img_event.center.y += 1200
+        })
         
         //endYear handles calculation of revenue and expense
         farm.endYear();

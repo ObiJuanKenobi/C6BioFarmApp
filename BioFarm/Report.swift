@@ -24,6 +24,9 @@ public class Report {
     var boyCash: Float
     var eoyCash: Float
     
+    //Farm
+    var fields : [(crop: Crops, expense : Float, revenue : Float)]
+    
     //Event
     var event: String
     var eventModifier: Float
@@ -37,6 +40,7 @@ public class Report {
         
         event = ""
         eventModifier = 0.0
+        fields = []
     }
     
     

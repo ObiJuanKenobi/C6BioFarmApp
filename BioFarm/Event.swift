@@ -122,7 +122,7 @@ class Event{
             eventSound = "Wind"
         case 961...972:
             eventModifier = 0.7
-            eventModifierGrass = 1.0 //TODO?
+            eventModifierGrass = 0.9 //TODO?
             eventName = "Wind"
             eventText = "There was wind damage to your crops. -30% yeild."
             eventSound = "Wind"

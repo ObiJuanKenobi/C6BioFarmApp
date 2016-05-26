@@ -17,7 +17,6 @@ import AVFoundation
  Could use a bit of renaming and redoing of certain variables. Land Array needs to be created.
  Make sure to keep decoupled from GUI and store all info needed here. GUI should not call anything but this.
  
- Juan: This is very short, simplified and I like it. I would like to use this instead of my class so that it would be easier to maintain for future coders. The library will probably be replaced with something else depending on what we agree on.
  ***************************************************************************/
 public class Farm {
     
@@ -81,7 +80,8 @@ public class Farm {
         harvestAll()
         
         //Calculate new Cash
-        cash += revenue;
+        cash -= expense
+        cash += revenue
         
         //Add data to report
         currentReport.expense = expense
@@ -89,6 +89,11 @@ public class Farm {
         currentReport.event = event.eventName
         currentReport.eventModifier = event.eventModifier
         currentReport.eoyCash = cash
+        
+        //Add Fields
+        for i in 0 ..< 8 {
+            currentReport.fields.append(fields[i].getReport())
+        }
         
         //Store Report
         reports.insert(currentReport, atIndex: 0)
@@ -102,11 +107,11 @@ public class Farm {
         //Trigger new Event
         event.doEvent()
         
-        //Calc Revenue
-        calcRevenue()
-        
         //Calc Expense
         calcExpense()
+        
+        //Calc Revenue
+        calcRevenue()
         
         return revenue;
     }
@@ -127,6 +132,9 @@ public class Farm {
     func plant (whichField : Int, crop : Crops){
         //Check if something is already planted
         if(hasPlanted(whichField)) {
+            //Maybe do this
+            // replacePlant(whichField, crop: crop)
+            
             return
         }
         
@@ -134,24 +142,24 @@ public class Farm {
         fields[whichField].plant(crop)
         
         //Subtract the money for planting
-        cash -= fields[whichField].expense
+        expense += fields[whichField].expense
     }
     
     func replacePlant (whichField : Int, crop : Crops) {
         //Check for Switch Grass
-        if(fields[whichField].getCrop() == Crops.Grass) {
-            //Cant Replace Switchgrass
+        if(fields[whichField].getCrop() == Crops.Grass_O) {
+            //Cant Replace Switchgrass after first year
             return
         }
         
         //Add back money
-        cash += fields[whichField].expense
+        expense -= fields[whichField].expense
         
         //Plant
         fields[whichField].plant(crop)
         
         //Subtract the money for planting
-        cash -= fields[whichField].expense
+        expense += fields[whichField].expense
     }
     
     func isEmpty() -> Bool{
@@ -175,6 +183,7 @@ public class Farm {
         if(fields[whichfield].getCrop() != Crops.Empty){
             return true
         }
+        
         return false
     }
     
@@ -202,7 +211,7 @@ public class Farm {
     }
     
     func getCash() -> Float {
-        return cash
+        return cash - expense
     }
     
     func getCrop(whichfield : Int) -> Crops{
@@ -232,18 +241,20 @@ public class Farm {
     }
     
     func calcExpense() -> Float {
+        expense = 0.0 //reset before offical calc
         for field in fields {
-            expense += field.getExpense();
+            expense += field.calcExpense();
         }
-        expense = round(expense * 10.0) / 10.0 //2 Decimal Precision
+        //expense = round(expense * 100.0) / 100.0 //2 Decimal Precision
         return expense;
     }
     
     func calcRevenue() -> Float{
+        revenue = 0.0 //reset before offical calc
         for field in fields {
             revenue += field.calculateRevenue(event);
         }
-        revenue = round(revenue * 10.0) / 10.0 //2 Decimal Precision
+        //revenue = round(revenue * 100.0) / 100.0 //2 Decimal Precision
         return revenue;
     }
 }

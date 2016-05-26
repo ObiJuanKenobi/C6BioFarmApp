@@ -81,7 +81,7 @@ class BuyViewController: UIViewController {
         case .Grass:
             seg_CropChoice.selectedSegmentIndex = 2
         default:
-            seg_CropChoice.selectedSegmentIndex = 0
+            seg_CropChoice.selectedSegmentIndex = 2
         }
         
         cropUpdate(self)

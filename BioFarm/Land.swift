@@ -18,23 +18,6 @@ import Foundation
  Clean some old values out and rename some functions to be more descriptive.
  ***************************************************************************/
 
-//Land should stay as a class becuase it can be very useful for further changes, but the methods
-//need to be changed so that it accurately calculates and stores data
-// this is very long but can be adjusted and simplified for better management
-//Juan: I would actually like to use this in the game
-
-//should Crops be seperated from this class and have its own seperate catagory?
-//Juan: I believe it would be best because enums can have function which can simplify
-//some of the functions being used in this class
-
-
-
-/*
- An Enumerated type for the for the different crops.
- take it out and have it seperated
- */
-
-
 class Land {
     private var size : Int
     private var crop : Crops
@@ -65,33 +48,33 @@ class Land {
      ********************/
     
     
-    
     /*
      Sets the crop type of the land to the specified crop type.
      */
     func plant (toPlant : Crops){
         crop = toPlant
-        //Calc expense for crop (insured handled in getCropCost)
-        expense = self.getCropCost() * Float(getLandSize())
+        calcExpense()
     }
-    
     
     func resetLand() {
         //Check for Switchgrass
-        if(crop == .Grass) {
+        if(crop == .Grass || crop == .Grass_O) {
+            
             //Check how long it has been planted
             if( numOldCrop % 6 != 0 || numOldCrop == 0) {
                 numOldCrop += 1
+                crop = Crops.Grass_O
             } else {
                 //reset switchgrass if older than 7 years
                 numOldCrop = 0
                 crop = .Empty
+                
             }
             //Reset internal values for money
             revenue = 0.0
             yield = 0.0
-            //Reset Expense since you only pay once
             expense = 0.0
+            
             return
         }
         
@@ -110,35 +93,39 @@ class Land {
         
     }
     
+    func calcExpense() -> Float {
+        //Calc expense for crop (insured handled in getCropCost)
+        expense = self.getCropCost() * Float(getLandSize())
+        return expense
+    }
+    
     /*
-     Calculates the yield but does not take into account of flooding
-     ? Where should we calculate flooding?
+     Calculates the yield
      */
     func calculateYield(event : Event) -> Float{
         
-        if(getCrop() == .Corn && isInsured()){
+        if(getCrop() == .Corn && isInsured()){ // Insured Corn
             yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, 0.75);
             
             checkCropRotation()
             
         }
-        else if (getCrop() == .Corn && !(isInsured())){
+        else if (getCrop() == .Corn && !(isInsured())){ // Uninsured Corn
             yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifier;
             
             checkCropRotation()
             
-        }else if (getCrop() == .Soy && isInsured()){
+        }else if (getCrop() == .Soy && isInsured()){ // Insured Soy
             yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, 0.75);
             
             checkCropRotation()
             
-        }else if (getCrop() == .Soy && !(isInsured())){
+        }else if (getCrop() == .Soy && !(isInsured())){ // Uninsured Soy
             yield = crop.getCropYield() * Float(getLandSize()) * event.eventModifier;
             
             checkCropRotation()
     
-        }else if(getCrop() == .Grass){
-            //If there is a flood, switchgrass is immune
+        }else if(getCrop() == .Grass || getCrop() == .Grass_O){ // Grass
             yield = crop.getCropYield() * Float(getLandSize()) * max(event.eventModifier, event.eventModifierGrass);
         }
         else{
@@ -180,6 +167,10 @@ class Land {
     func getExpense() -> Float {
         return expense
     }
+    
+    func getReport() -> (crop : Crops, expense : Float, revenue : Float) {
+        return (crop : crop, expense : expense, revenue : revenue)
+    }
   
     func getCrop() -> Crops {
         return crop
@@ -212,7 +203,6 @@ class Land {
     func getCropSprite() -> String {
         return crop.getCropSprite();
     }
-    
     
     /*
      Returns the name of the image that the land's crop has.

@@ -52,27 +52,71 @@ class ResultsTableViewController: UITableViewController{
         let cell = self.tableView.dequeueReusableCellWithIdentifier("ReportCell", forIndexPath: indexPath) as! ReportTableViewCell
         
         let i = indexPath.row
-        let report = reports![i]
+        let r = reports![i]
+        
+        // Configure the view for the selected state
+        var listCrop : [UILabel] = []
+        listCrop.append(cell.lbl_f1_crop)
+        listCrop.append(cell.lbl_f2_crop)
+        listCrop.append(cell.lbl_f3_crop)
+        listCrop.append(cell.lbl_f4_crop)
+        listCrop.append(cell.lbl_f5_crop)
+        listCrop.append(cell.lbl_f6_crop)
+        listCrop.append(cell.lbl_f7_crop)
+        listCrop.append(cell.lbl_f8_crop)
+        
+        var listExpense : [UILabel] = []
+        listExpense.append(cell.lbl_f1_expense)
+        listExpense.append(cell.lbl_f2_expense)
+        listExpense.append(cell.lbl_f3_expense)
+        listExpense.append(cell.lbl_f4_expense)
+        listExpense.append(cell.lbl_f5_expense)
+        listExpense.append(cell.lbl_f6_expense)
+        listExpense.append(cell.lbl_f7_expense)
+        listExpense.append(cell.lbl_f8_expense)
+        
+        var listRevenue : [UILabel] = []
+        listRevenue.append(cell.lbl_f1_revenue)
+        listRevenue.append(cell.lbl_f2_revenue)
+        listRevenue.append(cell.lbl_f3_revenue)
+        listRevenue.append(cell.lbl_f4_revenue)
+        listRevenue.append(cell.lbl_f5_revenue)
+        listRevenue.append(cell.lbl_f6_revenue)
+        listRevenue.append(cell.lbl_f7_revenue)
+        listRevenue.append(cell.lbl_f8_revenue)
+        
+        
+        cell.lbl_year.text = String(r.year)
         
         //Make the number readable with a formatter
         let nf = NSNumberFormatter()
         nf.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
         //Set label for current year
-        if(i == 0) {
-            cell.lbl_year.text = String(report.year) + " current"
-        } else {
-            cell.lbl_year.text = String(report.year)
+        cell.lbl_year.text = String(r.year)
+        
+        //Set Crop Labels
+        for i in 0...7 {
+            listCrop[i].text = r.fields[i].crop.getCropShortName()
         }
         
+        //Set Expense Labels
+        for i in 0...7 {
+            listExpense[i].text = nf.stringFromNumber(r.fields[i].expense)
+        }
+        
+        //Set Revenue Labels
+        for i in 0...7 {
+            listRevenue[i].text = nf.stringFromNumber(r.fields[i].revenue)
+        }
+        
+        
         //Print values for report data
-        cell.lbl_event.text = report.event + " (" + String(report.eventModifier) + ")"
-        cell.lbl_expense.text = nf.stringFromNumber(report.expense)!
-        cell.lbl_revenue.text = nf.stringFromNumber(report.revenue)!
-        cell.lbl_profit.text = nf.stringFromNumber(report.profit())!
+        cell.lbl_event.text = r.event + " (" + String(r.eventModifier) + ")"
+        cell.lbl_profit.text = nf.stringFromNumber(r.profit())!
         
         //Change color of money for positive or negative values
-        if(report.profit() <= 0) {
+        if(r.profit() <= 0) {
             cell.lbl_profit.textColor = redColor
         }
         else {
