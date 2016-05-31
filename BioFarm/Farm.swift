@@ -33,9 +33,10 @@ public class Farm {
     var reports: [Report]
     var currentReport : Report
     
+    var lastCropPlanted : Crops
+    
     /*
      Initalizes farm with the default farms saved in an Array, and 1 million dollars.
-     
      */
     init(){
         fields = [Land(whichField: 0), Land(whichField: 1), Land(whichField: 2), Land(whichField: 3), Land(whichField: 4), Land(whichField: 5), Land(whichField: 6), Land(whichField: 7)]
@@ -50,6 +51,8 @@ public class Farm {
         
         reports = []
         currentReport = Report()
+        
+        lastCropPlanted = .Empty
     }
     
     
@@ -143,6 +146,9 @@ public class Farm {
         
         //Subtract the money for planting
         expense += fields[whichField].expense
+        
+        //Tracking for buy view
+        lastCropPlanted = crop
     }
     
     func replacePlant (whichField : Int, crop : Crops) {

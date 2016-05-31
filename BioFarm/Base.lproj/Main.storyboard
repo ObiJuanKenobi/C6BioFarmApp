@@ -17,6 +17,10 @@
             <string>ComicNeue-Bold</string>
             <string>ComicNeue-Bold</string>
             <string>ComicNeue-Bold</string>
+            <string>ComicNeue-Bold</string>
+            <string>ComicNeue-Bold</string>
+            <string>ComicNeue-Bold</string>
+            <string>ComicNeue-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -85,12 +89,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Advisors and Supervisors: Jill Euken and Abigail Stanek " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8J-TZ-U86">
-                                <rect key="frame" x="11" y="711" width="321" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Information Provided by Kayla Harris" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-ER-g2W">
                                 <rect key="frame" x="11" y="731" width="317" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -106,6 +104,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bug,Tornado, Water, and Car sounds by Mike Koenig on SoundBible.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJz-0y-Ob5">
                                 <rect key="frame" x="11" y="836" width="384" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Advisors and Supervisors: Jill Euken, Abigail Stanek, and John Hays" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8J-TZ-U86">
+                                <rect key="frame" x="11" y="702" width="382" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -266,6 +270,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ON" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKE-aG-KPc">
+                                <rect key="frame" x="448" y="575" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OFF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eq8-Nw-uSf">
                                 <rect key="frame" x="290" y="375" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="17"/>
@@ -284,6 +294,30 @@
                                     <action selector="effectsOnOff:" destination="xMM-AB-dDi" eventType="valueChanged" id="mOp-QL-MaC"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX1-7L-CQv">
+                                <rect key="frame" x="306" y="501" width="157" height="21"/>
+                                <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Idle Land Cost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITc-Lp-7b1">
+                                <rect key="frame" x="310" y="541" width="149" height="21"/>
+                                <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVW-gj-AwM">
+                                <rect key="frame" x="360" y="570" width="51" height="31"/>
+                                <connections>
+                                    <action selector="idleOnOff:" destination="xMM-AB-dDi" eventType="valueChanged" id="aCM-zi-ciV"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OFF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7w-Ih-Iyt">
+                                <rect key="frame" x="290" y="579" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="ComicNeue-Bold" family="Comic Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -297,6 +331,7 @@
                         <outlet property="sld_Volume" destination="dU9-fW-iUi" id="p9X-VF-EYq"/>
                         <outlet property="swt_Effects" destination="HB5-5I-3zS" id="o7i-AX-cxL"/>
                         <outlet property="swt_Volume" destination="hEs-9T-ArE" id="NZD-3G-TDZ"/>
+                        <outlet property="swt_idleLand" destination="mVW-gj-AwM" id="Mqx-2C-kig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qn-wf-YJO" userLabel="First Responder" sceneMemberID="firstResponder"/>

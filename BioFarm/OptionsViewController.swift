@@ -24,6 +24,7 @@ class OptionsViewController : UIViewController{
     @IBOutlet var sld_Volume: UISlider!
     @IBOutlet var swt_Volume: UISwitch!
     @IBOutlet var swt_Effects: UISwitch!
+    @IBOutlet var swt_idleLand: UISwitch!
     
     /******************************
      System Methods
@@ -34,16 +35,20 @@ class OptionsViewController : UIViewController{
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let temp : AVAudioPlayer = musicPlayer{
-            sld_Volume.value = temp.volume
-            swt_Volume.on = temp.playing
-        }
+//        if let temp : AVAudioPlayer = musicPlayer{
+//            sld_Volume.value = temp.volume
+//            swt_Volume.on = temp.playing
+//        }
         
-        if let temp1 : AVAudioPlayer = effectsPlayer{
-            if(temp1.volume == 0){
-                swt_Effects.on = false
-            }
-        }
+        sld_Volume.value = Options.musicVol
+        swt_Volume.on = Options.musicOn
+        
+//        if let temp1 : AVAudioPlayer = effectsPlayer{
+//            if(temp1.volume == 0){
+//                swt_Effects.on = false
+//            }
+//        }
+        swt_Effects.on = Options.sfxOn
     }
 
     /******************************
@@ -53,9 +58,13 @@ class OptionsViewController : UIViewController{
         Changes the volume of the music player based on the state of the slider.
     */
     @IBAction func changeVolume(sender: UISlider) {
-        if let temp : AVAudioPlayer = musicPlayer {
-            temp.volume = sender.value
-        }
+//        if let temp : AVAudioPlayer = musicPlayer {
+//            temp.volume = sender.value
+//            Options.musicVol = sender.value
+//        }
+        
+        musicPlayer!.volume = sender.value
+        Options.musicVol = sender.value
         
     }
     
@@ -63,14 +72,21 @@ class OptionsViewController : UIViewController{
         Turns the volume on or off depending on the state of the switch.
     */
     @IBAction func volumeOnOff(sender: UISwitch) {
-        if let temp : AVAudioPlayer = musicPlayer  {
-            if !swt_Volume.on {
-                temp.stop()
-                temp.currentTime = 0
-            }
-            else{
-                temp.play()
-            }
+//        if let temp : AVAudioPlayer = musicPlayer  {
+//            if !swt_Volume.on {
+//                temp.stop()
+//                temp.currentTime = 0
+//            }
+//            else{
+//                temp.play()
+//            }
+//        }
+        Options.musicOn = swt_Volume.on
+        if(Options.musicOn) {
+            musicPlayer!.volume = Options.musicVol
+        }
+        else {
+            musicPlayer!.volume = 0.0
         }
         
     }
@@ -80,12 +96,15 @@ class OptionsViewController : UIViewController{
     */
     @IBAction func effectsOnOff(sender: UISwitch) {
         if(sender.on){
-            effectsPlayer!.volume = 0.3
+            effectsPlayer!.volume = Options.sfxVol
         }
         else{
             effectsPlayer!.volume = 0.0
         }
     }
     
+    @IBAction func idleOnOff(sender: AnyObject) {
+        Options.idleCostOn = sender.on
+    }
     
 }

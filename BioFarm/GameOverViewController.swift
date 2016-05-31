@@ -26,7 +26,10 @@ class GameOverViewController: UIViewController {
      ******************************/
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbl_gameInfo.text = String("Your farm lasted \(yearsPassed) years and it has $\(currentMoney)")
+        let nf = NSNumberFormatter()
+        nf.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        let temp = nf.stringFromNumber(currentMoney)
+        lbl_gameInfo.text = String(format:"Your farm lasted \(yearsPassed) years and it has \n%@", temp!)
     }
     
     override func viewWillAppear(animated: Bool) {

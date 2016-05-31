@@ -73,7 +73,8 @@ class BuyViewController: UIViewController {
         lbl_Price.text = String(format: "$%.2f", farmInBuyView!.costOfPurchase(selectedFarm, whichCrop: Crops.Corn))
         
         //Set Starting Selection
-        switch farmInBuyView!.fields[selectedFarm].getCrop() {
+        //switch farmInBuyView!.fields[selectedFarm].getCrop() {
+        switch farmInBuyView!.lastCropPlanted {
         case .Corn:
             seg_CropChoice.selectedSegmentIndex = 0
         case .Soy:
@@ -81,7 +82,7 @@ class BuyViewController: UIViewController {
         case .Grass:
             seg_CropChoice.selectedSegmentIndex = 2
         default:
-            seg_CropChoice.selectedSegmentIndex = 2
+            seg_CropChoice.selectedSegmentIndex = 0
         }
         
         cropUpdate(self)
@@ -134,7 +135,7 @@ class BuyViewController: UIViewController {
     func setSpeechBubble() {
         //sets what C6 will say in his text bubbles
         if(farmInBuyView!.getYear() != 1){
-            lbl_OtherCropInfo.text = String(format: "This field contained \(farmInBuyView!.fields[selectedFarm].getOldCrop()) last year")
+            lbl_OtherCropInfo.text = String(format: "You planted \(farmInBuyView!.fields[selectedFarm].getOldCrop().getCropName()) here last year.")
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"

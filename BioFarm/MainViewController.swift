@@ -63,12 +63,23 @@ class MainViewController: UIViewController {
         let backgroundSong = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Drankin Song", ofType: "mp3")!)
         self.musicPlayer = try! AVAudioPlayer(contentsOfURL: backgroundSong, fileTypeHint: nil)
         musicPlayer.numberOfLoops = -1
-        musicPlayer.volume = 0.0
+        if(Options.musicOn){
+            musicPlayer.volume = Options.musicVol
+        }
+        else {
+            musicPlayer.volume = 0.0
+        }
+        
         musicPlayer.prepareToPlay()
         
       let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("applause", ofType: "mp3")!)
         effectsPlayer = try! AVAudioPlayer(contentsOfURL: sound, fileTypeHint: nil)
-        effectsPlayer.volume = 0.3
+        if(Options.sfxOn) {
+            effectsPlayer.volume = Options.sfxVol
+        }
+        else {
+            effectsPlayer.volume = 0.0
+        }
     }
     
 }
