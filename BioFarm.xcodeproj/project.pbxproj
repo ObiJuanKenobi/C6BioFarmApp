@@ -40,7 +40,6 @@
 		EB889A6F1A8E99A700192944 /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB889A6E1A8E99A700192944 /* OBShapedButton.m */; };
 		EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB889A711A8E99C700192944 /* UIImage+ColorAtPixel.m */; };
 		EB9C1F591A967F8D00A6EFF0 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C1F581A967F8D00A6EFF0 /* ResultsTableViewController.swift */; };
-		EBBA70581B431DBF00F4F985 /* Farm_JV.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA70571B431DBF00F4F985 /* Farm_JV.swift */; };
 		EBCC64061B55929D0087FDFB /* BarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC64051B55929D0087FDFB /* BarnViewController.swift */; };
 		EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE4F1171A74571200C27A13 /* BuyViewController.swift */; };
 /* End PBXBuildFile section */
@@ -96,7 +95,6 @@
 		EB889A701A8E99C700192944 /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
 		EB889A711A8E99C700192944 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
 		EB9C1F581A967F8D00A6EFF0 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
-		EBBA70571B431DBF00F4F985 /* Farm_JV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farm_JV.swift; sourceTree = "<group>"; };
 		EBCC64051B55929D0087FDFB /* BarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarnViewController.swift; sourceTree = "<group>"; };
 		EBE4F1171A74571200C27A13 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,7 +201,6 @@
 		EB3F7A751CD12CA50013E8B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EBBA70571B431DBF00F4F985 /* Farm_JV.swift */,
 				EB3F7A781CD12D160013E8B7 /* Land.swift */,
 				EB3F7A7A1CD12D6E0013E8B7 /* Crops.swift */,
 				EB3F7A7C1CD12DF50013E8B7 /* Event.swift */,
@@ -364,7 +361,6 @@
 				EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */,
 				EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */,
 				EB3F7A7D1CD12DF50013E8B7 /* Event.swift in Sources */,
-				EBBA70581B431DBF00F4F985 /* Farm_JV.swift in Sources */,
 				EB5E50A01CF74F5D007CD94E /* Options.swift in Sources */,
 				EB3F7A7F1CD12E790013E8B7 /* Farm.swift in Sources */,
 				EB3B7FB91B53F74900E3CE4C /* GameOverViewController.swift in Sources */,
