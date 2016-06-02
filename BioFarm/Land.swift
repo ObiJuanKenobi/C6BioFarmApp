@@ -64,11 +64,12 @@ class Land {
             if( numOldCrop % 6 != 0 || numOldCrop == 0) {
                 numOldCrop += 1
                 crop = Crops.Grass_O
+                
             } else {
                 //reset switchgrass if older than 7 years
                 numOldCrop = 0
                 crop = .Empty
-                
+                oldCrop = .Grass
             }
             //Reset internal values for money
             revenue = 0.0

@@ -135,11 +135,12 @@ class BuyViewController: UIViewController {
     func setSpeechBubble() {
         //sets what C6 will say in his text bubbles
         if(farmInBuyView!.getYear() != 1){
-            lbl_OtherCropInfo.text = String(format: "You planted \(farmInBuyView!.fields[selectedFarm].getOldCrop().getCropName()) here last year.")
+            lbl_OtherCropInfo.text = String(format: "You grew \(farmInBuyView!.fields[selectedFarm].getOldCrop().getCropName()) here last year.")
         }
         else{
             lbl_OtherCropInfo.text = "Remember to rotate your crops!"
         }
+        lbl_OtherCropInfo.textColor = greenColor
     }
     
     /*

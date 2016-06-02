@@ -16,6 +16,7 @@ class GameViewController : UIViewController{
      Passed in Variables
      ******************************/
     var effectsPlayer : AVAudioPlayer? = AVAudioPlayer()
+    var farm : Farm = Farm()
     
     /******************************
      UI Variables
@@ -59,7 +60,6 @@ class GameViewController : UIViewController{
      Internal Variables
      ******************************/
     private var selectedFarm : Int = 1
-    private var farm : Farm = Farm()
     
     
     /******************************
@@ -77,8 +77,11 @@ class GameViewController : UIViewController{
         farm.startYear()
         
         //setting default outputs
-        self.refreshLabels()
         setButtonAspect()
+        
+        //Set labels and images
+        self.refreshLabels()
+        self.refreshImages()
     }
     
     /*
@@ -140,8 +143,10 @@ class GameViewController : UIViewController{
      Refreshs button images after a new crop has been planted.
      */
     func refreshImages(){
-        let tempImage : UIImage = UIImage(named: farm.fields[selectedFarm].getLandSprite(selectedFarm))!
-        switch selectedFarm{
+        
+        for i in 0..<8 {
+            let tempImage : UIImage = UIImage(named: farm.fields[i].getLandSprite(i))!
+        switch i{
         case 0:btn_Farm1.setBackgroundImage(tempImage, forState: btn_Farm1.state)
         case 1:btn_Farm2.setBackgroundImage(tempImage, forState: btn_Farm2.state)
         case 2:btn_Farm3.setBackgroundImage(tempImage, forState: btn_Farm3.state)
@@ -151,6 +156,7 @@ class GameViewController : UIViewController{
         case 6:btn_Farm7.setBackgroundImage(tempImage, forState: btn_Farm7.state)
         case 7:btn_Farm8.setBackgroundImage(tempImage, forState: btn_Farm8.state)
         default: return//btn_Farm1.setImage(tempImage, forState: btn_Farm1.state)
+        }
         }
     }
     

@@ -82,11 +82,14 @@ class OptionsViewController : UIViewController{
 //            }
 //        }
         Options.musicOn = swt_Volume.on
-        if(Options.musicOn) {
+        if(swt_Volume.on) {
             musicPlayer!.volume = Options.musicVol
+            musicPlayer!.play()
         }
         else {
             musicPlayer!.volume = 0.0
+            musicPlayer!.stop()
+            
         }
         
     }

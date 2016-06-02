@@ -103,6 +103,9 @@ public class Farm {
         
         //Reset
         reset()
+        
+        //Save Data
+        //Storage.saveFarm(self)
     }
     
     

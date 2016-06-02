@@ -29,6 +29,7 @@
 		EB5E509C1CEE223F007CD94E /* CropSellPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */; };
 		EB5E50A01CF74F5D007CD94E /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E509F1CF74F5D007CD94E /* Options.swift */; };
 		EB65AFED1A71BE02006A4235 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */; };
+		EB7D32381D008D9300705AFC /* DKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D32371D008D9300705AFC /* DKeys.swift */; };
 		EB83042F1AD4565B00BA9128 /* Wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB83042E1AD4565B00BA9128 /* Wind.mp3 */; };
 		EB8304311AD4595300BA9128 /* Water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB8304301AD4595300BA9128 /* Water.mp3 */; };
 		EB8304331AD459FA00BA9128 /* Bug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EB8304321AD459FA00BA9128 /* Bug.mp3 */; };
@@ -81,6 +82,7 @@
 		EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropSellPrice.swift; sourceTree = "<group>"; };
 		EB5E509F1CF74F5D007CD94E /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		EB65AFEC1A71BE02006A4235 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		EB7D32371D008D9300705AFC /* DKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKeys.swift; sourceTree = "<group>"; };
 		EB83042E1AD4565B00BA9128 /* Wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wind.mp3; sourceTree = "<group>"; };
 		EB8304301AD4595300BA9128 /* Water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Water.mp3; sourceTree = "<group>"; };
 		EB8304321AD459FA00BA9128 /* Bug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bug.mp3; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				EB5E509F1CF74F5D007CD94E /* Options.swift */,
 				EB5E509B1CEE223E007CD94E /* CropSellPrice.swift */,
 				EB5E50911CEA30F1007CD94E /* Report.swift */,
+				EB7D32371D008D9300705AFC /* DKeys.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				EB5803091B5941080096178B /* CropViewController.swift in Sources */,
 				EB5E50921CEA30F1007CD94E /* Report.swift in Sources */,
 				1DC5BB571A37AA4400F8DA6F /* MainViewController.swift in Sources */,
+				EB7D32381D008D9300705AFC /* DKeys.swift in Sources */,
 				EB889A721A8E99C700192944 /* UIImage+ColorAtPixel.m in Sources */,
 				EBE4F1181A74571200C27A13 /* BuyViewController.swift in Sources */,
 				EB3F7A7D1CD12DF50013E8B7 /* Event.swift in Sources */,

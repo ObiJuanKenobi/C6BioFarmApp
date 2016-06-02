@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     private var musicPlayer = AVAudioPlayer()
     private var effectsPlayer = AVAudioPlayer()
     
+    private var farm : Farm = Farm()
+    
     /*
         Loads when the view is loaded. Initializes the Music player.
     */
@@ -26,10 +28,13 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         prepareSound()
         musicPlayer.play()
+        
+        //Load game
+        //farm = Storage.loadFarm()
     }
     
     /*
-    The following hides teh back button from the view controller.
+    The following hides the back button from the view controller.
     It is not needed in the main menu and prevents players from going back 
     to the game over page after they go to the main menu page.
     */
@@ -50,10 +55,16 @@ class MainViewController: UIViewController {
         else if(segue.identifier == "toGameViewID"){
             let dest : GameViewController = segue.destinationViewController as! GameViewController
             dest.effectsPlayer = effectsPlayer
+            dest.farm = self.farm
         }
         else if(segue.identifier == "toCreditView"){
             
         }
+    }
+    
+    @IBAction func startGameWithNewFarm(sender: AnyObject) {
+        farm = Farm()
+        performSegueWithIdentifier("toGameViewID", sender: self)
     }
     
     /*

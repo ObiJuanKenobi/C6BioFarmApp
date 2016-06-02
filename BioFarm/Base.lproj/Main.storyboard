@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-fA-9ix">
-                                <rect key="frame" x="327" y="631" width="114" height="55"/>
+                                <rect key="frame" x="327" y="630" width="114" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="1sC-Ph-EcZ"/>
                                 </constraints>
@@ -145,7 +145,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0ih-xw-pyE" kind="push" identifier="toGameViewID" id="ciV-5O-vFz"/>
+                                    <segue destination="0ih-xw-pyE" kind="push" identifier="toGameViewID" id="Fbg-f0-Xz5"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="R-soybean" translatesAutoresizingMaskIntoConstraints="NO" id="sw5-bF-Cqn">
@@ -161,7 +161,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-se-rhE">
-                                <rect key="frame" x="327" y="723" width="114" height="60"/>
+                                <rect key="frame" x="327" y="780" width="114" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CKf-se-rhE" secondAttribute="height" multiplier="19:10" id="HDm-mG-5L9"/>
                                     <constraint firstAttribute="width" constant="114" id="wHX-1D-twU"/>
@@ -182,7 +182,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdt-JR-Vu7">
-                                <rect key="frame" x="327" y="815" width="114" height="60"/>
+                                <rect key="frame" x="327" y="860" width="114" height="60"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <state key="normal" title="Credits" backgroundImage="R-button_start">
                                     <color key="titleColor" red="0.80784313730000001" green="0.066666666669999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,6 +190,17 @@
                                 </state>
                                 <connections>
                                     <segue destination="cHs-zT-Aif" kind="push" identifier="toCreditsView" id="EXU-i2-88r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dl0-et-flb">
+                                <rect key="frame" x="327" y="700" width="114" height="60"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <state key="normal" title="New Game" backgroundImage="R-button_start">
+                                    <color key="titleColor" red="0.80784313730000001" green="0.066666666669999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startGameWithNewFarm:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YFh-zv-geH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -201,12 +212,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lad-fA-9ix" secondAttribute="trailing" constant="307" id="PgS-89-4g3"/>
                             <constraint firstAttribute="centerX" secondItem="sw5-bF-Cqn" secondAttribute="centerX" constant="-244.5" id="QC5-F7-H2n"/>
                             <constraint firstItem="sw5-bF-Cqn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="528" id="Xko-VY-q4h"/>
-                            <constraint firstAttribute="centerY" secondItem="lad-fA-9ix" secondAttribute="centerY" constant="-146.5" id="YVn-lc-0oy"/>
+                            <constraint firstAttribute="centerY" secondItem="lad-fA-9ix" secondAttribute="centerY" constant="-145.5" id="YVn-lc-0oy"/>
                             <constraint firstAttribute="centerY" secondItem="sw5-bF-Cqn" secondAttribute="centerY" constant="-194.5" id="ewY-CH-gI2"/>
                             <constraint firstAttribute="centerX" secondItem="ue5-Lx-aDs" secondAttribute="centerX" constant="238" id="jTJ-aQ-arO"/>
                             <constraint firstItem="mOY-40-lDh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-26" id="lDc-lN-A4i"/>
-                            <constraint firstItem="CKf-se-rhE" firstAttribute="top" secondItem="lad-fA-9ix" secondAttribute="bottom" constant="37" id="lUQ-VV-s8i"/>
-                            <constraint firstAttribute="centerY" secondItem="CKf-se-rhE" secondAttribute="centerY" constant="-241" id="rs1-pR-nj0"/>
+                            <constraint firstItem="CKf-se-rhE" firstAttribute="top" secondItem="lad-fA-9ix" secondAttribute="bottom" constant="95" id="lUQ-VV-s8i"/>
+                            <constraint firstAttribute="centerY" secondItem="CKf-se-rhE" secondAttribute="centerY" constant="-298" id="rs1-pR-nj0"/>
                             <constraint firstAttribute="centerX" secondItem="mOY-40-lDh" secondAttribute="centerX" id="u56-d4-LtO"/>
                             <constraint firstItem="mOY-40-lDh" firstAttribute="top" secondItem="MUj-cc-UFw" secondAttribute="bottom" id="y51-tt-5Ds"/>
                         </constraints>
@@ -657,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nir-T3-L1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3657.5" y="597"/>
+            <point key="canvasLocation" x="-3839.5" y="46"/>
         </scene>
         <!--Game Over-->
         <scene sceneID="uvG-Lz-PWH">
